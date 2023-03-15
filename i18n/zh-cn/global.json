@@ -1,0 +1,10 @@
+{
+  "title": "你好首页",
+  "nav": {
+    "courses": "课程",
+    "library": "图书馆",
+    "playground": "操场",
+    "community": "社区",
+    "archive": "档案"
+  }
+}

@@ -1,0 +1,22 @@
+#navbar {
+  @apply flex flex-col;
+  @apply lg:space-x-10 lg:flex-row;
+
+  a {
+    @apply px-10 py-4 hover:bg-light-hover dark:hover:bg-dark-hover text-light-secondary dark:text-dark-secondary relative font-medium;
+    @apply lg:p-0 lg:hover:bg-transparent lg:dark:hover:bg-dark-background_dark;
+
+    &.active {
+      @apply transition-opacity bg-light-hover dark:bg-dark-background lg:bg-transparent lg:dark:bg-dark-background_dark;
+
+      &:before {
+        @apply h-full lg:h-1.5 lg:w-full transition-all duration-200 ease-linear bg-gradient-to-l from-success to-primary;
+      }
+    }
+
+    &:before {
+      content: '';
+      @apply absolute left-0 top-0 lg:top-full w-1.5 lg:mt-2 lg:rounded-full;
+    }
+  }
+}
