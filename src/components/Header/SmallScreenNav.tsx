@@ -6,7 +6,7 @@ import Preference from '~/components/Header/Preference';
 import { BiRegularMenu } from 'solid-icons/bi';
 import { createMediaQuery } from '@solid-primitives/media';
 
-const ExpandableNav: Component = () => {
+const SmallScreenNav: Component = () => {
   const [isOpen, setIsOpen] = createSignal(false);
   const isSmallScreen = createMediaQuery('(max-width: 1024px)');
   createEffect(() => {
@@ -42,4 +42,4 @@ const ExpandableNav: Component = () => {
   );
 };
 
-export default ExpandableNav;
+export default SmallScreenNav;

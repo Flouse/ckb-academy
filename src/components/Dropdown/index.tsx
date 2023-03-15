@@ -48,7 +48,7 @@ const Dropdown: ParentComponent<DropdownProp> = (props) => {
         <As component={'div'}>{props.children}</As>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content class="z-10 bg-light-background dark:bg-dark-background shadow-dropdown shadow-light-shadow/20 dark:shadow-dark-shadow text-sm py-2 rounded-lg">
+        <DropdownMenu.Content class="text-sm py-2 rounded-lg z-10 bg-light-background dark:bg-dark-background shadow-dropdown shadow-light-shadow/20 dark:shadow-dark-shadow">
           <For each={props.menus}>{(menu) => <MenuItem item={menu} />}</For>
           {props.arrow && <DropdownMenu.Arrow />}
         </DropdownMenu.Content>

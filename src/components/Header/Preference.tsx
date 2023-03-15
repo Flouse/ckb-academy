@@ -32,9 +32,14 @@ const Preference: Component = () => {
   };
 
   return (
-    <div class="flex lg:divide-none lg:border-none  divide-x divide-light-divider dark:divide-dark-border border-t border-light-border dark:border-dark-divider divide-light-border items-center lg:space-x-4 text-light-tertiary dark:text-dark-tertiary text-2xl">
+    <div
+      class="flex items-center lg:space-x-4 text-light-tertiary dark:text-dark-tertiary text-2xl
+      lg:divide-none divide-x divide-light-divider dark:divide-dark-border divide-light-border
+      border-t border-light-border dark:border-dark-divider lg:border-none"
+    >
       <div
-        class="flex-1 py-4 inline-block cursor-pointer hover:bg-light-hover dark:hover:bg-dark-hover  hover:lg:bg-transparent lg:dark:hover:bg-transparent flex justify-center items-center"
+        class="flex justify-center items-center flex-1 py-4 inline-block cursor-pointer
+        hover:bg-light-hover dark:hover:bg-dark-hover hover:lg:bg-transparent lg:dark:hover:bg-transparent"
         onClick={changeDarkMode}
       >
         {context.isDark ? <BiSolidMoon /> : <BiSolidSun />}
@@ -45,7 +50,10 @@ const Preference: Component = () => {
         arrow={true}
         selected={[locale()]}
       >
-        <div class="flex py-4 justify-center lg:justify-start lg:w-32 items-center lg:border lg:py-2 lg:px-2 border-light-border dark:border-dark-border rounded-lg">
+        <div
+          class="flex py-4 justify-center lg:justify-start lg:w-32 items-center lg:py-2 lg:px-2 rounded-lg
+          lg:border border-light-border dark:border-dark-border"
+        >
           <BiRegularWorld class="mr-2" />
           <span class="text-sm">{langText()}</span>
         </div>

@@ -1,7 +1,7 @@
 import { Component } from 'solid-js';
 import NavBar from '~/components/Header/NavBar';
 import Preference from '~/components/Header/Preference';
-import ExpandableNav from '~/components/Header/ExpandableNav';
+import SmallScreenNav from '~/components/Header/SmallScreenNav';
 import Logo from '~/components/Header/Logo';
 
 const Index: Component = () => {
@@ -20,7 +20,7 @@ const Index: Component = () => {
           </div>
         </div>
         <div class="lg:hidden flex-auto flex justify-end items-center">
-          <ExpandableNav />
+          <SmallScreenNav />
         </div>
       </div>
     </div>

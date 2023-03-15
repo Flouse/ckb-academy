@@ -11,11 +11,17 @@ const Logo: Component = () => {
         class="flex-none text-light-headline dark:text-dark-headline text-2xl font-bold flex items-center"
       >
         <img alt={'logo'} src="/images/logo.png" width={46} class="mr-4" />
-        <span class="bg-clip-text text-transparent bg-gradient-to-tl from-light-headline dark:from-dark-headline dark:to-dark-tertiary to-light-tertiary">
+        <span
+          class="bg-clip-text text-transparent bg-gradient-to-tl 
+          from-light-headline dark:from-dark-headline dark:to-dark-tertiary to-light-tertiary"
+        >
           CKB • SCHOOL
         </span>
       </NavLink>
-      <div class="relative text-warning flex items-center text-xs pl-1 pr-1.5 py-0.5 rounded ml-4 bg-gradient-to-r from-warning to-error">
+      <div
+        class="relative pl-1 pr-1.5 py-0.5 ml-4 flex items-center text-warning text-xs 
+        rounded bg-gradient-to-r from-warning to-error"
+      >
         <BiSolidLeftArrow class="absolute -left-1.5" />
         <span class="text-white">Building</span>
       </div>

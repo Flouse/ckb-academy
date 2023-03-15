@@ -1,7 +1,6 @@
 import { Component, For, JSX } from 'solid-js';
 import {
   FaBrandsGolang,
-  FaBrandsJs,
   FaBrandsRust,
   FaSolidBridge,
   FaSolidWallet,
@@ -14,39 +13,39 @@ import { useI18n } from '@solid-primitives/i18n';
 import { IBaseLink } from '~/types/interfaces';
 import { A } from 'solid-start';
 
-interface Ifeature extends IBaseLink {
+interface ITool extends IBaseLink {
   icon?: JSX.Element;
 }
 
-const features: Ifeature[] = [
+const tools: ITool[] = [
   {
     title: 'Rust SDK for CKB',
     to: 'https://github.com/nervosnetwork/ckb-sdk-rust',
-    icon: <FaBrandsRust />,
+    icon: () => <FaBrandsRust />,
   },
   {
     title: 'Go SDK for CKB',
     to: 'https://github.com/nervosnetwork/ckb-sdk-go',
-    icon: <FaBrandsGolang />,
+    icon: () => <FaBrandsGolang />,
   },
   {
     title: 'Javascript SDK - Lumos',
-    icon: <FaBrandsJs />,
+    icon: () => <FaBrandsGolang />,
     to: 'https://github.com/ckb-js/lumos',
   },
   {
     title: 'Godwoken - Layer 2 solutions',
-    icon: <FaSolidBridge />,
+    icon: () => <FaSolidBridge />,
     to: 'https://github.com/godwokenrises/godwoken',
   },
   {
     title: 'CKB Wallet - Neuron',
-    icon: <FaSolidWallet />,
+    icon: () => <FaSolidWallet />,
     to: 'https://github.com/nervosnetwork/neuron',
   },
   {
     title: 'Ckb Explorer',
-    icon: <FaSolidWindowRestore />,
+    icon: () => <FaSolidWindowRestore />,
     to: 'https://github.com/Magickbase/ckb-explorer',
   },
 ];
@@ -68,12 +67,12 @@ const Ecosystem: Component = () => {
           <p class="text-3xl font-medium">{tr('home.ecosystem.sub_heading')}</p>
           <p class="text-xl mt-2">{tr('home.ecosystem.sub_heading_modifier')}</p>
           <div class="grid lg:grid-cols-3 grid-cols-2 gap-4 mt-10">
-            <For each={features}>
+            <For each={tools}>
               {(item) => (
                 <A
                   href={item.to}
                   target="_blank"
-                  class="bg-white/10 hover:bg-white hover:opacity-100 hover:text-primary text-white flex flex-col font-medium  items-center rounded px-10 py-16"
+                  class="bg-white/10 text-white flex flex-col font-medium items-center rounded px-10 py-16 hover:bg-white hover:opacity-100 hover:text-primary"
                 >
                   {item.icon && <span class="text-6xl mb-4">{item.icon}</span>}
                   {item.title}
