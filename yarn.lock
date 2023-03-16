@@ -2010,6 +2010,11 @@
   resolved "https://registry.npmmirror.com/@zag-js/anatomy/-/anatomy-0.1.4.tgz#61c5434eaa4e2a8fd2e09ac6fc22b83a74e46052"
   integrity sha512-Xc5QmQwY0W3VdkukYVaoujuCmgf0Y2ZbXhIBi0CJ0d8wWRwjkphhJu8l9kDyX4ElpyzvExYbrpTuQoI4BspaVQ==
 
+"@zag-js/aria-hidden@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.npmmirror.com/@zag-js/aria-hidden/-/aria-hidden-0.2.2.tgz#618be5a19a007cdb9696655bedad5d4bb4823f90"
+  integrity sha512-48e5YT2hb4pyPoTTs97CVcHjq+VGF6yfcpmJ8KY4cSKoB0WWSrb8NLNwv8uMceyqhy4QVE7dEWayR47FRPY02g==
+
 "@zag-js/core@0.2.10":
   version "0.2.10"
   resolved "https://registry.npmmirror.com/@zag-js/core/-/core-0.2.10.tgz#713829fd47613661d3b58a3192397df313b95687"
@@ -2017,6 +2022,21 @@
   dependencies:
     "@zag-js/store" "0.2.8"
     klona "2.0.6"
+
+"@zag-js/dialog@^0.2.13":
+  version "0.2.13"
+  resolved "https://registry.npmmirror.com/@zag-js/dialog/-/dialog-0.2.13.tgz#b88eafbd1bb5e29cd7b6c6d1f92f46416a1a26c8"
+  integrity sha512-kvMeYnH6SPHZFM60zTS8E7GxpgIvGQ5nEQ3s6/eEltTzZYCw2mrPh6roE3cj/gHPpy4gXGteQhwyJf7qfEYpmw==
+  dependencies:
+    "@zag-js/anatomy" "0.1.4"
+    "@zag-js/aria-hidden" "0.2.2"
+    "@zag-js/core" "0.2.10"
+    "@zag-js/dismissable" "0.2.4"
+    "@zag-js/dom-query" "0.1.4"
+    "@zag-js/remove-scroll" "0.2.4"
+    "@zag-js/types" "0.3.4"
+    "@zag-js/utils" "0.3.3"
+    focus-trap "7.3.1"
 
 "@zag-js/dismissable@0.2.4":
   version "0.2.4"
@@ -2078,6 +2098,13 @@
     "@zag-js/dom-query" "0.1.4"
     "@zag-js/element-rect" "0.2.2"
     "@zag-js/utils" "0.3.3"
+
+"@zag-js/remove-scroll@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.npmmirror.com/@zag-js/remove-scroll/-/remove-scroll-0.2.4.tgz#f6a638d34c14709b0e5f760f11ef8b7d06710796"
+  integrity sha512-e5q8tvwZL7M5hn2+9dyV+A7TlW655c81/X7aJgH64xbIFyJY26mctNsGH60Vj5FMoPHgQtH+PHQ6Wa3qOjCRAg==
+  dependencies:
+    "@zag-js/dom-query" "0.1.4"
 
 "@zag-js/solid@^0.2.10":
   version "0.2.10"
@@ -3385,6 +3412,13 @@ flatted@^3.1.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
+
+focus-trap@7.3.1:
+  version "7.3.1"
+  resolved "https://registry.npmmirror.com/focus-trap/-/focus-trap-7.3.1.tgz#417c98e5f1ab94e717d31f1bafa2da45dabcd65f"
+  integrity sha512-bX/u4FJ+F0Pp6b/8Q9W8Br/JaLJ7rrhOJAzai9JU8bh4BPdOjEATy4pxHcbBBxFjPN4d1oHy7/KqknEdOetm9w==
+  dependencies:
+    tabbable "^6.1.1"
 
 follow-redirects@^1.14.7:
   version "1.15.2"
@@ -5992,6 +6026,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+tabbable@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.npmmirror.com/tabbable/-/tabbable-6.1.1.tgz#40cfead5ed11be49043f04436ef924c8890186a0"
+  integrity sha512-4kl5w+nCB44EVRdO0g/UGoOp3vlwgycUVtkk/7DPyeLZUCuNFFKCFG6/t/DgHLrUPHjrZg6s5tNm+56Q2B0xyg==
 
 tailwindcss@^3.2.4:
   version "3.2.7"

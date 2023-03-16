@@ -76,18 +76,18 @@
 
 @layer components {
   .button-basic {
-    @apply text-light-tertiary w-max flex items-center border-0 px-10 py-4 cursor-pointer rounded-full transition duration-150 ease-in-out;
+    @apply text-light-tertiary w-max flex  items-center  px-10 py-4 cursor-pointer rounded-full transition duration-150 ease-in-out;
   }
 
   .button {
-    @apply border-2 border-light-tertiary text-light-tertiary button-basic;
+    @apply  border-2 border-light-tertiary text-light-tertiary button-basic;
     &:hover {
       @apply opacity-70;
     }
   }
 
   .button-solid {
-    @apply button text-white border-none bg-light-tertiary;
+    @apply button border-transparent text-white bg-light-tertiary;
   }
 
   .button-primary {
