@@ -47,6 +47,10 @@ interface IDialogProps {
   footer?: JSXElement;
   title?: JSXElement;
   closable?: boolean;
+  class?: string;
+  bodyClass?: string;
+  titleClass?: string;
+  footerClass?: string;
 }
 
 const Dialog: ParentComponent<IDialogProps> = (props) => {
@@ -65,7 +69,6 @@ const Dialog: ParentComponent<IDialogProps> = (props) => {
       props.context().close();
     }
   };
-
   return (
     <>
       <Show when={props.context().isOpen} keyed>
@@ -77,7 +80,8 @@ const Dialog: ParentComponent<IDialogProps> = (props) => {
           <div {...props.context().containerProps} class="relative h-full">
             <div
               {...props.context().contentProps}
-              class="rounded-2xl shadow-2xl shadow-light-shadow dark:shadow-dark-shadow flex flex-col fixed max-h-full max-w-full w-max top-[50%] translate-y-[-50%] translate-x-[-50%]  left-[50%] z-10 bg-light-background dark:bg-dark-background"
+              class="rounded-2xl shadow-2xl shadow-light-shadow dark:shadow-dark-shadow flex flex-col fixed max-h-full max-w-full w-max top-[50%] translate-y-[-50%] translate-x-[-50%] left-[50%] z-10 bg-light-background dark:bg-dark-background"
+              classList={{ [props.class || '']: props.class !== null }}
             >
               <Show when={props.closable !== false} keyed>
                 <span class="absolute text-lg right-6 top-6 hover:opacity-90 transition-all cursor-pointer">
@@ -86,13 +90,24 @@ const Dialog: ParentComponent<IDialogProps> = (props) => {
               </Show>
 
               <Show when={typeof props.title === 'string'} keyed fallback={props.title}>
-                <div class=" flex-none pl-6 pr-16 py-4 text-lg text-light-headline dark:text-dark-headline font-medium border-b border-light-divider dark:border-dark-divider">
+                <div
+                  class="flex-none pl-6 pr-16 py-4 text-lg text-light-headline dark:text-dark-headline font-medium border-b border-light-divider dark:border-dark-divider"
+                  classList={{ [props.titleClass || '']: props.titleClass !== null }}
+                >
                   {props.title}
                 </div>
               </Show>
-              <div class="m-6 h-full overflow-auto">{props.children}</div>
+              <div
+                class="m-6 h-full overflow-auto"
+                classList={{ [props.bodyClass || '']: props.bodyClass !== null }}
+              >
+                {props.children}
+              </div>
               <Show when={props.footer === undefined} keyed fallback={props.footer}>
-                <div class="flex-none space-x-4 flex items-center justify-end p-6">
+                <div
+                  class="flex-none space-x-4 flex items-center justify-end p-6"
+                  classList={{ [props.footerClass || '']: props.footerClass !== null }}
+                >
                   <button class="button px-6 py-2 text-sm rounded-lg" onClick={onCancel}>
                     {props.cancelText ?? 'Cancel'}
                   </button>
