@@ -80,7 +80,8 @@
   }
 
   .button {
-    @apply  border-2 border-light-tertiary text-light-tertiary button-basic;
+    @apply border-2 border-light-tertiary text-light-tertiary button-basic;
+
     &:hover {
       @apply opacity-70;
     }

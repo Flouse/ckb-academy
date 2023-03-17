@@ -24,6 +24,7 @@
     "@zag-js/dialog": "^0.2.13",
     "@zag-js/hover-card": "^0.2.6",
     "@zag-js/solid": "^0.2.10",
+    "@zag-js/toast": "^0.2.14",
     "install": "^0.13.0",
     "motion": "^10.15.5",
     "npm": "^9.6.1",

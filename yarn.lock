@@ -2077,6 +2077,18 @@
   resolved "https://registry.npmmirror.com/@zag-js/text-selection/-/text-selection-0.0.1.tgz#7eeeb32a23d4936d3a4f1c1f5d5bbc03cbf462cb"
   integrity sha512-l8Im0FkMw63BPXocHRbtFgMIz3SkVpc4HI/S/wV0FqKgWMzOZzd/avHljCNfoXyhjhKauwR5xPivAwsOcye8CA==
 
+"@zag-js/toast@^0.2.14":
+  version "0.2.14"
+  resolved "https://registry.npmmirror.com/@zag-js/toast/-/toast-0.2.14.tgz#1ea2ab4c77ea2fc688565f6c282e9601d058a9bf"
+  integrity sha512-3S9WtvHhHt8Mfi3BZyGf2rCV/Kzxb3YMsM5EJml6RHLwyDwoGomrwNcd/YdXoyBs5NdrGFOnUONCTRqJw6mPhA==
+  dependencies:
+    "@zag-js/anatomy" "0.1.4"
+    "@zag-js/core" "0.2.10"
+    "@zag-js/dom-event" "0.0.1"
+    "@zag-js/dom-query" "0.1.4"
+    "@zag-js/types" "0.3.4"
+    "@zag-js/utils" "0.3.3"
+
 "@zag-js/types@0.3.4":
   version "0.3.4"
   resolved "https://registry.npmmirror.com/@zag-js/types/-/types-0.3.4.tgz#9443590d80d4bad8861fcee1e0b1939611964c5c"

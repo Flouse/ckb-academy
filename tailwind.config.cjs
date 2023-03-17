@@ -1,14 +1,14 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
       height: {
-        'container': 'calc(100vh - 7rem)',
+        container: 'calc(100vh - 7rem)',
       },
-      minHeight:{
-        'container': 'calc(100vh - 7rem)',
+      minHeight: {
+        container: 'calc(100vh - 7rem)',
       },
       boxShadow: {
         dropdown: '0 0 20px 5px',
