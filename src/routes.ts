@@ -17,8 +17,8 @@ export const routes: RouteDefinition[] = [
     component: lazy(() => import('./pages/Library')),
   },
   {
-    path: '/play-ground',
-    component: lazy(() => import('./pages/PlayGround')),
+    path: '/playground',
+    component: lazy(() => import('./pages/Playground')),
   },
   {
     path: '/archive',

@@ -15,7 +15,7 @@ const Logo: Component = () => {
           class="bg-clip-text text-transparent bg-gradient-to-tl 
           from-light-headline dark:from-dark-headline dark:to-dark-tertiary to-light-tertiary"
         >
-          CKB • SCHOOL
+          CKB • Academy
         </span>
       </NavLink>
       <div
