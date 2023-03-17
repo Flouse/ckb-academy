@@ -42,7 +42,7 @@ const Course: Component = () => {
   });
 
   return (
-    <section class="container flex flex-col mx-auto relative">
+    <section id="about-course" class="container flex flex-col mx-auto relative">
       <Motion.div
         animate={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{

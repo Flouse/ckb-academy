@@ -3,9 +3,7 @@
     "heading": "Teaching community for Nervos developers.",
     "sub_heading": "Committed to help new CKB developers have a easy learning curve.",
     "sub_heading_modifier": "Here we provide easy-to-understand interactive courses and technical documents to help Nervos ecological development.",
-    "button_zero2": "Inspired by zero2",
-    "gratitude": "Expression of gratitude :",
-    "contribute": "CKB School is an open-source community that welcomes developers who are passionate about the Nervos ecosystem to join and contribute high-quality courses and documentation."
+    "button_text": " Understand the course"
   },
   "course": {
     "heading": "Some Courses",
@@ -36,6 +34,8 @@
   "contribute": {
     "heading": "Contribute to CKB School",
     "sub_heading": "This website is open source. You can propose edits to any of the content on this site, suggest awesome new features, or help us squash bugs.",
-    "button": "More on contribute"
+    "button": "More on contribute",
+    "button_zero2ckb": "Inspired by zero2ckb",
+    "gratitude": "Expression of gratitude :"
   }
 }
