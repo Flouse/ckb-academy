@@ -1,10 +1,9 @@
 import { Component, For, JSX } from 'solid-js';
 import {
-  FaBrandsGolang,
+  FaBrandsGolang, FaBrandsJsSquare,
   FaBrandsRust,
-  FaSolidBridge,
-  FaSolidWallet,
-  FaSolidWindowRestore,
+  FaBrandsJava,
+  FaBrandsWpexplorer,
 } from 'solid-icons/fa';
 import { Motion } from '@motionone/solid';
 
@@ -19,33 +18,43 @@ interface ITool extends IBaseLink {
 
 const tools: ITool[] = [
   {
-    title: 'Rust SDK for CKB',
+    title: 'JavaScript / TypeScript SDK - Lumos',
+    icon: () => <FaBrandsJsSquare />,
+    to: 'https://github.com/ckb-js/lumos',
+  },
+  {
+    title: 'Rust SDK',
     to: 'https://github.com/nervosnetwork/ckb-sdk-rust',
     icon: () => <FaBrandsRust />,
   },
   {
-    title: 'Go SDK for CKB',
+    title: 'Golang SDK',
     to: 'https://github.com/nervosnetwork/ckb-sdk-go',
     icon: () => <FaBrandsGolang />,
   },
   {
-    title: 'Javascript SDK - Lumos',
-    icon: () => <FaBrandsGolang />,
-    to: 'https://github.com/ckb-js/lumos',
+    title: 'Java SDK',
+    to: 'https://github.com/nervosnetwork/ckb-sdk-java',
+    icon: () => <FaBrandsJava />,
   },
   {
-    title: 'Godwoken - Layer 2 solutions',
-    icon: () => <FaSolidBridge />,
-    to: 'https://github.com/godwokenrises/godwoken',
+    title: 'Smart Contract Framework',
+    to: 'https://github.com/nervosnetwork/capsule',
+    icon: () => <FaBrandsRust />,
   },
+  // {
+  //   title: 'Godwoken - Layer 2 solutions',
+  //   icon: () => <FaSolidBridge />,
+  //   to: 'https://github.com/godwokenrises/godwoken',
+  // },
+  // {
+  //   title: 'CKB Wallet - Neuron',
+  //   icon: () => <FaSolidWallet />,
+  //   to: 'https://github.com/nervosnetwork/neuron',
+  // },
   {
-    title: 'CKB Wallet - Neuron',
-    icon: () => <FaSolidWallet />,
-    to: 'https://github.com/nervosnetwork/neuron',
-  },
-  {
-    title: 'Ckb Explorer',
-    icon: () => <FaSolidWindowRestore />,
+    title: 'CKB Explorer',
+    icon: () => <FaBrandsWpexplorer />,
     to: 'https://github.com/Magickbase/ckb-explorer',
   },
 ];

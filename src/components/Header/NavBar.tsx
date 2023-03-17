@@ -26,8 +26,8 @@ const NavBar: Component<INavBarProps> = (props) => {
       to: '/library',
     },
     {
-      title: tr('global.nav.playground', {}, 'PlayGround'),
-      to: '/play-ground',
+      title: tr('global.nav.playground', {}, 'Playground'),
+      to: '/playground',
     },
     {
       title: tr('global.nav.archive', {}, 'Archive'),
@@ -35,7 +35,7 @@ const NavBar: Component<INavBarProps> = (props) => {
     },
     {
       title: 'Github',
-      to: 'https://github.com/godwokenrises/light-godwoken',
+      to: 'https://github.com/Flouse/ckb-school',
       target: '_blank',
     },
   ]);

@@ -1,9 +1,9 @@
 {
   "first_screen": {
-    "heading": "Teaching community for Nervos developers.",
-    "sub_heading": "Committed to help new CKB developers have a easy learning curve.",
-    "sub_heading_modifier": "Here we provide easy-to-understand interactive courses and technical documents to help Nervos ecological development.",
-    "button_text": " Understand the course"
+    "heading": "A learning space for Nervos developers",
+    "sub_heading": "We are committed to ensuring that new CKB developers have an easy learning curve,",
+    "sub_heading_modifier": "by providing easy-to-understand interactive courses and technical documentation to support Nervos ecological development.",
+    "button_text": " Learn CKB from Zero"
   },
   "course": {
     "heading": "Some Courses",
@@ -24,18 +24,18 @@
       }
     },
     "gratitude": "Expression of gratitude :",
-    "contribute": "CKB School is an open-source community that welcomes developers who are passionate about the Nervos ecosystem to join and contribute high-quality courses and documentation."
+    "contribute": "CKB Academy is an open-source community that welcomes developers who are passionate about the Nervos ecosystem to join and contribute high-quality courses and documentation."
   },
   "ecosystem": {
-    "heading": "Start running",
-    "sub_heading": "Have you completed all courses? It's time to start the CKB development journey",
-    "sub_heading_modifier": "To this end, we have carefully selected some resources that you may use next"
+    "heading": "Start building a real project",
+    "sub_heading": "Have you completed all courses? It's time to start the CKB development journey.",
+    "sub_heading_modifier": "To that end, we have carefully selected some resources that you may use next."
   },
   "contribute": {
-    "heading": "Contribute to CKB School",
-    "sub_heading": "This website is open source. You can propose edits to any of the content on this site, suggest awesome new features, or help us squash bugs.",
-    "button": "More on contribute",
+    "heading": "Contribution to CKB Academy",
+    "sub_heading": "This website is open source. You can propose changes to any of the content on this site, suggest great new features, or help us fix bugs.",
+    "button": "Contribute",
     "button_zero2ckb": "Inspired by zero2ckb",
-    "gratitude": "Expression of gratitude :"
+    "gratitude": "Contributors:"
   }
 }

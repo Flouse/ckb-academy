@@ -16,7 +16,7 @@ export default function Root() {
         <StudentProvider>
           <Html lang="en">
             <Head>
-              <Title>CKB School</Title>
+              <Title>CKB Academy</Title>
               <Meta charset="utf-8" />
               <Meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>

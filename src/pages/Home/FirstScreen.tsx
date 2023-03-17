@@ -26,7 +26,7 @@ const FirstScreen: Component = () => {
               easing: spring(),
             }}
           >
-            <h4 class="text-8xl mb-12 font-bold">{tr('home.first_screen.heading')}</h4>
+            <h4 class="text-7xl mb-12 font-bold">{tr('home.first_screen.heading')}</h4>
             <p class="text-4xl mb-2 font-medium">{tr('home.first_screen.sub_heading')}</p>
             <p class="text-2xl mb-10">{tr('home.first_screen.sub_heading_modifier')}</p>
             <span

@@ -15,15 +15,7 @@ const Contribute: Component<ParentProps> = () => {
       <div class="container items-center text-white text-center flex flex-col py-36 mx-auto relative">
         <BiLogosGithub class="text-8xl" />
         <h1 class="text-6xl mt-4 font-bold">{tr('home.contribute.heading')}</h1>
-        <p class="text-2xl mt-10">{tr('home.contribute.sub_heading')}</p>
-        <div class="flex ">
-          <A
-            href={SITE_GITHUB_URL}
-            class="button-white-hover-solid hover:text-light-headline mt-10"
-          >
-            {tr('home.contribute.button')}
-          </A>
-        </div>
+
         <div class="flex flex-col items-center mt-8 text-xl lg:flex-row space-y-4 lg:space-y-0">
           <span class="mr-4 font-bold">{tr('home.contribute.gratitude')} </span>
           <nav class="flex items-center space-x-4">
@@ -49,6 +41,16 @@ const Contribute: Component<ParentProps> = () => {
               )}
             </For>
           </nav>
+        </div>
+
+        <p class="text-2xl mt-10">{tr('home.contribute.sub_heading')}</p>
+        <div class="flex ">
+          <A
+            href={SITE_GITHUB_URL}
+            class="button-white-hover-solid hover:text-light-headline mt-10"
+          >
+            {tr('home.contribute.button')}
+          </A>
         </div>
       </div>
     </section>
