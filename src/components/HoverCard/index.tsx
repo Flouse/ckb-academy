@@ -4,7 +4,7 @@ import * as hoverCard from '@zag-js/hover-card';
 import { normalizeProps, useMachine } from '@zag-js/solid';
 
 interface IHoverCardProps {
-  content: JSX.Element;
+  content: JSX.Element | ((close?: () => void) => JSX.Element);
   arrow?: boolean;
   arrowSize?: number;
   class?: string;
@@ -18,7 +18,7 @@ const HoverCard: ParentComponent<IHoverCardProps> = (props) => {
   const [state, send] = useMachine(
     hoverCard.machine({
       id: createUniqueId(),
-      openDelay: props.openDelay,
+      openDelay: props.openDelay ?? 100,
       defaultOpen: props.defaultOpen,
       closeDelay: props.closeDelay,
       onOpenChange: props.onOpenChange,
@@ -36,7 +36,7 @@ const HoverCard: ParentComponent<IHoverCardProps> = (props) => {
       <Show when={api().isOpen}>
         <Portal>
           <div
-            classList={{ [`${props?.class ?? ''}`]: props.class != null }}
+            classList={{ [props?.class || '']: props.class != null }}
             class="px-4 py-2 z-10 rounded text-sm bg-light-background dark:bg-dark-background shadow-dropdown shadow-light-shadow dark:shadow-dark-shadow"
             {...api().positionerProps}
           >
@@ -50,7 +50,10 @@ const HoverCard: ParentComponent<IHoverCardProps> = (props) => {
                   />
                 </div>
               </Show>
-              {props.content}
+
+              {typeof props.content === 'function'
+                ? props.content?.(() => api().close())
+                : props.content}
             </div>
           </div>
         </Portal>

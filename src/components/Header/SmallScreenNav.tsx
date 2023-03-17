@@ -1,10 +1,10 @@
 import { Component } from 'solid-js/types/render/component';
-import { createEffect, createSignal } from 'solid-js';
-import NavBar from '~/components/Header/NavBar';
-import { Dialog } from '@kobalte/core';
-import Preference from '~/components/Header/Preference';
+import { createEffect, createSignal, Show } from 'solid-js';
 import { BiRegularMenu } from 'solid-icons/bi';
 import { createMediaQuery } from '@solid-primitives/media';
+import { Portal } from 'solid-js/web';
+import NavBar from '~/components/Header/NavBar';
+import Preference from '~/components/Header/Preference';
 
 const SmallScreenNav: Component = () => {
   const [isOpen, setIsOpen] = createSignal(false);
@@ -16,29 +16,25 @@ const SmallScreenNav: Component = () => {
   });
 
   return (
-    <Dialog.Root isOpen={isOpen()} onOpenChange={(val) => setIsOpen(val)} isModal={true}>
-      <Dialog.Trigger>
-        <BiRegularMenu class="text-3xl" />
-      </Dialog.Trigger>
-      <Dialog.Portal>
-        <div class="fixed z-10 bg-light-mask dark:bg-dark-mask" style={{ inset: 0 }}>
-          <Dialog.Overlay />
+    <div>
+      <BiRegularMenu onClick={() => setIsOpen((val) => !val)} class="text-3xl" />
+      <Show when={isOpen()} keyed>
+        <Portal>
           <div
-            class="fixed bg-light-background dark:bg-dark-background_dark w-96"
-            style={{ inset: 0 }}
-          >
-            <Dialog.Content class="flex flex-col h-full">
-              <div class="flex-auto pt-12">
-                <NavBar onItemClick={() => setIsOpen(false)} />
-              </div>
-              <div class="flex-none">
-                <Preference />
-              </div>
-            </Dialog.Content>
+            onClick={() => setIsOpen(false)}
+            class="fixed top-0 bottom-0 right-0 left-0 bg-light-mask z-10"
+          ></div>
+          <div class="fixed flex flex-col top-0 bottom-0 left-0 w-96 bg-light-background dark:bg-dark-background_dark z-10">
+            <div class="flex-auto mt-10">
+              <NavBar onItemClick={() => setIsOpen(false)} />
+            </div>
+            <div class="flex-none">
+              <Preference />
+            </div>
           </div>
-        </div>
-      </Dialog.Portal>
-    </Dialog.Root>
+        </Portal>
+      </Show>
+    </div>
   );
 };
 

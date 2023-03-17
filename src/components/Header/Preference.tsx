@@ -1,9 +1,9 @@
 import { Component } from 'solid-js/types/render/component';
 import { BiRegularWorld, BiSolidMoon, BiSolidSun } from 'solid-icons/bi';
-import Dropdown, { DropdownMenuProps } from '~/components/Dropdown';
-import { createMemo, useContext } from 'solid-js';
+import { createMemo, For, useContext } from 'solid-js';
 import { AppContext } from '~/AppContext';
 import { useI18n } from '@solid-primitives/i18n';
+import HoverCard from '~/components/HoverCard';
 
 const langs: Record<string, string> = {
   en: 'English',
@@ -12,16 +12,6 @@ const langs: Record<string, string> = {
 const Preference: Component = () => {
   const context = useContext(AppContext);
   const [, { locale }] = useI18n();
-
-  const langOptions = createMemo(() => {
-    return Object.entries(langs).map(([lang, text]) => {
-      return {
-        id: lang,
-        label: <div class="w-36">{text}</div>,
-        onSelect: (lang) => locale(lang),
-      } as DropdownMenuProps;
-    });
-  });
 
   const langText = createMemo(() => {
     return langs[locale()] ?? langs['en'];
@@ -44,21 +34,44 @@ const Preference: Component = () => {
       >
         {context.isDark ? <BiSolidMoon /> : <BiSolidSun />}
       </div>
-      <Dropdown
-        class="flex-1 hover:bg-light-hover dark:hover:bg-dark-hover lg:hover:bg-transparent dark:lg:hover:bg-transparent"
-        menus={langOptions()}
-        arrow={true}
-        selected={[locale()]}
-      >
-        <div
-          class="flex py-4 justify-center lg:justify-start lg:w-32 items-center lg:py-2 lg:px-2 rounded-lg
-          lg:border border-light-border dark:border-dark-border"
+      <div class="flex-1">
+        <HoverCard
+          arrow
+          class="!px-0"
+          content={(close) => <LangChooser data={langs} close={close} />}
         >
-          <BiRegularWorld class="mr-2" />
-          <span class="text-sm">{langText()}</span>
-        </div>
-      </Dropdown>
+          <div
+            class="flex hover:bg-light-hover dark:hover:bg-dark-hover cursor-pointer py-4 justify-center lg:justify-start lg:w-32 items-center lg:py-2 lg:px-2 lg:rounded-lg
+          lg:border border-light-border dark:border-dark-border"
+          >
+            <BiRegularWorld class="mr-2" />
+            <span class="text-sm">{langText()}</span>
+          </div>
+        </HoverCard>
+      </div>
     </div>
+  );
+};
+
+const LangChooser: Component<{ data: Record<string, string>; close?: () => void }> = (props) => {
+  const [, { locale }] = useI18n();
+  return (
+    <ul class="flex flex-col w-32">
+      <For each={Object.entries(props.data)}>
+        {([lang, label]) => (
+          <li
+            onClick={() => {
+              props.close?.();
+              locale(lang);
+            }}
+            classList={{ 'bg-primary/10': lang === locale() }}
+            class="px-4 py-1 hover:bg-light-hover hover:dark:bg-dark-hover cursor-pointer"
+          >
+            {label}
+          </li>
+        )}
+      </For>
+    </ul>
   );
 };
 
