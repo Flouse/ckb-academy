@@ -2,25 +2,25 @@
   "first_screen": {
     "heading": "A learning space for Nervos developers",
     "sub_heading": "We are committed to ensuring that new CKB developers have an easy learning curve,",
-    "sub_heading_modifier": "by providing easy-to-understand interactive courses and technical documentation to support Nervos ecological development.",
+    "sub_heading_modifier": "by providing easy-to-understand interactive courses and friendly documentation.",
     "button_text": " Learn CKB from Zero"
   },
   "course": {
     "heading": "Some Courses",
-    "sub_heading": "We will soon be adding easy-to-understand courses for each knowledge point, and it's worth mentioning that we've also added some interesting features to them.",
-    "button_start": "Your first class starts now",
+    "sub_heading": "More easy-to-understand courses are in the pipeline.",
+    "button_start": "Start Your First Class",
     "feature": {
       "interactive": {
-        "title": "Interactive courses",
-        "description": "Each chapter of the course has a certain level of interactivity. Only after completing the interaction and understanding the chapter content can you proceed to the next chapter or course."
+        "title": "Interactive course",
+        "description": "Each chapter in the course has a certain level of interactivity. Only after completing the interaction and understanding the knowledge of the chapter, you can proceed to the next chapter or course."
       },
       "nft": {
-        "title": "NFT badges",
-        "description": "By completing specific chapters of the course, you can trigger a badge reward and receive a commemorative NFT badge provided by the Nervape team."
+        "title": "NFT badge",
+        "description": "By completing certain chapters of the course you can unlock a badge reward. You will receive a commemorative NFT badge provided by CKB Academy."
       },
       "keyword": {
-        "title": "Keyword preview",
-        "description": "Each article section in every chapter contains annotated keywords that are associated with summary explanations to facilitate quick understanding of the nouns.\n\n"
+        "title": "Keyword annotation",
+        "description": "Keywords with hover annotations that link to summary explanations will help you understand the concepts.\n\n"
       }
     },
     "gratitude": "Expression of gratitude :",

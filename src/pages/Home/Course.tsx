@@ -55,7 +55,7 @@ const Course: Component = () => {
         <p class="text-7xl mb-6 font-bold text-light-headline dark:text-dark-headline">
           {tr('home.course.heading')}
         </p>
-        <p class="text-xl mb-12 font-medium max-w-3xl text-light-secondary dark:text-dark-secondary">
+        <p class="text-2xl mb-12 font-medium max-w-2xl text-light-secondary dark:text-dark-secondary">
           {tr('home.course.sub_heading')}
         </p>
         <div class="flex space-x-8">
