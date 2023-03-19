@@ -7,7 +7,7 @@ import HoverCard from '~/components/HoverCard';
 
 const langs: Record<string, string> = {
   en: 'English',
-  'zh-cn': '简体中文',
+  // 'zh-cn': '简体中文',
 };
 const Preference: Component = () => {
   const context = useContext(AppContext);

@@ -29,10 +29,10 @@ const NavBar: Component<INavBarProps> = (props) => {
       title: tr('global.nav.playground', {}, 'Playground'),
       to: '/playground',
     },
-    {
-      title: tr('global.nav.archive', {}, 'Archive'),
-      to: '/archive',
-    },
+    // {
+    //   title: tr('global.nav.archive', {}, 'Archive'),
+    //   to: '/archive',
+    // },
     {
       title: 'Github',
       to: 'https://github.com/Flouse/ckb-school',

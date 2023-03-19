@@ -27,8 +27,8 @@ const FirstScreen: Component = () => {
             }}
           >
             <h4 class="text-7xl mb-12 font-bold">{tr('home.first_screen.heading')}</h4>
-            <p class="text-4xl mb-2 font-medium">{tr('home.first_screen.sub_heading')}</p>
-            <p class="text-2xl mb-10">{tr('home.first_screen.sub_heading_modifier')}</p>
+            <p class="text-3xl mb-2 font-medium">{tr('home.first_screen.sub_heading')}</p>
+            <p class="text-3xl mb-10 font-medium">{tr('home.first_screen.sub_heading_modifier')}</p>
             <span
               onClick={toAboutCourse}
               class="button-basic bg-gradient-primary hover:opacity-80 text-white text-2xl font-bold"
