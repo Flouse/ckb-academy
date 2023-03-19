@@ -16,11 +16,14 @@ This project is going to build a comprehensive set of guides, tutorials, labs, a
   - [ ] etc.
 - [ ] Provide clear guidance on how to contribute to the project and get involved in the CKB community
   - [ ] Add a guild about how to build a new ineratable course using the template in this project
+- [ ] [Message Board](https://github.com/Flouse/ckb-academy/issues/5)
 - [ ] Include a frequently asked questions (FAQ) section to address common questions or issues
   - [ ] Give an overview of Nervos CKB
   - [ ] Explain the benefits of learning about CKB and how it can be applied in various use cases
   - [ ] List out any prerequisites or recommended knowledge that learners should have before diving into the courses
+- [ ] [Learn CKB and Earn NFTs with Game Experience](https://github.com/Flouse/ckb-academy/issues/4)
 - [ ] Provide examples of successful projects and applications built on the CKB, such as the layer-2 sulutions ([Godwoken](https://github.com/godwokenrises/godwoken) and [Axon](https://github.com/axonweb3/axon)), [.bit](https://www.dotbit.org/)
+- [ ] [SEO-friendly Design](https://github.com/Flouse/ckb-academy/issues/6)
 
 
 ## Developing
