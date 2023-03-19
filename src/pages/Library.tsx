@@ -8,17 +8,17 @@ const Library: Component<ParentProps> = () => {
   const [tr] = useI18n();
   const docLinks: IBaseLink[] = [
     {
-      title: 'Nervos CKB',
+      title: 'Nervos CKB Offical Docs',
       to: 'https://docs.nervos.org/',
     },
     {
-      title: 'Nervos network RFC',
+      title: 'Nervos Network RFCs',
       to: 'https://github.com/nervosnetwork/rfcs',
     },
-    {
-      title: 'The first intimate contact with CKB',
-      to: 'https://zero2ckb.ckbapp.dev/learn',
-    },
+    // {
+    //   title: 'The first intimate contact with CKB',
+    //   to: 'https://zero2ckb.ckbapp.dev/learn',
+    // },
   ];
 
   return (
