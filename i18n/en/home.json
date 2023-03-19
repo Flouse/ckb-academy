@@ -3,12 +3,12 @@
     "heading": "A learning space for Nervos developers",
     "sub_heading": "We are committed to ensuring that new CKB developers have an easy learning curve,",
     "sub_heading_modifier": "by providing easy-to-understand interactive courses and friendly documentation.",
-    "button_text": " Learn CKB from Zero"
+    "button_text": "Start Exploring Courses"
   },
   "course": {
     "heading": "Some Courses",
     "sub_heading": "More easy-to-understand courses are in the pipeline.",
-    "button_start": "Start Your First Class",
+    "button_start": "Learn CKB from Zero",
     "feature": {
       "interactive": {
         "title": "Interactive course",

@@ -79,7 +79,7 @@ const Course: Component = () => {
         <p class="text-sm text-light-tertiary dark:text-dark-tertiary mt-6 max-w-2xl">
           {featureDescription()}
         </p>
-        <a href="/courses" class="button-primary mt-10">
+        <a href="https://zero2ckb.ckbapp.dev/" class="button-primary mt-10">
           {tr('home.course.button_start')}
         </a>
 
