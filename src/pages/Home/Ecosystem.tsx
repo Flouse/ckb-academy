@@ -38,7 +38,7 @@ const tools: ITool[] = [
     icon: () => <FaBrandsJava />,
   },
   {
-    title: 'Smart Contract Framework',
+    title: 'Smart Contract Framework - Capsule',
     to: 'https://github.com/nervosnetwork/capsule',
     icon: () => <FaBrandsRust />,
   },
