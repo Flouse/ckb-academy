@@ -4,8 +4,9 @@ import { createMemo, For, useContext } from 'solid-js';
 import { AppContext } from '~/AppContext';
 import { useI18n } from '@solid-primitives/i18n';
 import HoverCard from '~/components/HoverCard';
+import { LangsEnum } from '~/common/constants/site-basic';
 
-const langs: Record<string, string> = {
+const langs: Record<LangsEnum, string> = {
   en: 'English',
   // 'zh-cn': '简体中文',
 };
@@ -14,7 +15,7 @@ const Preference: Component = () => {
   const [, { locale }] = useI18n();
 
   const langText = createMemo(() => {
-    return langs[locale()] ?? langs['en'];
+    return langs[locale() as LangsEnum] ?? langs['en'];
   });
 
   const changeDarkMode = () => {
