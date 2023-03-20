@@ -15,7 +15,7 @@ This project is going to build a comprehensive set of guides, tutorials, labs, a
   - [ ] Deploy a upgradable contract
   - [ ] etc.
 - [ ] Provide clear guidance on how to contribute to the project and get involved in the CKB community
-  - [ ] Add a guild about how to build a new ineratable course using the template in this project
+  - [ ] Add a guild about how to build a new interactive course using the template designed in this project
 - [ ] [Message Board](https://github.com/Flouse/ckb-academy/issues/5)
 - [ ] Include a frequently asked questions (FAQ) section to address common questions or issues
   - [ ] Give an overview of Nervos CKB
