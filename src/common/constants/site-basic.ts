@@ -3,5 +3,5 @@ export const ZERO2_URL = 'https://zero2ckb.ckbapp.dev/learn';
 
 export enum LangsEnum {
   en = 'en',
-  zhCN = 'zh-cn',
+  //zhCN = 'zh-cn',
 }

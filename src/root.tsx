@@ -1,7 +1,17 @@
 // @refresh reload
 import { Suspense } from 'solid-js';
-import { Body, ErrorBoundary, Head, Html, Meta, Scripts, Title, useRoutes } from 'solid-start';
-import '~/root.css';
+import {
+  Body,
+  ErrorBoundary,
+  Head,
+  Html,
+  Link,
+  Meta,
+  Scripts,
+  Title,
+  useRoutes,
+} from 'solid-start';
+import '~/assets/css/root.css';
 import { routes } from '~/routes';
 import Header from '~/components/Header';
 import { AppContextProvider } from '~/AppContext';
@@ -16,6 +26,7 @@ export default function Root() {
         <StudentProvider>
           <Html lang="en">
             <Head>
+              <Link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" />
               <Title>CKB Academy</Title>
               <Meta charset="utf-8" />
               <Meta name="viewport" content="width=device-width, initial-scale=1" />

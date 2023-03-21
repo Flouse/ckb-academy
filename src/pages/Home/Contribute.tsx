@@ -47,7 +47,7 @@ const Contribute: Component<ParentProps> = () => {
         <div class="flex ">
           <A
             href={SITE_GITHUB_URL}
-            class="button-white-hover-solid hover:text-light-headline mt-10"
+            class="button-white-hover-solid button-lg hover:text-light-headline mt-10"
           >
             {tr('home.contribute.button')}
           </A>

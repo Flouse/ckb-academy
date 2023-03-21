@@ -1,4 +1,4 @@
-import { Component, createSignal, For, Show, useContext } from 'solid-js';
+import { Accessor, Component, createSignal, For, Show, useContext } from 'solid-js';
 import { CourseContext } from '~/components/Course/CourseContext';
 import {
   BiRegularBookContent,
@@ -11,12 +11,15 @@ import {
 import { useNavigate } from '@solidjs/router';
 import { ICourse, ICourseChapter } from '~/types/course';
 import { Portal } from 'solid-js/web';
+import '~/assets/css/mrakdown.css';
+import '~/assets/css/github-code.css';
 
 const CourseExplorer: Component = () => {
   const context = useContext(CourseContext);
   const go = useNavigate();
   const [fullScreen, setFullScreen] = createSignal(false);
   const [visible, setVisible] = createSignal(true);
+
   return (
     <Portal>
       <div
@@ -36,7 +39,7 @@ const CourseExplorer: Component = () => {
           onCatalogueVisibleClick={() => setVisible((val) => !val)}
         />
 
-        <div class="flex h-full overflow-hidden  border border-light-border dark:border-dark-border">
+        <div class="flex h-full overflow-hidden rounded-t-2xl border border-light-border dark:border-dark-border">
           <Catalogue
             visible={visible()}
             currentChapter={context.currentChapterId()}
@@ -47,9 +50,9 @@ const CourseExplorer: Component = () => {
           <Show when={context.loader?.error === undefined} keyed fallback={<Error />}>
             <div class="flex-auto h-full overflow-hidden flex flex-col">
               <div class="flex flex-auto overflow-hidden relative border-b border-light-border dark:border-dark-border">
-                <section class="px-10 py-10 flex-auto overflow-y-auto">
+                <section class="m-6 flex-auto overflow-y-auto">
                   <Show when={context.loader?.loading === false} keyed>
-                    <article class="prose overflow-y-scroll max-w-none dark:prose-invert">
+                    <article class="markdown-body overflow-y-scroll max-w-none">
                       {context.loader?.()?.article?.({})}
                     </article>
                   </Show>
@@ -62,7 +65,7 @@ const CourseExplorer: Component = () => {
               </div>
               <Footer
                 completionStatus={context.chaptersCompletionStatus()}
-                underWayChapter={context.underWayChapterId()}
+                underWayChapter={context.underWayChapterId}
                 isUnderWayChapter={context.isUnderWayChapter()}
                 isLastChapter={context.isLastChapter()}
                 canNext={context.canNextChapter()}
@@ -139,45 +142,34 @@ const Header: Component<{
 
 const Footer: Component<{
   completionStatus: Record<string, boolean>;
-  underWayChapter: string;
+  underWayChapter: Accessor<string>;
   isUnderWayChapter: boolean;
   isLastChapter: boolean;
   canNext: boolean;
   onNextChapterClick: () => void;
 }> = (props) => {
-  const basic_class = 'w-8 h-8 flex justify-center items-center font-bold rounded-full border';
+  const basic_class = 'w-8 h-8 flex justify-center items-center font-bold rounded-full';
   const default_class =
-    'text-light-divider dark:text-dark-divider border-light-border dark:border-dark-border';
-  const completed_class = 'text-white border-success bg-success';
+    'border text-light-divider dark:text-dark-divider border-light-border dark:border-dark-border';
+  const completed_class =
+    'text-white dark:text-white  border-transparent dark:border-transparent bg-success';
   const underway_class =
-    'text-white dark:text-black bg-light-secondary dark:bg-dark-secondary border-light-secondary dark:border-dark-secondary';
-
-  enum Status {
-    Default,
-    UnderWay,
-    Completed,
-  }
+    'text-white dark:text-black bg-light-secondary dark:bg-dark-secondary border-transparent dark:border-transparent';
 
   return (
     <div class="flex px-4 py-4 items-center">
       <div class="flex flex-auto space-x-4 items-center">
         <For each={Object.entries(props.completionStatus)}>
           {([id], index) => {
-            let status = Status.Default;
-            if (props.underWayChapter === id) {
-              status = Status.UnderWay;
-            }
-            if (props.completionStatus[id]) {
-              status = Status.Completed;
-            }
             const indexText = index() + 1;
             return (
               <div
                 class={basic_class}
                 classList={{
-                  [`${default_class}`]: status === Status.Default,
-                  [`${underway_class}`]: status === Status.UnderWay,
-                  [`${completed_class}`]: status === Status.Completed,
+                  [`${underway_class}`]:
+                    props.underWayChapter() === id && !props.completionStatus[id],
+                  [`${completed_class}`]: props.completionStatus[id],
+                  [`${default_class}`]: !props.completionStatus[id],
                 }}
               >
                 {props.completionStatus[id] ? <BiRegularCheck class="text-lg" /> : indexText}
@@ -190,7 +182,7 @@ const Footer: Component<{
         <button
           disabled={!props.canNext}
           onClick={props.onNextChapterClick}
-          class="button-primary-solid py-1 text-sm px-4"
+          class="button-basic text-white bg-gradient-primary"
         >
           {props.isLastChapter ? 'Complete course' : 'Next chapter'}
         </button>

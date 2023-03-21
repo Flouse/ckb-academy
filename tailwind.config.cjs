@@ -27,16 +27,16 @@ module.exports = {
       warning: "#f59e0b",
       error: "#ef4444",
       light: {
-        background: "#ffffff",
-        background_dark: "#f8fafc",
-        shadow: "rgba(0,0,0,0.05)",
-        mask: "rgba(24,24,27,.85)",
-        border: "rgb(24,24,27,.2)",
-        divider: "rgba(24,24,27,.15)",
-        hover: "rgba(24,24,27,.1)",
-        headline: "#404040",
-        secondary: "#525252",
-        tertiary: "#737373"
+        background: "#f8fafc",
+        background_dark: "#ffffff",
+        shadow: "rgba(15,23,42,.2)",
+        mask: "rgba(15,23,42,0.9)",
+        border: "rgba(203,213,225,0.9)",
+        divider: "rgba(203,213,225,0.7)",
+        hover: "rgba(226,232,240,0.6)",
+        headline: "#0f172a",
+        secondary: "#334155",
+        tertiary: "#64748b"
       },
       dark: {
         background: "#262626",
@@ -46,8 +46,8 @@ module.exports = {
         border: "rgb(244,244,245,.2)",
         divider: "rgba(244,244,245,.15)",
         hover: "rgb(163,163,163,.1)",
-        headline: "#e5e5e5",
-        secondary: "#d4d4d4",
+        headline: "#fafafa",
+        secondary: "#e5e5e5",
         tertiary: "#a3a3a3"
       }
     }

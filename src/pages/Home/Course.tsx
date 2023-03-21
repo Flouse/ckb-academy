@@ -63,10 +63,11 @@ const Course: Component = () => {
             {(item, index) => (
               <div
                 onClick={() => setFeatureId(index())}
-                class="cursor-pointer flex flex-col text-light-tertiary font-medium items-center rounded px-10 py-4"
+                class="cursor-pointer flex flex-col text-light-secondary dark:text-dark-secondary font-medium items-center rounded px-10 py-4"
                 classList={{
-                  'bg-light-secondary text-white': featureId() === index(),
-                  'bg-light-secondary/10 dark:bg-light-secondary/20': featureId() !== index(),
+                  'bg-light-secondary dark:bg-dark-tertiary text-white dark:text-dark-background_dark':
+                    featureId() === index(),
+                  'bg-light-secondary/10 dark:bg-dark-secondary/10': featureId() !== index(),
                 }}
               >
                 {item.icon && <span class="text-5xl mb-2">{item.icon}</span>}
@@ -79,7 +80,7 @@ const Course: Component = () => {
         <p class="text-sm text-light-tertiary dark:text-dark-tertiary mt-6 max-w-2xl">
           {featureDescription()}
         </p>
-        <a href="https://zero2ckb.ckbapp.dev/" class="button-primary mt-10">
+        <a href="https://zero2ckb.ckbapp.dev/" class="button-primary button-lg mt-10">
           {tr('home.course.button_start')}
         </a>
 

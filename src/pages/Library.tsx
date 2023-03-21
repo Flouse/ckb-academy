@@ -41,7 +41,7 @@ const Library: Component<ParentProps> = () => {
                 <A
                   href={item.to}
                   target="_blank"
-                  class="button-white-hover-solid hover:text-light-headline w-auto lg:w-max"
+                  class="button-white-hover-solid button-lg hover:text-light-headline w-auto lg:w-max"
                 >
                   {item.title}
                 </A>

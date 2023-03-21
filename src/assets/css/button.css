@@ -1,0 +1,72 @@
+@layer components {
+    .button-basic {
+        @apply text-light-secondary dark:text-dark-secondary w-max flex disabled:opacity-50 disabled:cursor-not-allowed items-center text-base px-6 py-1.5 font-medium cursor-pointer rounded-full transition duration-150 ease-in-out;
+    }
+
+    .button {
+        @apply border-2 border-light-secondary dark:border-dark-secondary button-basic;
+
+        &:hover {
+            @apply opacity-70 disabled:opacity-50;
+        }
+    }
+
+
+    .button-solid {
+        @apply button border-transparent dark:border-transparent  bg-light-headline text-light-background dark:bg-dark-headline dark:text-dark-background;
+    }
+
+    .button-primary {
+        @apply button bg-none text-primary border-primary;
+    }
+
+    .button-primary-solid {
+        @apply button-solid bg-primary dark:bg-primary text-white dark:text-white;
+    }
+
+    .button-danger {
+        @apply button text-error border-error;
+    }
+
+    .button-danger-solid {
+        @apply button-solid bg-error dark:bg-error text-white dark:text-white;
+    }
+
+    .button-success {
+        @apply button text-success border-success;
+    }
+
+    .button-success-solid {
+        @apply button-solid bg-success dark:bg-success text-white dark:text-white;
+    }
+
+    .button-white {
+        @apply button bg-none text-white border-white;
+    }
+
+    .button-white-hover-solid {
+        @apply button-white;
+
+        &:hover {
+            @apply opacity-100 bg-white text-light-headline dark:text-dark-background_dark;
+        }
+    }
+
+    .button-white-solid {
+        @apply button bg-none text-dark-background_dark bg-white;
+    }
+
+    .button-xl {
+        @apply text-2xl px-10 py-4
+    }
+
+    .button-lg {
+        @apply text-lg px-8 py-2.5
+    }
+
+    .button-sm {
+        @apply text-xs px-4 py-1.5
+    }
+
+
+}

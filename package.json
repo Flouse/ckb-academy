@@ -30,11 +30,13 @@
     "motion": "^10.15.5",
     "npm": "^9.6.1",
     "postcss-import": "^15.1.0",
+    "rehype-highlight": "^6.0.0",
+    "remark-gfm": "^3.0.1",
     "solid-icons": "^1.0.4",
     "solid-js": "^1.6.11",
-    "solid-mdx": "^0.0.6",
     "solid-start": "^0.2.22",
-    "undici": "^5.15.1"
+    "undici": "^5.15.1",
+    "vite-plugin-solid-markdown": "^0.0.6"
   },
   "devDependencies": {
     "@mdx-js/rollup": "^2.2.1",
