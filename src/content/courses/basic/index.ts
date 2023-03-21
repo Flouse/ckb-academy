@@ -8,15 +8,8 @@ const Basic: ICourseMeta = {
   author: 'CKB School',
   name: 'Basic practical operation class',
   coverPicture: '/images/lesson1.png',
-  nameTranslate: {
-    'zh-cn': 'Basic practical operation class',
-  },
   description:
     'Here we provide easy-to-understand interactive courses and technical documents to help Nervos ecological development.',
-  descriptionTranslate: {
-    'zh-cn':
-      'Here we provide easy-to-understand interactive courses and technical documents to help Nervos ecological development.',
-  },
   chapters: [
     Chapter1,
     Chapter2,
