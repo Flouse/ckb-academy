@@ -1,13 +1,15 @@
+@import url(button.css);
+
 @font-face {
     font-family: 'Barlow';
-    src: url('/fonts/Barlow-Regular.otf');
+    src: url('/src/assets/fonts/Barlow-Regular.otf');
     font-style: normal;
     font-display: fallback;
 }
 
 @font-face {
     font-family: 'Barlow';
-    src: url('/fonts/Barlow-Medium.otf');
+    src: url('/src/assets/fonts/Barlow-Medium.otf');
     font-weight: 500;
     font-style: normal;
     font-display: fallback;
@@ -15,7 +17,7 @@
 
 @font-face {
     font-family: 'Barlow';
-    src: url('/fonts/Barlow-Bold.otf');
+    src: url('/src/assets/fonts/Barlow-Bold.otf');
     font-weight: 700;
     font-style: normal;
     font-display: fallback;
@@ -24,13 +26,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 @layer base {
     body {
         font-family: 'Barlow', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
         Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
         @apply bg-light-background dark:bg-dark-background;
-        @apply text-light-tertiary dark:text-dark-tertiary;
+        @apply text-light-secondary dark:text-dark-secondary;
     }
 
     .link {
@@ -76,63 +80,5 @@
     .bg-gradient-primary-br {
         @apply from-success to-primary bg-gradient-to-br;
     }
-}
 
-@layer components {
-    .button-basic {
-        @apply text-light-tertiary w-max flex disabled:opacity-50 disabled:cursor-not-allowed items-center  px-10 py-4 cursor-pointer rounded-full transition duration-150 ease-in-out;
-    }
-
-    .button {
-        @apply border-2 border-light-tertiary text-light-tertiary button-basic;
-
-        &:hover {
-            @apply opacity-70 disabled:opacity-50;
-        }
-    }
-
-    .button-solid {
-        @apply button border-transparent text-white bg-light-tertiary;
-    }
-
-    .button-primary {
-        @apply button bg-none text-primary border-primary;
-    }
-
-    .button-primary-solid {
-        @apply button-solid bg-primary;
-    }
-
-    .button-danger {
-        @apply button text-error border-error;
-    }
-
-    .button-danger-solid {
-        @apply button-solid bg-error;
-    }
-
-    .button-white {
-        @apply button bg-none text-white border-white;
-    }
-
-    .button-white-hover-solid {
-        @apply button-white;
-
-        &:hover {
-            @apply opacity-100 bg-white text-primary;
-        }
-    }
-
-    .button-white-solid {
-        @apply button bg-none text-dark-background_dark bg-white;
-    }
-}
-
-.multiline-ellipsis {
-    display: -webkit-box;
-    word-break: break-all;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }

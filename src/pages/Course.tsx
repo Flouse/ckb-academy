@@ -15,7 +15,7 @@ const Course: Component<ParentProps> = () => {
   return (
     <>
       <div
-        class="h-container bg-cover bg-top bg-light-background_dark dark:bg-dark-background"
+        class="h-container bg-cover bg-top"
         style={{ 'background-image': 'url(/images/logo-line.png)' }}
       >
         <div class="container mx-auto py-16">
@@ -40,7 +40,7 @@ const CourseItem: Component<{ course: ICourse; onSelect?: (course: ICourse) => v
     <>
       <div
         onClick={() => props.onSelect?.(props.course)}
-        class="link shadow-2xl bg-light-background dark:bg-dark-background_dark overflow-hidden flex flex-col h-full rounded-2xl h-28"
+        class="link shadow-2xl shadow-light-shadow bg-light-background_dark dark:bg-dark-background_dark overflow-hidden flex flex-col h-full rounded-2xl h-28"
       >
         <div
           class="h-40 bg-cover"
@@ -52,7 +52,7 @@ const CourseItem: Component<{ course: ICourse; onSelect?: (course: ICourse) => v
           </h1>
           <p class="line-clamp-2 text-sm">{props.course.description}</p>
         </div>
-        <div class="flex text-sm divide-x divide-light-divider/5 dark:divide-dark-divider/5 border-t border-light-divider/5 dark:border-dark-divider/5">
+        <div class="flex text-sm divide-x divide-light-divider dark:divide-dark-divider border-t border-light-divider dark:border-dark-divider">
           <span class="flex-1 flex items-center font-medium px-4 py-3">
             <BiSolidCategory class="mr-2" /> Chapter ({props.course.chapters.length})
           </span>

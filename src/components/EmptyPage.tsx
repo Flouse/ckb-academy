@@ -24,12 +24,12 @@ const EmptyPage: Component<IEmptyPageProps> = (props) => {
         <h4 class="text-4xl mt-6 font-bold text-light-secondary dark:text-dark-secondary">
           It is in the early planning stages and may eventually go live or be removed.
         </h4>
-        <p class="text-2xl max-w-3xl mt-16 text-light-tertiary dark:text-dark-secondary">
+        <p class="text-2xl max-w-3xl mt-16 text-light-secondary dark:text-dark-secondary">
           This website is open source. You can propose edits to any of the content on this site,
           suggest awesome new features, or help us squash bugs.
         </p>
 
-        <A href="https://github.com/Flouse/ckb-school-site" class="button dark:button-white mt-8">
+        <A href="https://github.com/Flouse/ckb-school-site" class="button button-lg mt-8">
           <BiLogosGithub class="text-2xl mr-2" />
           More on contribute
         </A>

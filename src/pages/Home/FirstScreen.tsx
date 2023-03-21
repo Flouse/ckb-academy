@@ -31,7 +31,7 @@ const FirstScreen: Component = () => {
             <p class="text-3xl mb-10 font-medium">{tr('home.first_screen.sub_heading_modifier')}</p>
             <span
               onClick={toAboutCourse}
-              class="button-basic bg-gradient-primary hover:opacity-80 text-white text-2xl font-bold"
+              class="button-basic button-xl bg-gradient-primary hover:opacity-80 text-white font-bold"
             >
               {tr('home.first_screen.button_text')}
             </span>

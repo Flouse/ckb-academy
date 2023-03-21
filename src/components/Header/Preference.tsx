@@ -24,12 +24,12 @@ const Preference: Component = () => {
 
   return (
     <div
-      class="flex items-center lg:space-x-4 text-light-tertiary dark:text-dark-tertiary text-2xl
+      class="flex items-center lg:space-x-4 text-light-secondary dark:text-dark-secondary text-2xl
       lg:divide-none divide-x divide-light-divider dark:divide-dark-border divide-light-border
       border-t border-light-border dark:border-dark-divider lg:border-none"
     >
       <div
-        class="flex justify-center items-center flex-1 py-4 inline-block cursor-pointer
+        class="flex link justify-center items-center flex-1 py-4 inline-block cursor-pointer
         hover:bg-light-hover dark:hover:bg-dark-hover hover:lg:bg-transparent lg:dark:hover:bg-transparent"
         onClick={changeDarkMode}
       >

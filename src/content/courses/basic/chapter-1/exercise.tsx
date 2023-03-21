@@ -15,7 +15,7 @@ const Exercises: Component = () => {
         placeholder="please enter your result"
       />
 
-      <div onClick={() => context.finishChapter()} class="button py-1 mt-6">
+      <div onClick={() => context.finishChapter()} class="button mt-6">
         Confirm
       </div>
     </div>

@@ -37,7 +37,7 @@ const HoverCard: ParentComponent<IHoverCardProps> = (props) => {
         <Portal>
           <div
             classList={{ [props?.class || '']: props.class != null }}
-            class="px-4 py-2 z-10 rounded text-sm bg-light-background dark:bg-dark-background shadow-dropdown shadow-light-shadow dark:shadow-dark-shadow"
+            class="px-4 py-2 z-10 rounded text-sm bg-light-background dark:bg-dark-background shadow-dropdown shadow-light-shadow/10 dark:shadow-dark-shadow"
             {...api().positionerProps}
           >
             <div {...api().contentProps} style={{ '--arrow-size': `${arrowSize()}px` }}>

@@ -1,16 +1,17 @@
 import solid from 'solid-start/vite';
 import { defineConfig } from 'vite';
+import Markdown from 'vite-plugin-solid-markdown';
+import remarkGfm from 'remark-gfm';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import rehypeHighlight from 'rehype-highlight';
 
 export default defineConfig({
   plugins: [
-    {
-      ...(await import('@mdx-js/rollup')).default({
-        jsx: true,
-        jsxImportSource: 'solid-js',
-        providerImportSource: 'solid-mdx',
-      }),
-      enforce: 'pre',
-    },
+    Markdown({
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeHighlight],
+    }),
     solid({ ssr: false, extensions: ['.mdx', '.md'] }),
   ],
 });
