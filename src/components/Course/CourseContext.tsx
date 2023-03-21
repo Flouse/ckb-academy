@@ -1,5 +1,6 @@
 import {
   Accessor,
+  batch,
   Component,
   createContext,
   createEffect,
@@ -9,14 +10,17 @@ import {
   ParentComponent,
   Resource,
   splitProps,
+  useContext,
 } from 'solid-js';
 import { ICourse, ICourseChapter } from '~/types/course';
 import { MDXComponent } from 'solid-mdx/client';
 import { LangsEnum } from '~/common/constants/site-basic';
 import { useI18n } from '@solid-primitives/i18n';
 import { useToast } from '~/components/Toast/ToastContext';
+import { Context } from 'solid-js/types/reactive/signal';
+import { CourseStore, EmptyCourseStore } from '~/components/Course/CourseStore';
 
-interface ICourseContext {
+export interface ICourseContext<T extends CourseStore<object>> {
   course: ICourse | undefined;
   chapters: ICourseChapter[];
   currentChapterId: Accessor<string>;
@@ -30,9 +34,10 @@ interface ICourseContext {
   isUnderWayChapter: Accessor<boolean>;
   isLastChapter: Accessor<boolean>;
   loader?: Resource<{ article: MDXComponent; exercise: Component | undefined }>;
+  store: T;
 }
 
-export const CourseContext = createContext<ICourseContext>({
+export const CourseContext = createContext<ICourseContext<CourseStore<object>>>({
   course: undefined,
   chapters: [],
   currentChapterId: () => '',
@@ -45,7 +50,14 @@ export const CourseContext = createContext<ICourseContext>({
   canNextChapter: () => false,
   nextChapter: () => void 0,
   isLastChapter: () => false,
+  store: new EmptyCourseStore(),
 });
+
+export function useCourseContext<T extends CourseStore<object>>(
+  context: Context<ICourseContext<any>>,
+) {
+  return useContext(context) as ICourseContext<T>;
+}
 
 interface IProps {
   course: ICourse;
@@ -94,6 +106,7 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
     },
   );
 
+  const store = createMemo(() => course().store?.());
   const currentChapterId = createMemo(() => currentChapter()?.id || '');
   const underWayChapterId = createMemo(() => underWayChapter()?.id || '');
   const isUnderWayChapter = createMemo(() => underWayChapter()?.id === currentChapterId());
@@ -132,8 +145,10 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
         setUnderWayChapter(undefined);
       } else {
         const chapter = chapters()[nextIndex];
-        setUnderWayChapter(chapter);
-        setCurrentChapter(chapter);
+        batch(() => {
+          setUnderWayChapter(chapter);
+          setCurrentChapter(chapter);
+        });
       }
     }
 
@@ -146,7 +161,7 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
     }
   };
 
-  const store: ICourseContext = {
+  const context: ICourseContext<any> = {
     canNextChapter: canNext,
     chapters: chapters(),
     chaptersCompletionStatus: completionStatus,
@@ -160,6 +175,7 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
     underWayChapter,
     underWayChapterId,
     loader,
+    store: store(),
   };
-  return <CourseContext.Provider value={store}>{props.children}</CourseContext.Provider>;
+  return <CourseContext.Provider value={context}>{props.children}</CourseContext.Provider>;
 };
