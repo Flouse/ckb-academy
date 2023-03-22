@@ -54,9 +54,16 @@ solid-start start starts the production build with a local version of adapter.
 yarn start
 ```
 
-## Contributing
+## Contributing 
 
 If you find a bug or you want to contribute to the project, please submit an issue or a pull request.
+
+<a href="https://gitpod.io/#https://github.com/Flouse/ckb-academy">
+  <img
+    src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod"
+    alt="Contribute with Gitpod"
+  />
+</a> without having to go through the entire setup process.
 
 ## License
 

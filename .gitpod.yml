@@ -1,0 +1,18 @@
+# Please adjust to your needs (see https://www.gitpod.io/docs/introduction/learn-gitpod/gitpod-yaml)
+
+
+# https://www.gitpod.io/docs/configure/workspaces/workspace-image
+# image: docker.io/bitnami/node:18
+
+# https://www.gitpod.io/docs/configure/workspaces/tasks
+tasks:
+  # https://www.gitpod.io/docs/configure/workspaces/tasks#execution-order
+  - init: yarn install
+    command: yarn dev
+    # https://www.gitpod.io/docs/configure/workspaces/tasks#openmode
+    openMode: split-left
+
+# https://www.gitpod.io/docs/configure/workspaces/ports
+ports:
+  - port: 3000
+    onOpen: open-browser
