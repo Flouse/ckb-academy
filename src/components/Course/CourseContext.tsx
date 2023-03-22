@@ -17,7 +17,6 @@ import { MDXComponent } from 'solid-mdx/client';
 import { LangsEnum } from '~/common/constants/site-basic';
 import { useI18n } from '@solid-primitives/i18n';
 import { useToast } from '~/components/Toast/ToastContext';
-import { Context } from 'solid-js/types/reactive/signal';
 import { CourseStore, EmptyCourseStore } from '~/components/Course/CourseStore';
 
 export interface ICourseContext<T extends CourseStore<object>> {
@@ -53,10 +52,8 @@ export const CourseContext = createContext<ICourseContext<CourseStore<object>>>(
   store: new EmptyCourseStore(),
 });
 
-export function useCourseContext<T extends CourseStore<object>>(
-  context: Context<ICourseContext<any>>,
-) {
-  return useContext(context) as ICourseContext<T>;
+export function useCourseContext<T extends CourseStore<object>>() {
+  return useContext(CourseContext) as ICourseContext<T>;
 }
 
 interface IProps {

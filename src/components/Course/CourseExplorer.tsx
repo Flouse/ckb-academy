@@ -4,6 +4,7 @@ import {
   BiRegularBookContent,
   BiRegularBug,
   BiRegularCheck,
+  BiRegularCoffee,
   BiRegularExpand,
   BiRegularLeftArrowCircle,
   BiSolidBookContent,
@@ -50,18 +51,30 @@ const CourseExplorer: Component = () => {
           <Show when={context.loader?.error === undefined} keyed fallback={<Error />}>
             <div class="flex-auto h-full overflow-hidden flex flex-col">
               <div class="flex flex-auto overflow-hidden relative border-b border-light-border dark:border-dark-border">
-                <section class="m-6 flex-auto overflow-y-auto">
+                <section class="m-10 flex-auto overflow-y-auto">
                   <Show when={context.loader?.loading === false} keyed>
-                    <article class="markdown-body overflow-y-scroll max-w-none">
+                    <article class="markdown overflow-y-scroll max-w-none mx-auto">
                       {context.loader?.()?.article?.({})}
                     </article>
                   </Show>
                 </section>
-                <Show when={context.loader?.loading === false && context.loader()?.exercise} keyed>
-                  <section class="flex-none max-w-[600px] min-w-[400px] overflow-y-auto border-l border-light-border dark:border-dark-border">
+
+                <section class="p-10 flex-none max-w-[600px] min-w-[400px] overflow-y-auto border-l border-light-border dark:border-dark-border">
+                  <Show
+                    when={context.loader?.loading === false && context.loader()?.exercise}
+                    keyed
+                    fallback={
+                      <div class="w-full h-full flex items-center justify-center flex-col text-light-tertiary dark:text-dark-tertiary">
+                        <i class="text-4xl">
+                          <BiRegularCoffee />
+                        </i>
+                        <h1>No exercise</h1>
+                      </div>
+                    }
+                  >
                     {context.loader?.()?.exercise?.({})}
-                  </section>
-                </Show>
+                  </Show>
+                </section>
               </div>
               <Footer
                 completionStatus={context.chaptersCompletionStatus()}
@@ -88,7 +101,7 @@ const Catalogue: Component<{
 }> = (props) => {
   return (
     <Show when={props.visible} keyed>
-      <ul class="text-sm flex-none h-full max-w-[300px] overflow-y-scroll border-r border-light-border dark:border-dark-border divide-y divide-light-divider dark:divide-dark-divider">
+      <ul class="text-sm flex-none h-full w-60 overflow-y-scroll border-r border-light-border dark:border-dark-border divide-y divide-light-divider dark:divide-dark-divider">
         <For each={props.chapters}>
           {(chapter) => (
             <li
