@@ -20,7 +20,7 @@ code.hljs {
 */
 .hljs {
     color: #24292e;
-    background: #fff
+    background: transparent;
 }
 
 .hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-template-tag, .hljs-template-variable, .hljs-type, .hljs-variable.language_ {
@@ -108,7 +108,7 @@ code.hljs {
 
     .hljs {
         color: #c9d1d9;
-        background: #0d1117
+        background: transparent;
     }
 
     .hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-template-tag, .hljs-template-variable, .hljs-type, .hljs-variable.language_ {

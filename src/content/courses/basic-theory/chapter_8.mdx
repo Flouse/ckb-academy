@@ -1,0 +1,17 @@
+# Role of the type script
+
+As cells are transformed from inputs to outputs in a transaction, certain user-defined rules can guide the transformation process.
+
+For example, I want a cell to produce only one new cell at a time in a transaction, I can make such a rule into a lock on the box.
+
+Another example, I would like a cell to never show the word “carrot” in its data field during a transaction, I could create a lock with such a rule, which would be added as a type lock to the box.
+
+This is the distinction between the type script and the lock script. The former protects the ownership of the box and the latter secures the data transformation rules. The lock lock is the gatekeeper, while the type lock is the guardian.
+
+This variance in use comes down to the difference in the design of the two locks in terms of their execution mechanism which can be specified as follows:
+
+- `Lock script` In a transaction, the lock scripts of all inputs will be executed once.
+- `Type script` In a transaction, the type scripts of all inputs and outputs will be executed once.
+
+Due to the variations in execution mechanisms, derived usage also varies. You are free to have your own opinions on this, but essentially these are the recommended official usages.
+

@@ -1,5 +1,4 @@
 import { ICourseMeta } from '~/types/course';
-import Start from '~/content/courses/start';
-import Basic from '~/content/courses/basic';
+import Basic from '~/content/courses/basic-theory';
 
-export const courses: ICourseMeta[] = [Start, Basic];
+export const courses: ICourseMeta[] = [Basic];

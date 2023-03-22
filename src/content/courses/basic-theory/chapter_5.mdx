@@ -1,0 +1,33 @@
+# Where is the code actually located?
+
+We have learned that the lock and type fields of the cell are used to lock the box and to guarantee its ownership and control.
+
+Lock is a script structure that looks like this:
+
+``` ts
+Script: {
+  code_hash: HexString
+  args: HexString
+  hash_type: either 'data' or 'type'
+}
+```
+
+You may notice that the code_hash is not the actual code but a hash of the code, equivalent to an index of the code. This index allows us to retrieve the code. So, where is the code anyway?
+
+The answer is simple: code is in another cell!
+
+We know that the data field of the cell can contain arbitrary data, so we can put the real code in the data field of another cell and implement this cell as a dependency to a transaction. This dependency cell is called “dep cell”.
+
+When unlocking a cell, we simply import the dep cell, and CKB will match the hash of the data in the dep cell with code_hash to find the corresponding code.
+
+So why not just put in the real code, but use this indexing approach?
+
+One of the major advantages of this design is that if everyone needs the same type of lock, the lock code will be identical, the code_hash value will be identical, too. Then it is just a matter of introducing the same dep cell rather than deploying the same code all over again for each case.
+
+Here's a real example.
+
+CKB has an important built-in smart contract called SECP256K1_BLAKE160. It is the default lock used by each cell in the lock field in regular transfer transactions. This lock means the SECP256K1 encryption algorithm protects the ownership of each cell.
+
+To achieve this, CKB created several cells in the genesis block and then put the specific code of the SECP256K1 encryption algorithm into the data field of these cells. During the transaction, these cells are introduced as dep cells. Then we fill in the code_hash with the hash of the dep cell's data field while putting our public key hash in the args field, so the lock can determine whether the signature attached to a transfer transaction is authentic and valid.
+
+But at this point, another question may come to your mind.

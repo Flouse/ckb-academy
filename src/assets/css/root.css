@@ -1,4 +1,5 @@
 @import url(button.css);
+@import url(input.css);
 
 @font-face {
     font-family: 'Barlow';
@@ -34,7 +35,7 @@
         Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
         @apply bg-light-background dark:bg-dark-background;
-        @apply text-light-secondary dark:text-dark-secondary;
+        @apply text-light-secondary dark:text-dark-secondary text-sm;
     }
 
     .link {

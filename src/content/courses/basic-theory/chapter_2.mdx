@@ -1,0 +1,58 @@
+# How to own a cell?
+
+Cells are obtained by the verification of the global consensus on the chain. Owning cells entails costs, since their storage space is limited.
+
+This leads us to the function of CKB's native tokens.
+
+Imagine a cell as a small box that can carry objects. The box itself is created by tokens. A box's size is determined by how many tokens you have.
+
+A box (cell) can also be divided into multiple boxes, as long as the total space of the boxes is equal to the number of tokens you have.
+
+In Nervos CKB, 1 CKB is equal to 1 byte of storage space.
+
+For example, if you have 100 CKBs, you will have 100 bytes of on-chain space, so you can create a box with 100 bytes of space. You can divide that 100 bytes into as many boxes as you like.
+
+The box can store data. The data size must be smaller than the space of the box, because the box includes other components which also occupy some space.
+
+For instance, one Chinese character accounts for 2 bytes (GBK encoding). If you have 100 CKBs in a cell, you can probably save less than 50 Chinese characters in it.
+
+In the case of Dream of the Red Chamber, this novel is approximately 780,000 words in total, so if you want to upload the whole chunk on-chain, you'll need approximately 1.56 million native CKB tokens.
+
+As you can see, on-chain storage is a precious asset.
+
+CKB stores consensus data on-chain, enabling everyone to upload data valuable and necessary to consensus. It is comparable to a knowledge base owned by all of humanity.
+
+This is how CKB got its name (Common Knowledge Base).
+<br />
+
+### The entire cell data structure looks like this:
+
+``` ts
+ Cell: {
+   capacity: HexString
+   lock: Script
+   type: Script
+   data: HexString
+}
+```
+
+#### The four fields are defined as follows:
+
+- `capacity`: the space size of the cell, i.e. the integer number of native tokens represented by this cell, usually expressed in hexadecimal. The basic unit for capacity is shannon, 1 CKB equals 10**8 shannon.
+- `lock`: a script, which is essentially the equivalent of a lock. We'll show you more details later.
+- `type`: a script, same as the lock but for a different purpose.
+- `data`: an unformatted string where any type of data can be stored.
+
+>More detailed descriptions of data structures can be found here: [Cell data structure](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md#Cell)
+
+Note：A cell's total size for all four fields above must be less than or equal to the capacity of the cell.
+
+As shown below
+
+```
+Cell's total space occupied = capacity
+                            >= Sum of the 4 fields' length
+```
+
+To better understand, let's look at the following example.
+

@@ -1,0 +1,23 @@
+# What if the lock code is lost?
+
+The code of lock is kept in another cell. What if someone destroys that cell? When this cell is spent, the dep cell becomes dead, and the code of lock will be gone. Does this mean that the cell that uses this lock can no longer unlock it?
+
+Theoretically, this is true. Technically, the cell that contains the code of the lock should last as long as the chain does, and no one can access this cell. So, if you look it up, you can see that the dep cells that all the built-in lock scripts of CKB have been built on are inherently inaccessible by anyone. Because we have set the value 0x0000... in the lock field of each dep cell (i.e. the lock of the cell itself where to put the lock code), which means that no one will ever be able to unlock these cells again, and the code will always be there:
+
+``` ts
+SECP256K1's lock: {
+                code_hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+                hash_type: data
+                args: 0x
+}
+```
+
+We can still unlock our own cell if the dep cell was destroyed, because you can just redeploy the same lock code to a new cell and then bring in the new cell as a dep cell so that you can retrieve the lock code. Because the code remains identical, the hash of the code stays the same, and the value of code_hash also remains the same. This is the additional flexibility of CKB.
+
+These examples of locks that we've talked about are the locks in the lock field of the cell.
+
+In addition to the default lock, lock script, a cell can also have an optional lock, type script. These two locks are fundamentally the same, but they are given different names because of their different uses.
+
+The lock script is usually used to protect the ownership of the box, while the type script is used to ensure that the cell follows certain data transformation rules during the transaction.
+
+To understand this, we must start by understanding what a transaction in CKB is all about.
