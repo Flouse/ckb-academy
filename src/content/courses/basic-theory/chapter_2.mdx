@@ -1,7 +1,6 @@
-import Example from "~/content/courses/basic-theory/chapter_2_example.tsx";
+import Example from '~/content/courses/basic-theory/chapter_2_example.tsx';
 
 # How to own a cell?
-
 
 Cells are obtained by the verification of the global consensus on the chain. Owning cells entails costs, since their storage space is limited.
 
@@ -26,27 +25,28 @@ As you can see, on-chain storage is a precious asset.
 CKB stores consensus data on-chain, enabling everyone to upload data valuable and necessary to consensus. It is comparable to a knowledge base owned by all of humanity.
 
 This is how CKB got its name (Common Knowledge Base).
+
 <br />
 
 ### The entire cell data structure looks like this:
 
-``` ts
- Cell: {
-   capacity: HexString
-   lock: Script
-   type: Script
-   data: HexString
+```ts
+Cell: {
+  capacity: HexString;
+  lock: Script;
+  type: Script;
+  data: HexString;
 }
 ```
 
 #### The four fields are defined as follows:
 
-- `capacity`: the space size of the cell, i.e. the integer number of native tokens represented by this cell, usually expressed in hexadecimal. The basic unit for capacity is shannon, 1 CKB equals 10**8 shannon.
+- `capacity`: the space size of the cell, i.e. the integer number of native tokens represented by this cell, usually expressed in hexadecimal. The basic unit for capacity is shannon, 1 CKB equals 10\*\*8 shannon.
 - `lock`: a script, which is essentially the equivalent of a lock. We'll show you more details later.
 - `type`: a script, same as the lock but for a different purpose.
 - `data`: an unformatted string where any type of data can be stored.
 
->More detailed descriptions of data structures can be found here: [Cell data structure](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md#Cell)
+> More detailed descriptions of data structures can be found here: [Cell data structure](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md#Cell)
 
 Note：A cell's total size for all four fields above must be less than or equal to the capacity of the cell.
 
@@ -64,6 +64,7 @@ Type in something as the cell data to see the real-time changes in the length of
 The capacity of the cell is set as 0x1dcd65000, which is 80 bytes in size. If the change in data causes the actual occupancy to grow beyond the value of capacity, the cell will be considered invalid.
 
 ### Example
+
 <br />
 
 <Example />

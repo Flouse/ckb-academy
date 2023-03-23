@@ -1,8 +1,8 @@
-import { ICourseStore } from '~/types/course';
+import { CourseStore } from '~/types/course';
 import { createStore } from 'solid-js/store';
 import { SetStoreFunction, Store } from 'solid-js/store/types/store';
 
-export abstract class CourseStore<T extends object> implements ICourseStore<T> {
+export abstract class CourseStoreBase<T extends object> implements CourseStore<T> {
   private readonly store: Store<T>;
   private readonly storeSet: SetStoreFunction<T>;
 
@@ -23,7 +23,7 @@ export abstract class CourseStore<T extends object> implements ICourseStore<T> {
   }
 }
 
-export class EmptyCourseStore extends CourseStore<object> {
+export class EmptyCourseStore extends CourseStoreBase<object> {
   protected initState(): object {
     return {};
   }

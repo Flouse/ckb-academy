@@ -1,23 +1,24 @@
 .markdown {
-    @apply prose dark:prose-invert;
-    @apply prose-pre:bg-light-tertiary/10 prose-pre:dark:bg-black/50;
-    @apply prose-pre:text-light-secondary prose-pre:dark:text-dark-secondary;
-    @apply prose-code:before:content-none prose-code:after:content-none;
-    @apply prose-blockquote:before:content-none;
-    @apply prose-h1:border-b prose-h1:border-light-border prose-h1:pb-4;
+  @apply prose dark:prose-invert;
+  @apply prose-pre:bg-light-tertiary/10 prose-pre:dark:bg-black/50;
+  @apply prose-pre:text-light-secondary prose-pre:dark:text-dark-secondary;
+  @apply prose-code:before:content-none prose-code:after:content-none;
+  @apply prose-blockquote:before:content-none;
+  @apply prose-h1:border-b prose-h1:border-light-border prose-h1:pb-4;
 
-    :where(code):not(:where([class~="not-prose"] *)) {
-        @apply bg-light-tertiary/10 dark:bg-black/50 rounded px-1.5 py-0.5;
-    }
+  :where(code):not(:where([class~='not-prose'] *)) {
+    @apply bg-light-tertiary/10 dark:bg-black/50 rounded px-1.5 py-0.5;
+  }
 
-    :where(pre code):not(:where([class~="not-prose"] *)) {
-        @apply bg-transparent dark:bg-transparent px-0;
-    }
-    :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))::before{
-        content: "";
-    }
-    :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))::after{
-        content: "";
-    }
+  :where(pre code):not(:where([class~='not-prose'] *)) {
+    @apply bg-transparent dark:bg-transparent px-0;
+  }
 
+  :where(blockquote p:first-of-type):not(:where([class~='not-prose'] *))::before {
+    content: '';
+  }
+
+  :where(blockquote p:first-of-type):not(:where([class~='not-prose'] *))::after {
+    content: '';
+  }
 }

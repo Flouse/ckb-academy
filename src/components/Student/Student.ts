@@ -1,7 +1,7 @@
-import CkbProvider, { ICKBProvider } from '~/utils/ckb-provider';
+import CkbProvider, { CKBProvider } from '~/utils/ckb-provider';
 
 export default class Student {
-  private provider: ICKBProvider;
+  private provider: CKBProvider;
   readonly address: string;
 
   constructor(ethAddress: string) {

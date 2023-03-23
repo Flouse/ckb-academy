@@ -4,11 +4,11 @@ import { A } from 'solid-start';
 import { SITE_GITHUB_URL } from '~/common/constants/site-basic';
 import { useI18n } from '@solid-primitives/i18n';
 import { useRouteData } from '@solidjs/router';
-import { IHomeData } from '~/pages/Home/Home.data';
+import { HomeData } from '~/pages/Home/Home.data';
 
 const Contribute: Component<ParentProps> = () => {
   const [tr] = useI18n();
-  const { contributors } = useRouteData<IHomeData>();
+  const { contributors } = useRouteData<HomeData>();
 
   return (
     <section style={{ 'background-image': 'url(/images/bg-home-main.jpg)' }}>

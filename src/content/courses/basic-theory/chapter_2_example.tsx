@@ -22,8 +22,7 @@ const Example: Component = () => {
     },
     data: '0x',
   };
-  const [cell, setCell] = createSignal<Cell>(cellData);
-  const [dataTotalLength, setDataTotalLength] = createSignal<string>('61');
+  const [data, setData] = createSignal<string>('0x');
   const dialog = createDialog();
 
   function toHex(str: string) {
@@ -35,18 +34,24 @@ const Example: Component = () => {
   }
 
   const handelInputChange = (text: string) => {
-    const data = '0x' + toHex(text);
-    const dataLength = getByteLengthOfHexString(data);
-    setDataTotalLength((61 + dataLength).toString());
-    setCell({ ...cell(), ...{ data: data } });
+    setData('0x' + toHex(text));
   };
+
+  const cell = createMemo(() => {
+    return { ...cellData, ...{ data: data() } };
+  });
+
+  const dataTotalLength = createMemo(() => {
+    const dataLength = getByteLengthOfHexString(data());
+    return (61 + dataLength).toString();
+  });
 
   function getByteLengthOfHexString(str: string) {
     const s = str.length - 2; //remove 0x
     return s / 2;
   }
 
-  const getCellPropertyByteLength = () => {
+  const cellPropertyByteLength = createMemo(() => {
     const b2 = getByteLengthOfHexString(cell().cellOutput.lock.args);
     const b5 = getByteLengthOfHexString(cell().data);
     return {
@@ -58,7 +63,7 @@ const Example: Component = () => {
       },
       data: b5.toString() + ' Bytes',
     };
-  };
+  });
 
   const shannon2CKB = (num: number | string | undefined) => {
     return BI.from(num).div(BI.from(100000000)).toHexString();
@@ -97,9 +102,9 @@ const Example: Component = () => {
             class="h-20 w-full flex flex-col items-center justify-center mb-2 border-b-2"
           >
             <h6 class="text-sm font-bold mb-1">Occupancy</h6>
-            <p class="text-xs">{dataTotalLength()} Bytes</p>
+            <p class="text-xs font-medium">{dataTotalLength()} Bytes</p>
           </div>
-          <div class="text-xs overflow-hidden">{cell().data}</div>
+          <div class="text-xs overflow-hidden font-medium">{cell().data}</div>
         </div>
       </div>
       <h1 class="font-bold text-base">Capacity Availability？</h1>
@@ -132,7 +137,7 @@ const Example: Component = () => {
         <h6 class="font-bold mb-4 mt-4">Sum of the 4 fields' length：</h6>
         <HighlightCode
           code={JSON.stringify(
-            { ...{ total: dataTotalLength() + ' Bytes' }, ...getCellPropertyByteLength() },
+            { ...{ total: dataTotalLength() + ' Bytes' }, ...cellPropertyByteLength() },
             null,
             2,
           )}

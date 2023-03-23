@@ -2,29 +2,29 @@ import {
   Accessor,
   batch,
   createContext,
-  createEffect,
   createMemo,
   createResource,
   createSignal,
+  onMount,
   ParentComponent,
   Resource,
   splitProps,
   useContext,
 } from 'solid-js';
-import { ICourse, ICourseChapter } from '~/types/course';
+import { Course, CourseChapter } from '~/types/course';
 import { MDXComponent } from 'solid-mdx/client';
 import { LangsEnum } from '~/common/constants/site-basic';
 import { useI18n } from '@solid-primitives/i18n';
 import { useToast } from '~/components/Toast/ToastContext';
-import { CourseStore, EmptyCourseStore } from '~/components/Course/CourseStore';
+import { CourseStoreBase, EmptyCourseStore } from '~/components/CourseCore/CourseStore';
 import { createLocalStorage } from '@solid-primitives/storage';
 
-export interface ICourseContext<T extends CourseStore<object>> {
-  course: ICourse | undefined;
-  chapters: ICourseChapter[];
+export interface CourseContext<T extends CourseStoreBase<object>> {
+  course: Course | undefined;
+  chapters: CourseChapter[];
   currentChapterId: Accessor<string>;
-  setCurrentChapter: (chapter: ICourseChapter) => void;
-  underWayChapter: Accessor<ICourseChapter | undefined>;
+  setCurrentChapter: (chapter: CourseChapter) => void;
+  underWayChapter: Accessor<CourseChapter | undefined>;
   underWayChapterId: Accessor<string>;
   chaptersCompletionStatus: Accessor<Record<string, boolean>>;
   finishChapter: () => void;
@@ -34,10 +34,10 @@ export interface ICourseContext<T extends CourseStore<object>> {
   isLastChapter: Accessor<boolean>;
   article?: Resource<MDXComponent>;
   store: T;
-  reset: () => void;
+  resetRecord: () => void;
 }
 
-export const CourseContext = createContext<ICourseContext<CourseStore<object>>>({
+export const courseContext = createContext<CourseContext<CourseStoreBase<object>>>({
   course: undefined,
   chapters: [],
   currentChapterId: () => '',
@@ -51,15 +51,15 @@ export const CourseContext = createContext<ICourseContext<CourseStore<object>>>(
   nextChapter: () => void 0,
   isLastChapter: () => false,
   store: new EmptyCourseStore(),
-  reset: () => void 0,
+  resetRecord: () => void 0,
 });
 
-export function useCourseContext<T extends CourseStore<object>>() {
-  return useContext(CourseContext) as ICourseContext<T>;
+export function useCourseContext<T extends CourseStoreBase<object>>() {
+  return useContext(courseContext) as CourseContext<T>;
 }
 
 interface IProps {
-  course: ICourse;
+  course: Course;
 }
 
 const STORAGE_ID = 'completed_courses';
@@ -68,23 +68,23 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
   const toast = useToast();
   const [storage, setStorage] = createLocalStorage();
   const [completionStatus, setCompletionStatus] = createSignal<Record<string, boolean>>({});
-  const [underWayChapter, setUnderWayChapter] = createSignal<ICourseChapter>();
-  const [currentChapter, setCurrentChapter] = createSignal<ICourseChapter>();
+  const [underWayChapter, setUnderWayChapter] = createSignal<CourseChapter>();
+  const [currentChapter, setCurrentChapter] = createSignal<CourseChapter>();
 
-  const course = createMemo<ICourse>(() => props.course);
-  const chapters = createMemo<ICourseChapter[]>(() => {
+  const course = createMemo<Course>(() => props.course);
+  const chapters = createMemo<CourseChapter[]>(() => {
     return (
       course().chapters?.map((chapter) => {
         const [local, others] = splitProps(chapter, ['titleTranslate', 'articleTranslate']);
         const lang = locale() as LangsEnum;
         const title = local.titleTranslate?.[lang] ?? chapter.title;
         const article = local.articleTranslate?.[lang] ?? chapter.article;
-        return { ...others, title, article } as ICourseChapter;
+        return { ...others, title, article } as CourseChapter;
       }) ?? []
     );
   });
 
-  createEffect(() => {
+  onMount(() => {
     if (chapters()) {
       const status: Record<string, boolean> = {};
       let isCompleted = false;
@@ -172,7 +172,7 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
     }
   };
 
-  const reset = () => {
+  const resetRecord = () => {
     try {
       let completedCourses: string[] = JSON.parse(storage[STORAGE_ID] ?? '[]');
       completedCourses = completedCourses.filter((item) => item !== course().id);
@@ -188,7 +188,7 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
     }
   };
 
-  const context: ICourseContext<any> = {
+  const context: CourseContext<any> = {
     canNextChapter: canNext,
     chapters: chapters(),
     chaptersCompletionStatus: completionStatus,
@@ -203,7 +203,7 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
     underWayChapterId,
     article,
     store: store(),
-    reset: reset,
+    resetRecord: resetRecord,
   };
-  return <CourseContext.Provider value={context}>{props.children}</CourseContext.Provider>;
+  return <courseContext.Provider value={context}>{props.children}</courseContext.Provider>;
 };

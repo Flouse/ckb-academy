@@ -3,7 +3,7 @@ import { Portal } from 'solid-js/web';
 import * as hoverCard from '@zag-js/hover-card';
 import { normalizeProps, useMachine } from '@zag-js/solid';
 
-interface IHoverCardProps {
+interface HoverCardProps {
   content: JSX.Element | ((close?: () => void) => JSX.Element);
   arrow?: boolean;
   arrowSize?: number;
@@ -14,7 +14,7 @@ interface IHoverCardProps {
   onOpenChange?: (changed: boolean) => void;
 }
 
-const HoverCard: ParentComponent<IHoverCardProps> = (props) => {
+const HoverCard: ParentComponent<HoverCardProps> = (props) => {
   const [state, send] = useMachine(
     hoverCard.machine({
       id: createUniqueId(),

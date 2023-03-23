@@ -1,6 +1,6 @@
-import { CourseSource, CourseType, ICourseMeta } from '~/types/course';
+import { CourseSource, CourseType, Course } from '~/types/course';
 
-const Basic: ICourseMeta = {
+const basicTheory: Course = {
   id: 'basic-theory',
   author: [
     { name: 'Retric', avatar: 'https://avatars.githubusercontent.com/u/23436060?v=4' },
@@ -62,4 +62,4 @@ const Basic: ICourseMeta = {
   ],
 };
 
-export default Basic;
+export default basicTheory;

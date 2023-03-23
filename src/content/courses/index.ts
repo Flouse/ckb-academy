@@ -1,5 +1,5 @@
-import { ICourseMeta } from '~/types/course';
-import { thirdPartyCourses } from '~/content/courses/third-party-courses';
+import { Course } from '~/types/course';
+import { communityCourses } from '~/content/courses/community-courses';
 import { localCourses } from '~/content/courses/local-courses';
 
-export const courses: ICourseMeta[] = [...localCourses, ...thirdPartyCourses];
+export const courses: Course[] = [...localCourses, ...communityCourses];

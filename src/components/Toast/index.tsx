@@ -10,11 +10,11 @@ import {
   FaSolidSpinner,
 } from 'solid-icons/fa';
 
-interface IProps {
+interface Props {
   actor: zagToast.Service;
 }
 
-const Toast: Component<IProps> = (props) => {
+const Toast: Component<Props> = (props) => {
   const [state, send] = useActor(props.actor);
   const api = createMemo(() => zagToast.connect(state, send, normalizeProps));
   const progressbarProps = createMemo(() => ({

@@ -1,7 +1,7 @@
 import { Options, Placement } from '@zag-js/toast/dist/toast.types';
 
 type MaybeFunction<Value, Args> = Value | ((arg: Args) => Value);
-export type IToastContext = {
+export type ToastContext = {
   count: number;
   isVisible(id: string): boolean;
 

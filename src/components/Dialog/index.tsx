@@ -5,13 +5,13 @@ import * as dialog from '@zag-js/dialog';
 
 import { normalizeProps, useMachine } from '@zag-js/solid';
 
-interface ICreateDialogProps {
+interface CreateDialogProps {
   id?: string;
   defaultOpen?: boolean;
   closeOnOutsideClick?: boolean;
 }
 
-interface IDialogContext {
+interface DialogContext {
   isOpen: boolean;
 
   open(): void;
@@ -26,7 +26,7 @@ interface IDialogContext {
   closeTriggerProps: any;
 }
 
-export function createDialog(props?: ICreateDialogProps): Accessor<IDialogContext> {
+export function createDialog(props?: CreateDialogProps): Accessor<DialogContext> {
   const [state, send] = useMachine(
     dialog.machine({
       id: props?.id ?? createUniqueId(),
@@ -39,7 +39,7 @@ export function createDialog(props?: ICreateDialogProps): Accessor<IDialogContex
 }
 
 interface IDialogProps {
-  context: Accessor<IDialogContext>;
+  context: Accessor<DialogContext>;
   onOk?: (close?: () => void) => void;
   onCancel?: (close?: () => void) => void;
   okText?: JSXElement;

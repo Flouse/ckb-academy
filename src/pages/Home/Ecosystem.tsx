@@ -1,6 +1,7 @@
 import { Component, For, JSX } from 'solid-js';
 import {
-  FaBrandsGolang, FaBrandsJsSquare,
+  FaBrandsGolang,
+  FaBrandsJsSquare,
   FaBrandsRust,
   FaBrandsJava,
   FaBrandsWpexplorer,
@@ -9,14 +10,14 @@ import { Motion } from '@motionone/solid';
 
 import { spring } from 'motion';
 import { useI18n } from '@solid-primitives/i18n';
-import { IBaseLink } from '~/types/interfaces';
+import { BaseLink } from '~/types/index';
 import { A } from 'solid-start';
 
-interface ITool extends IBaseLink {
+interface Tools extends BaseLink {
   icon?: JSX.Element;
 }
 
-const tools: ITool[] = [
+const tools: Tools[] = [
   {
     title: 'JavaScript / TypeScript SDK - Lumos',
     icon: () => <FaBrandsJsSquare />,

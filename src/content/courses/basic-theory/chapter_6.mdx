@@ -4,7 +4,7 @@ The code of lock is kept in another cell. What if someone destroys that cell? Wh
 
 Theoretically, this is true. Technically, the cell that contains the code of the lock should last as long as the chain does, and no one can access this cell. So, if you look it up, you can see that the dep cells that all the built-in lock scripts of CKB have been built on are inherently inaccessible by anyone. Because we have set the value 0x0000... in the lock field of each dep cell (i.e. the lock of the cell itself where to put the lock code), which means that no one will ever be able to unlock these cells again, and the code will always be there:
 
-``` ts
+```ts
 SECP256K1's lock: {
                 code_hash: 0x0000000000000000000000000000000000000000000000000000000000000000
                 hash_type: data
