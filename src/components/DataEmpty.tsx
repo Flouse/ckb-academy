@@ -1,5 +1,6 @@
 import { Component, JSX, ParentProps } from 'solid-js';
 import { BiSolidInbox } from 'solid-icons/bi';
+import { FiInbox } from 'solid-icons/fi';
 
 interface IDataEmptyProps extends ParentProps {
   title?: JSX.Element;
@@ -8,8 +9,8 @@ interface IDataEmptyProps extends ParentProps {
 
 const DataEmpty: Component<IDataEmptyProps> = (props) => {
   return (
-    <div class="flex flex-col items-center">
-      {props.icon || <BiSolidInbox class="text-8xl mb-6" />}
+    <div class="flex flex-col text-light-tertiary dark:text-dark-tertiary items-center">
+      {props.icon || <FiInbox class="text-6xl mb-2" />}
       {props.title || 'Sorry, no data to display'}
     </div>
   );

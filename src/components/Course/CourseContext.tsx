@@ -1,7 +1,6 @@
 import {
   Accessor,
   batch,
-  Component,
   createContext,
   createEffect,
   createMemo,
@@ -18,6 +17,7 @@ import { LangsEnum } from '~/common/constants/site-basic';
 import { useI18n } from '@solid-primitives/i18n';
 import { useToast } from '~/components/Toast/ToastContext';
 import { CourseStore, EmptyCourseStore } from '~/components/Course/CourseStore';
+import { createLocalStorage } from '@solid-primitives/storage';
 
 export interface ICourseContext<T extends CourseStore<object>> {
   course: ICourse | undefined;
@@ -32,8 +32,9 @@ export interface ICourseContext<T extends CourseStore<object>> {
   nextChapter: () => void;
   isUnderWayChapter: Accessor<boolean>;
   isLastChapter: Accessor<boolean>;
-  loader?: Resource<{ article: MDXComponent; exercise: Component | undefined }>;
+  article?: Resource<MDXComponent>;
   store: T;
+  reset: () => void;
 }
 
 export const CourseContext = createContext<ICourseContext<CourseStore<object>>>({
@@ -50,6 +51,7 @@ export const CourseContext = createContext<ICourseContext<CourseStore<object>>>(
   nextChapter: () => void 0,
   isLastChapter: () => false,
   store: new EmptyCourseStore(),
+  reset: () => void 0,
 });
 
 export function useCourseContext<T extends CourseStore<object>>() {
@@ -60,46 +62,52 @@ interface IProps {
   course: ICourse;
 }
 
+const STORAGE_ID = 'completed_courses';
 export const CourseProvider: ParentComponent<IProps> = (props) => {
   const [, { locale }] = useI18n();
   const toast = useToast();
+  const [storage, setStorage] = createLocalStorage();
   const [completionStatus, setCompletionStatus] = createSignal<Record<string, boolean>>({});
   const [underWayChapter, setUnderWayChapter] = createSignal<ICourseChapter>();
   const [currentChapter, setCurrentChapter] = createSignal<ICourseChapter>();
 
   const course = createMemo<ICourse>(() => props.course);
-  const chapters = createMemo<ICourseChapter[]>(() =>
-    course().chapters.map((chapter) => {
-      const [local, others] = splitProps(chapter, [
-        'titleTranslate',
-        'articleTranslate',
-        'exerciseTranslate',
-      ]);
-      const lang = locale() as LangsEnum;
-      const title = local.titleTranslate?.[lang] ?? chapter.title;
-      const article = local.articleTranslate?.[lang] ?? chapter.article;
-      const exercise = local.exerciseTranslate?.[lang] ?? chapter.exercise;
-      return { ...others, title, article, exercise } as ICourseChapter;
-    }),
-  );
+  const chapters = createMemo<ICourseChapter[]>(() => {
+    return (
+      course().chapters?.map((chapter) => {
+        const [local, others] = splitProps(chapter, ['titleTranslate', 'articleTranslate']);
+        const lang = locale() as LangsEnum;
+        const title = local.titleTranslate?.[lang] ?? chapter.title;
+        const article = local.articleTranslate?.[lang] ?? chapter.article;
+        return { ...others, title, article } as ICourseChapter;
+      }) ?? []
+    );
+  });
 
   createEffect(() => {
     if (chapters()) {
-      const first = chapters()[0];
-      setUnderWayChapter(first);
-      setCurrentChapter(first);
       const status: Record<string, boolean> = {};
-      course().chapters.forEach((chapter) => (status[chapter.id] = false));
+      let isCompleted = false;
+      try {
+        const completedCourses: string[] = JSON.parse(storage[STORAGE_ID] ?? '[]');
+        isCompleted = completedCourses.includes(course().id);
+      } catch (e) {
+        console.error(e);
+      }
+      const first = chapters()[0];
+      if (!isCompleted) {
+        setUnderWayChapter(first);
+      }
+      setCurrentChapter(first);
+      course().chapters?.forEach((chapter) => (status[chapter.id] = isCompleted));
       setCompletionStatus(status);
     }
   });
 
-  const [loader] = createResource(
+  const [article] = createResource(
     () => currentChapter(),
     async (chapter) => {
-      const article = (await chapter.article()).default;
-      const exercise = chapter.exercise;
-      return { article, exercise };
+      return (await chapter.article()).default;
     },
   );
 
@@ -126,13 +134,13 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
   const canNext = () => {
     return (
       isUnderWayChapter() &&
-      (underWayChapter()?.exercise == undefined || completionStatus()[underWayChapterId()])
+      (!underWayChapter()?.manualCompletion || completionStatus()[underWayChapterId()])
     );
   };
 
   const nextChapter = () => {
     if (!canNext()) return;
-    if (underWayChapter()?.exercise === undefined) {
+    if (!underWayChapter()?.manualCompletion) {
       finishChapter();
     }
     const index = underWayChapterIndex();
@@ -150,11 +158,33 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
     }
 
     if (isCompleted()) {
+      try {
+        const completedCourses = JSON.parse(storage[STORAGE_ID]) ?? [];
+        setStorage(STORAGE_ID, JSON.stringify([...completedCourses, course().id]));
+      } catch (e) {
+        console.error(e);
+      }
       toast.success({
         title: '💐 Completed this course',
         duration: 4000,
         description: 'you can also try more interesting courses.',
       });
+    }
+  };
+
+  const reset = () => {
+    try {
+      let completedCourses: string[] = JSON.parse(storage[STORAGE_ID] ?? '[]');
+      completedCourses = completedCourses.filter((item) => item !== course().id);
+      setStorage(STORAGE_ID, JSON.stringify(completedCourses));
+      const status: Record<string, boolean> = {};
+      chapters().forEach((chapter) => (status[chapter.id] = false));
+      setCompletionStatus(status);
+      const first = chapters()[0];
+      setUnderWayChapter(first);
+      setCurrentChapter(first);
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -171,8 +201,9 @@ export const CourseProvider: ParentComponent<IProps> = (props) => {
     setCurrentChapter,
     underWayChapter,
     underWayChapterId,
-    loader,
+    article,
     store: store(),
+    reset: reset,
   };
   return <CourseContext.Provider value={context}>{props.children}</CourseContext.Provider>;
 };

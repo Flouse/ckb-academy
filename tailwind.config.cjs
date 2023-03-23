@@ -9,7 +9,14 @@ module.exports = {
       },
       height: {
         window: "768px",
-        container: "calc(100vh - 7rem)"
+        container: "calc(100vh - 6rem)"
+      },
+      minWidth:{
+        "10":"2.5rem",
+        "20":"5rem",
+        "24":"6rem",
+        "28":"7rem",
+        "96":"24rem",
       },
       minHeight: {
         container: "calc(100vh - 7rem)"
@@ -42,7 +49,7 @@ module.exports = {
         background: "#262626",
         background_dark: "#171717",
         shadow: "rgba(0,0,0,0.2)",
-        mask: "rgba(0,0,0,0.5)",
+        mask: "rgba(0,0,0,0.9)",
         border: "rgb(244,244,245,.2)",
         divider: "rgba(244,244,245,.15)",
         hover: "rgb(163,163,163,.1)",

@@ -46,6 +46,9 @@ const Exercise2: Component = () => {
           <p class="text-xs">61 ( CKB )</p>
         </div>
       </div>
+      <div class="button button-sm mt-6" onClick={() => context.finishChapter()}>
+        我已理解
+      </div>
     </div>
   );
 };
