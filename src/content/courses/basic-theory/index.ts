@@ -1,11 +1,16 @@
-import { ICourseMeta } from '~/types/course';
-import { lazy } from 'solid-js';
+import { CourseSource, CourseType, ICourseMeta } from '~/types/course';
 
 const Basic: ICourseMeta = {
   id: 'basic-theory',
-  author: 'CKB School',
+  author: [
+    { name: 'Retric', avatar: 'https://avatars.githubusercontent.com/u/23436060?v=4' },
+    { name: 'Jason', avatar: 'https://avatars.githubusercontent.com/u/124339951?v=4' },
+  ],
   name: 'CKB basic theoretical knowledge',
   coverPicture: '/images/lesson1.png',
+  type: CourseType.Interactive,
+  source: CourseSource.Local,
+  updateTime: '2023/03/20',
   description:
     'Whether you are developing DApp on CKB, or simply curious and want to understand the basic principles, you can follow this tutorial to complete your first intimate encounter with CKB',
   chapters: [
@@ -17,13 +22,8 @@ const Basic: ICourseMeta = {
     {
       id: 'chapter_2',
       title: 'How to own a cell?',
+      manualCompletion: true,
       article: () => import('./chapter_2.mdx'),
-      exercise: lazy(() => import('./exercise_2')),
-    },
-    {
-      id: 'chapter_2_1',
-      title: 'How to own a cell?',
-      article: () => import('./chapter_2_1.mdx'),
     },
     {
       id: 'chapter_3',
