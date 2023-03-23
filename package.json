@@ -10,6 +10,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@ckb-lumos/lumos": "^0.20.0-alpha.1",
     "@metamask/detect-provider": "^1.2.0",
     "@metamask/providers": "^8.1.1",
     "@motionone/solid": "^10.15.5",
@@ -26,6 +27,7 @@
     "@zag-js/hover-card": "^0.2.6",
     "@zag-js/solid": "^0.2.10",
     "@zag-js/toast": "^0.2.14",
+    "highlight.js": "^11.7.0",
     "install": "^0.13.0",
     "motion": "^10.15.5",
     "npm": "^9.6.1",
