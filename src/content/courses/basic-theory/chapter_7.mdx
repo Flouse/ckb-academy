@@ -1,13 +1,14 @@
 # Constructing a transaction is to destroy some cells and create some more.
 
 The essence of a transaction in CKB, excluding the less important details, is as follows：
+
 ```
 tx: input -> output
 ```
 
 Where the essence of input and output is still about some cells：
 
-``` ts
+```ts
 input:
                 some cell...
             ｜
@@ -17,11 +18,12 @@ input:
             output:
                 some new cell...
 ```
+
 The cells in the input must all be live cells. The input cells will be spent and become dead cells after a transaction is committed. The newly created output cells will become new live cells.
 
 The most important rule you need to remember about CKB transactions is that all output cells, i.e. the newly created boxes, must take up less space than input cells.
 
-``` ts
+```ts
 capacity(input cell) > capacity(output cell)
 ```
 
@@ -31,8 +33,7 @@ In practice, we do not put the full cell in the input for storage optimization p
 
 This index structure is called OutPoint, which allows you to find a particular cell.
 
-
-``` ts
+```ts
 OutPoint: {
   tx_hash: Hash value of the affiliated transaction(to which transaction it belongs)
   index: Serial number of the affiliated transaction output(to which output it belongs)

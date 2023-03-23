@@ -1,16 +1,16 @@
 import { RouteDataFunc } from '@solidjs/router';
-import { IBaseLink } from '~/types/interfaces';
+import { BaseLink } from '~/types/index';
 
-export interface IHomeData {
-  contributors: IContributor[];
+export interface HomeData {
+  contributors: Contributor[];
 }
 
-interface IContributor extends IBaseLink {
+interface Contributor extends BaseLink {
   avatar: string;
 }
 
-export const HomeData: RouteDataFunc<unknown, IHomeData> = () => {
-  const contributors: IContributor[] = [
+export const HomeData: RouteDataFunc<unknown, HomeData> = () => {
+  const contributors: Contributor[] = [
     {
       title: 'Retric',
       to: 'https://github.com/RetricSu',

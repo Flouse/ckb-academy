@@ -1,7 +1,7 @@
 @layer components {
-    .input {
-        @apply rounded-lg border border-light-border dark:border-dark-border px-4 py-2 w-full;
-        @apply bg-light-tertiary/5 dark:bg-dark-tertiary/5 focus:bg-light-tertiary/10 focus:dark:bg-dark-tertiary/10;
-        @apply placeholder:font-normal
-    }
+  .input {
+    @apply rounded-lg border border-light-border dark:border-dark-border px-4 py-2 w-full;
+    @apply bg-light-tertiary/5 dark:bg-dark-tertiary/5 focus:bg-light-tertiary/10 focus:dark:bg-dark-tertiary/10;
+    @apply placeholder:font-normal;
+  }
 }

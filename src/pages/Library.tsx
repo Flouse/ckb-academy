@@ -2,11 +2,11 @@ import { Component, For, ParentProps } from 'solid-js';
 import { A } from 'solid-start';
 import { Motion } from '@motionone/solid';
 import { useI18n } from '@solid-primitives/i18n';
-import { IBaseLink } from '~/types/interfaces';
+import { BaseLink } from '~/types/index';
 
 const Library: Component<ParentProps> = () => {
   const [tr] = useI18n();
-  const docLinks: IBaseLink[] = [
+  const docLinks: BaseLink[] = [
     {
       title: 'Nervos CKB Offical Docs',
       to: 'https://docs.nervos.org/',

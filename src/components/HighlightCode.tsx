@@ -2,19 +2,19 @@ import { Component, onMount } from 'solid-js';
 import '~/assets/css/github-code.css';
 import { default as highlight } from 'highlight.js';
 
-interface IProps {
+interface Props {
   code: string;
 }
 
-const HighlightCode: Component<IProps> = (props) => {
+const HighlightCode: Component<Props> = (props) => {
+  let codeRef: HTMLElement | ((el: HTMLElement) => void) | undefined;
+
   onMount(() => {
-    document.querySelectorAll('pre code').forEach((el) => {
-      highlight.highlightElement(el as HTMLElement);
-    });
+    highlight.highlightElement(codeRef as HTMLElement);
   });
   return (
     <pre class="bg-light-tertiary/10 dark:bg-black/50 rounded-lg">
-      <code class="">{props.code}</code>
+      <code ref={codeRef}>{props.code}</code>
     </pre>
   );
 };

@@ -1,14 +1,14 @@
 import { RouteDataFunc, useParams } from '@solidjs/router';
-import { ICourse } from '~/types/course';
+import { Course } from '~/types/course';
 import { createResource } from 'solid-js';
 import { courses } from '~/content/courses';
 
-export interface ICourseDetailsData {
-  course: ICourse | undefined;
+export interface CourseDetailsData {
+  course: Course | undefined;
   loading: boolean;
 }
 
-export const CourseDetailsData: RouteDataFunc<unknown, ICourseDetailsData> = () => {
+export const CourseDetailsData: RouteDataFunc<unknown, CourseDetailsData> = () => {
   const params = useParams();
   const [data] = createResource(
     () => params,

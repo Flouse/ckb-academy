@@ -4,19 +4,19 @@ import { createMemo, For } from 'solid-js';
 import { NavLink } from '@solidjs/router';
 import './NavBar.css';
 
-interface INavBarItem {
+interface NavBarItem {
   title: string;
   to: string;
   target?: '_top' | '_blank' | '_parent' | '_self';
 }
 
-interface INavBarProps {
+interface Props {
   onItemClick?: () => void;
 }
 
-const NavBar: Component<INavBarProps> = (props) => {
+const NavBar: Component<Props> = (props) => {
   const [tr] = useI18n();
-  const items = createMemo<INavBarItem[]>(() => [
+  const items = createMemo<NavBarItem[]>(() => [
     {
       title: tr('global.nav.courses', {}, 'Courses'),
       to: '/courses',

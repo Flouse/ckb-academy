@@ -1,17 +1,17 @@
 import { RouteDataFunc } from '@solidjs/router';
-import { CourseSource, CourseType, ICourse } from '~/types/course';
+import { CourseSource, CourseType, Course } from '~/types/course';
 import { useI18n } from '@solid-primitives/i18n';
 import { Accessor, createMemo, createResource, createSignal, splitProps } from 'solid-js';
 import { courses } from '~/content/courses';
 import { LangsEnum } from '~/common/constants/site-basic';
 
-export interface ICourseData {
-  courses: Accessor<ICourse[]>;
+export interface CourseData {
+  courses: Accessor<Course[]>;
   source: CourseSource | undefined;
   type: CourseType | undefined;
 }
 
-export const CourseData: RouteDataFunc<unknown, ICourseData> = () => {
+export const CourseData: RouteDataFunc<unknown, CourseData> = () => {
   const [, { locale }] = useI18n();
   const [source, setSource] = createSignal<CourseSource>();
   const [type, setType] = createSignal<CourseType>();
@@ -30,7 +30,7 @@ export const CourseData: RouteDataFunc<unknown, ICourseData> = () => {
           const [local, others] = splitProps(item, ['nameTranslate', 'descriptionTranslate']);
           const name = local.nameTranslate?.[lang as LangsEnum] ?? item.name;
           const description = local.descriptionTranslate?.[lang as LangsEnum] ?? item.description;
-          return { ...others, name, description } as ICourse;
+          return { ...others, name, description } as Course;
         });
     },
   );

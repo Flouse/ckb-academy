@@ -3,11 +3,11 @@ import { Motion } from '@motionone/solid';
 import { A } from 'solid-start';
 import { BiLogosGithub } from 'solid-icons/bi';
 
-interface IEmptyPageProps extends ParentProps {
+interface Props extends ParentProps {
   title?: string;
 }
 
-const EmptyPage: Component<IEmptyPageProps> = (props) => {
+const EmptyPage: Component<Props> = (props) => {
   return (
     <div
       class="min-h-container bg-repeat-x bg-[center_top_0rem] bg-top  bg-auto"

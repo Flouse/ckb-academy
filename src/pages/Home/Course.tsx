@@ -6,7 +6,7 @@ import { spring } from 'motion';
 import { useI18n } from '@solid-primitives/i18n';
 import { AppContext } from '~/AppContext';
 
-interface IFeature {
+interface Feature {
   title: string;
   icon?: JSX.Element;
   description: string;
@@ -34,7 +34,7 @@ const Course: Component = () => {
         description: tr('home.course.feature.keyword.description'),
         icon: <BiSolidPointer />,
       },
-    ] as IFeature[];
+    ] as Feature[];
   });
 
   const featureDescription = createMemo(() => {

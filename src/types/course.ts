@@ -1,6 +1,6 @@
 import { Component } from 'solid-js';
 import { MDXComponent } from 'solid-mdx/client';
-import { LangsEnum } from '~/common/constants/site-basic';
+import { TranslateResource } from '~/types';
 
 export interface CourseAuthor {
   name: string;
@@ -18,7 +18,7 @@ export enum CourseSource {
   Community,
 }
 
-export interface ICourse {
+export interface Course {
   id: string;
   name: string;
   description: string;
@@ -28,34 +28,24 @@ export interface ICourse {
   updateTime: string;
   coverPicture?: string;
   url?: string;
-  chapters?: ICourseChapterMeta[];
-  store?: () => ICourseStore<any>;
-}
-
-export interface ICourseMeta extends ICourse {
+  chapters?: CourseChapter[];
+  store?: () => CourseStore<any>;
   nameTranslate?: TranslateResource<string>;
   descriptionTranslate?: TranslateResource<string>;
 }
 
-export interface ICourseStore<S> {
+export interface CourseStore<S> {
   get state(): S;
 
   setState: (state: S) => void;
 }
 
-export interface ICourseChapter {
+export interface CourseChapter {
   id: string;
   title: string;
   triggerReward?: boolean;
   manualCompletion?: boolean;
   article: () => Promise<{ default: MDXComponent }>;
-}
-
-export interface ICourseChapterMeta extends ICourseChapter {
   titleTranslate?: TranslateResource<string>;
   articleTranslate?: TranslateResource<Component>;
 }
-
-type TranslateResource<T> = {
-  [key in LangsEnum]?: T;
-};
