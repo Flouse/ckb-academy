@@ -19,7 +19,7 @@ module.exports = {
         "96":"24rem",
       },
       minHeight: {
-        container: "calc(100vh - 7rem)"
+        container: "calc(100vh - 6rem)"
       },
       boxShadow: {
         dropdown: "0 0 20px 5px"

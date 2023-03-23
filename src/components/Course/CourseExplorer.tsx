@@ -196,9 +196,7 @@ const Header: Component<{
         </i>
       </div>
       <div class="flex-auto">
-        <h1 class="font-bold  text-base text-light-headline dark:text-dark-headline">
-          {props.course?.name}
-        </h1>
+        <h1 class="font-bold text-base">{props.course?.name}</h1>
       </div>
       <div class="flex items-center text-xl space-x-4 ml-4">
         <i class="link">
@@ -224,7 +222,7 @@ const SideBar: Component = () => {
           {(item) => (
             <li
               onClick={() => setTab(item.id)}
-              class="relative cursor-pointer flex-1 after:absolute after:-bottom-0 after:left-0 after:bg-transparent after:content-[''] after:h-0.5 after:w-full  flex items-center text-sm justify-center py-2"
+              class="relative cursor-pointer flex-1 after:absolute after:-bottom-0 after:left-0 after:content-[''] after:h-0.5 after:w-full  flex items-center text-sm justify-center py-2"
               classList={{
                 'after:bg-light-border dark:after:bg-dark-border': tab() == item.id,
               }}

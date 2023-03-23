@@ -22,7 +22,6 @@ const Basic: ICourseMeta = {
     {
       id: 'chapter_2',
       title: 'How to own a cell?',
-      manualCompletion: true,
       article: () => import('./chapter_2.mdx'),
     },
     {

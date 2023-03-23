@@ -1,4 +1,4 @@
-import Exercise2 from "~/content/courses/basic-theory/exercise_2";
+import Example from "~/content/courses/basic-theory/chapter_2_example.tsx";
 
 # How to own a cell?
 
@@ -59,7 +59,12 @@ Cell's total space occupied = capacity
 
 To better understand, let's look at the following example.
 
-<div class="not-prose">
-  <Exercise2/>
-</div>
+Type in something as the cell data to see the real-time changes in the length of the cell. Click on the cell to view the cell content and the actual length of each field.
 
+The capacity of the cell is set as 0x1dcd65000, which is 80 bytes in size. If the change in data causes the actual occupancy to grow beyond the value of capacity, the cell will be considered invalid.
+
+### Example
+<br />
+
+<Example />
+<br />
