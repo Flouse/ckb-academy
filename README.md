@@ -2,7 +2,9 @@
 
 Welcome to CKB Academy, an interactive learning space for [Nervos](https://www.nervos.org) developers.
 
-CKB Academy is committed to ensuring that new CKB developers have an easy learning curve, by providing easy-to-understand, interactive courses and friendly documentation. Our goal is to support the development of a strong ecosystem around Nervos by equipping developers with everything they need to create innovative applications and solutions. We look forward to having you join us as part of our growing community.
+CKB Academy is committed to ensuring that new CKB developers have an easy learning curve, by providing easy-to-understand, interactive courses and friendly documentation.
+Our mission is to foster a robust ecosystem around Nervos Network by providing developers with all the tools and resources they need to create innovative applications and solutions.
+We look forward to having you join us as part of our growing community.
 
 This project is going to build a comprehensive set of guides, tutorials, labs, and sandbox environments to help developers learn and test their knowledge of Nervos CKB, allowing developers to learn at their own pace.
 
