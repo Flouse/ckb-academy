@@ -15,7 +15,7 @@ const basicTheory: Course = {
   source: CourseSource.Local,
   updateTime: '2023/03/20',
   description:
-    'Whether you are developing DApp on CKB, or simply curious and want to understand the basic principles, you can follow this tutorial to complete your first intimate encounter with CKB',
+    'Whether you are developing dApp on CKB, or simply curious and want to understand the basic concepts, you can follow this tutorial to complete your first intimate encounter with CKB',
   chapters: [
     {
       id: 'chapter_1',
@@ -34,7 +34,7 @@ const basicTheory: Course = {
     },
     {
       id: 'chapter_4',
-      title: 'Summary',
+      title: 'Summary 1',
       article: () => import('./chapter_4.mdx'),
     },
     {
@@ -59,7 +59,7 @@ const basicTheory: Course = {
     },
     {
       id: 'chapter_9',
-      title: 'Summary',
+      title: 'Summary 2',
       article: () => import('./chapter_9.mdx'),
     },
   ],
