@@ -15,9 +15,9 @@ const Example: Component = () => {
     cellOutput: {
       capacity: '0x1dcd65000',
       lock: {
-        args: '0x36c329ed630d6ce750712a477543672adab57f4c',
         codeHash: '0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8',
         hashType: 'type',
+        args: '0x36c329ed630d6ce750712a477543672adab57f4c',
       },
     },
     data: '0x',
@@ -57,9 +57,9 @@ const Example: Component = () => {
     return {
       capacity: '8 Bytes',
       lock: {
-        args: b2.toString() + ' Bytes',
         code_hash: '32 Bytes',
         hash_type: '1 Bytes',
+        args: b2.toString() + ' Bytes',
       },
       data: b5.toString() + ' Bytes',
     };
@@ -71,7 +71,7 @@ const Example: Component = () => {
 
   const isCapacityEnough = createMemo(() => {
     return (
-      shannon2CKB(BI.from(cell().cellOutput.capacity).toString(10)) >
+      shannon2CKB(BI.from(cell().cellOutput.capacity).toString(10)) >=
       BI.from(dataTotalLength()).toHexString()
     );
   });
@@ -121,14 +121,14 @@ const Example: Component = () => {
         </i>
         <div class="px-4">
           <span class="text-sm font-medium">Capacity</span>
-          <p class="text-xs">{cell().cellOutput.capacity} ( shannon ) = 80 ( CKB )</p>
+          <p class="text-xs">{cell().cellOutput.capacity} (shannon) = 80 (CKB)</p>
         </div>
         <i class="text-5xl py-2 px-1">
           {isCapacityEnough() ? <BiRegularChevronRight /> : <BiRegularChevronLeft />}
         </i>
         <div class="px-4">
           <span class="text-sm font-medium">Actual occupancy</span>
-          <p class="text-xs">{dataTotalLength()} ( CKB )</p>
+          <p class="text-xs">{dataTotalLength()} (CKB)</p>
         </div>
       </div>
       <Dialog footer={null} title={null} context={dialog}>

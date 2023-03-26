@@ -24,7 +24,7 @@ const basicTheory: Course = {
     },
     {
       id: 'chapter_2',
-      title: 'How to own a cell?',
+      title: 'What does a cell contain?',
       article: () => import('./chapter_2.mdx'),
     },
     {
