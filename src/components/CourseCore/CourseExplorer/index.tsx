@@ -11,7 +11,7 @@ import { Portal } from 'solid-js/web';
 import '~/assets/css/mrakdown.css';
 import '~/assets/css/github-code.css';
 import Catalogue from '~/components/CourseCore/CourseExplorer/Catalogue';
-import SideBar from '~/components/CourseCore/CourseExplorer/SideBar';
+import ToolBox from '~/components/CourseCore/CourseExplorer/ToolBox';
 import Header from '~/components/CourseCore/CourseExplorer/Header';
 
 const Index: Component = () => {
@@ -65,7 +65,7 @@ const Index: Component = () => {
                   <Show when={context.article?.loading === false} keyed>
                     <div class="flex items-center justify-end h-10 px-4 space-x-4 flex-none">
                       <i
-                        class="link text-xs text-light-tertiary"
+                        class="link text-xs text-light-tertiary dark:text-dark-tertiary"
                         onClick={() => setArticleFullScreen((val) => !val)}
                       >
                         <Show
@@ -103,8 +103,8 @@ const Index: Component = () => {
                 </section>
               </Show>
             </Show>
-            <section class=" flex-none w-72 overflow-y-auto border-l border-light-border dark:border-dark-border">
-              <SideBar />
+            <section class="flex-none w-52 overflow-y-auto border-l border-light-border dark:border-dark-border">
+              <ToolBox />
             </section>
           </div>
         </div>
