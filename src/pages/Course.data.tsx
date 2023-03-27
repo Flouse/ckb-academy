@@ -1,12 +1,12 @@
 import { RouteDataFunc } from '@solidjs/router';
-import { CourseSource, CourseType, Course } from '~/types/course';
+import { Course, CourseSource, CourseType } from '~/types/course';
 import { useI18n } from '@solid-primitives/i18n';
-import { Accessor, createMemo, createResource, createSignal, splitProps } from 'solid-js';
+import { createResource, createSignal, Resource, splitProps } from 'solid-js';
 import { courses } from '~/content/courses';
 import { LangsEnum } from '~/common/constants/site-basic';
 
 export interface CourseData {
-  courses: Accessor<Course[]>;
+  courses: Resource<Course[]>;
   source: CourseSource | undefined;
   type: CourseType | undefined;
 }
@@ -35,11 +35,9 @@ export const CourseData: RouteDataFunc<unknown, CourseData> = () => {
     },
   );
 
-  const courseList = createMemo(() => data() ?? []);
-
   return {
     get courses() {
-      return courseList;
+      return data;
     },
     get source() {
       return source();

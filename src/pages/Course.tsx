@@ -6,6 +6,7 @@ import DataEmpty from '~/components/DataEmpty';
 import CourseItem from '~/components/Course/CourseItem';
 import CoursePreview from '~/components/Course/CoursePreview';
 import CourseFilterBar from '~/components/Course/CourseFilterBar';
+import Loading from '~/components/Loading';
 
 const CoursePage: Component<ParentProps> = () => {
   const data = useRouteData<CourseData>();
@@ -40,19 +41,29 @@ const CoursePage: Component<ParentProps> = () => {
           />
 
           <Show
-            when={data.courses().length > 0}
+            when={!data.courses.loading}
             keyed
             fallback={
               <div class="pt-36">
-                <DataEmpty />
+                <Loading />
               </div>
             }
           >
-            <div class="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-10">
-              <For each={data.courses()}>
-                {(item) => <CourseItem course={item} onSelect={onSelectCourse} />}
-              </For>
-            </div>
+            <Show
+              when={(data.courses() ?? []).length > 0}
+              keyed
+              fallback={
+                <div class="pt-36">
+                  <DataEmpty />
+                </div>
+              }
+            >
+              <div class="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-10">
+                <For each={data.courses()}>
+                  {(item) => <CourseItem course={item} onSelect={onSelectCourse} />}
+                </For>
+              </div>
+            </Show>
           </Show>
         </div>
       </div>

@@ -5,6 +5,7 @@ import {
   FaSolidDownLeftAndUpRightToCenter,
   FaSolidUpRightAndDownLeftFromCenter,
 } from 'solid-icons/fa';
+import { BiRegularLoaderCircle } from 'solid-icons/bi';
 import { useNavigate } from '@solidjs/router';
 import { Portal } from 'solid-js/web';
 import '~/assets/css/mrakdown.css';
@@ -56,53 +57,56 @@ const Index: Component = () => {
             }}
             chapters={context.chapters}
           />
-          <Show when={context.article?.error === undefined} keyed fallback={<Error />}>
-            <div class="flex h-full flex-auto overflow-hidden">
-              <section class="flex flex-col flex-auto">
-                <Show when={context.article?.loading === false} keyed>
-                  <div class="flex items-center justify-end h-10 px-4 space-x-4 flex-none">
-                    <i
-                      class="link text-xs text-light-tertiary"
-                      onClick={() => setArticleFullScreen((val) => !val)}
-                    >
-                      <Show
-                        when={articleFullScreen()}
-                        keyed
-                        fallback={<FaSolidUpRightAndDownLeftFromCenter />}
+
+          <div class="flex h-full flex-auto overflow-hidden">
+            <Show when={context.article?.loading == false} keyed fallback={<Loading />}>
+              <Show when={context.article?.error === undefined} keyed fallback={<Error />}>
+                <section class="flex flex-col flex-auto">
+                  <Show when={context.article?.loading === false} keyed>
+                    <div class="flex items-center justify-end h-10 px-4 space-x-4 flex-none">
+                      <i
+                        class="link text-xs text-light-tertiary"
+                        onClick={() => setArticleFullScreen((val) => !val)}
                       >
-                        <FaSolidDownLeftAndUpRightToCenter />
-                      </Show>
-                    </i>
-                  </div>
-                  <div class="h-full mx-10 flex-auto overflow-y-auto">
-                    <div
-                      class="mx-auto"
-                      classList={{
-                        'max-w-2xl': !articleFullScreen(),
-                        'max-w-none': articleFullScreen(),
-                      }}
-                    >
-                      <article class="markdown">{context.article?.()?.({})}</article>
-                      <Show when={context.isUnderWayChapter()} keyed>
-                        <div class="py-8 mt-8 border-t border-light-border flex">
-                          <button
-                            disabled={!context.canNextChapter()}
-                            onClick={context.nextChapter}
-                            class="button"
-                          >
-                            {context.isLastChapter() ? 'Complete course' : 'Next chapter'}
-                          </button>
-                        </div>
-                      </Show>
+                        <Show
+                          when={articleFullScreen()}
+                          keyed
+                          fallback={<FaSolidUpRightAndDownLeftFromCenter />}
+                        >
+                          <FaSolidDownLeftAndUpRightToCenter />
+                        </Show>
+                      </i>
                     </div>
-                  </div>
-                </Show>
-              </section>
-              <section class=" flex-none w-72 overflow-y-auto border-l border-light-border dark:border-dark-border">
-                <SideBar />
-              </section>
-            </div>
-          </Show>
+                    <div class="h-full mx-10 flex-auto overflow-y-auto">
+                      <div
+                        class="mx-auto"
+                        classList={{
+                          'max-w-2xl': !articleFullScreen(),
+                          'max-w-none': articleFullScreen(),
+                        }}
+                      >
+                        <article class="markdown">{context.article?.()?.({})}</article>
+                        <Show when={context.isUnderWayChapter()} keyed>
+                          <div class="py-8 mt-8 border-t border-light-border flex">
+                            <button
+                              disabled={!context.canNextChapter()}
+                              onClick={context.nextChapter}
+                              class="button"
+                            >
+                              {context.isLastChapter() ? 'Complete course' : 'Next chapter'}
+                            </button>
+                          </div>
+                        </Show>
+                      </div>
+                    </div>
+                  </Show>
+                </section>
+              </Show>
+            </Show>
+            <section class=" flex-none w-72 overflow-y-auto border-l border-light-border dark:border-dark-border">
+              <SideBar />
+            </section>
+          </div>
         </div>
       </div>
     </Portal>
@@ -116,6 +120,17 @@ const Error: Component = () => {
         <BiRegularBug />
       </i>
       <span>Current chapter cannot be loaded.</span>
+    </div>
+  );
+};
+
+const Loading: Component = () => {
+  return (
+    <div class="flex-auto flex items-center justify-center flex-col">
+      <i class="text-7xl mb-4">
+        <BiRegularLoaderCircle />
+      </i>
+      <span>Loading...</span>
     </div>
   );
 };

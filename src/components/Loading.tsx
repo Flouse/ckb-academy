@@ -1,5 +1,5 @@
 import { Component, JSX, ParentProps } from 'solid-js';
-import { FaSolidSpinner } from 'solid-icons/fa';
+import { BiRegularLoaderAlt } from 'solid-icons/bi';
 
 interface Props extends ParentProps {
   title?: JSX.Element;
@@ -9,8 +9,8 @@ interface Props extends ParentProps {
 const Loading: Component<Props> = (props) => {
   return (
     <div class="flex flex-col items-center">
-      {props.icon || <FaSolidSpinner class="animate-spin text-7xl mb-6" />}
-      {props.title || 'Data loading, please wait...'}
+      {props.icon || <BiRegularLoaderAlt class="animate-spin delay-1000	 text-7xl mb-6" />}
+      {props.title || 'Loading...'}
     </div>
   );
 };
