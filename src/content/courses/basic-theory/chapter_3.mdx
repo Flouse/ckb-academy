@@ -8,7 +8,7 @@ If the cell is a box, the lock and type scripts are the two locks on the box.
 
 The lock script is the default lock, and the type script is an optional lock.
 
-In essence, the scripts are a piece of code and parameters. When we try to consume a cell, the scripts will automatically run and enter the parameters and proof we submit (such as the signature) to determine if the locks of the cell can be unlocked. Once unlocked, it proves that we own and control the cell.
+In essence, the scripts are a piece of code and parameters. When we try to consume a cell, the scripts run automatically and take the parameters and proof we submit (such as the signature) to determine if the locks of the cell can be unlocked. Once unlocked, it proves that we own and control the cell.
 
 The script structure looks like this:
 
@@ -16,18 +16,20 @@ The script structure looks like this:
 Script: {
   code_hash: HexString
   args: HexString
-  hash_type: either 'data' or 'type'
+  hash_type: Uint8, there are three allowed values: {0: "data", 1: "type", 2: "data1"}
 }
 ```
 
-In these three fields, hash_type is reserved for later, the other two are:
+In these three fields, `hash_type` [will be explained later](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0032-ckb-vm-version-selection/0032-ckb-vm-version-selection.md), the other two are:
 
 - `code_hash`: the hash of a certain piece of code
 - `args`: the arguments that will be transferred to the code
 
-More data structure details can be found here: [Script data structure](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md#Script)
+More details can be found here: [Script Data Structure](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md#Script)
 
-The code_hash and args jointly constitute a full lock: we locate the code to be executed by using the code_hash field and then send the argument args to this code. The code will then be executed by the CKB virtual machine CKB-VM (Additional args may be read during the process, such as the proof attached to the transaction). If executed successfully, a “0” will be returned indicating that the lock can be opened successfully; if not, other values will be returned indicating that the unlocking failed.
+The code_hash and args jointly constitute a full lock: we locate the code to be executed by using the code_hash field and then send the argument args to this code. The code will then be executed by the CKB virtual machine (CKB-VM). Additional args may be read during the process, such as the proof attached to the transaction.
+
+If the code is executed successfully, a “0” will be returned indicating that the lock can be opened; if not, other error codes will be returned indicating that the unlocking failed.
 
 With this principle, CKB identifies the owner of a cell, i.e. who can open the lock attached to the cell. The same principle applies to Bitcoin.
 
