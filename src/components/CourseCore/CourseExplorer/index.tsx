@@ -1,11 +1,10 @@
 import { Component, createSignal, Show } from 'solid-js';
 import { useCourseContext } from '~/components/CourseCore/CourseContext';
-import { BiRegularBug } from 'solid-icons/bi';
+import { BiRegularBug, BiRegularLoaderCircle } from 'solid-icons/bi';
 import {
   FaSolidDownLeftAndUpRightToCenter,
   FaSolidUpRightAndDownLeftFromCenter,
 } from 'solid-icons/fa';
-import { BiRegularLoaderCircle } from 'solid-icons/bi';
 import { useNavigate } from '@solidjs/router';
 import { Portal } from 'solid-js/web';
 import '~/assets/css/mrakdown.css';
@@ -13,12 +12,13 @@ import '~/assets/css/github-code.css';
 import Catalogue from '~/components/CourseCore/CourseExplorer/Catalogue';
 import ToolBox from '~/components/CourseCore/CourseExplorer/ToolBox';
 import Header from '~/components/CourseCore/CourseExplorer/Header';
+import Tooltip from '~/components/Tooltip';
 
 const Index: Component = () => {
   const context = useCourseContext();
   const go = useNavigate();
   const [fullScreen, setFullScreen] = createSignal(false);
-  const [articleFullScreen, setArticleFullScreen] = createSignal(false);
+  const [articleLooseLayout, setArticleLooseLayout] = createSignal(false);
   const [visible, setVisible] = createSignal(true);
 
   return (
@@ -64,30 +64,32 @@ const Index: Component = () => {
                 <section class="flex flex-col flex-auto">
                   <Show when={context.article?.loading === false} keyed>
                     <div class="flex items-center justify-end h-10 px-4 space-x-4 flex-none">
-                      <i
-                        class="link text-xs text-light-tertiary dark:text-dark-tertiary"
-                        onClick={() => setArticleFullScreen((val) => !val)}
-                      >
-                        <Show
-                          when={articleFullScreen()}
-                          keyed
-                          fallback={<FaSolidUpRightAndDownLeftFromCenter />}
+                      <Tooltip content={articleLooseLayout() ? 'Compact Layout' : 'Loose Layout'}>
+                        <i
+                          class="link text-xs text-light-tertiary dark:text-dark-tertiary"
+                          onClick={() => setArticleLooseLayout((val) => !val)}
                         >
-                          <FaSolidDownLeftAndUpRightToCenter />
-                        </Show>
-                      </i>
+                          <Show
+                            when={articleLooseLayout()}
+                            keyed
+                            fallback={<FaSolidUpRightAndDownLeftFromCenter />}
+                          >
+                            <FaSolidDownLeftAndUpRightToCenter />
+                          </Show>
+                        </i>
+                      </Tooltip>
                     </div>
-                    <div class="h-full mx-10 flex-auto overflow-y-auto">
+                    <div class="h-full mx-10 mb-10 flex-auto overflow-y-auto">
                       <div
                         class="mx-auto"
                         classList={{
-                          'max-w-2xl': !articleFullScreen(),
-                          'max-w-none': articleFullScreen(),
+                          'max-w-2xl': !articleLooseLayout(),
+                          'max-w-none': articleLooseLayout(),
                         }}
                       >
                         <article class="markdown">{context.article?.()?.({})}</article>
                         <Show when={context.isUnderWayChapter()} keyed>
-                          <div class="py-8 mt-8 border-t border-light-border flex">
+                          <div class="pt-8 mt-8 border-t border-light-border dark:border-dark-border flex">
                             <button
                               disabled={!context.canNextChapter()}
                               onClick={context.nextChapter}

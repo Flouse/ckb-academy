@@ -8,6 +8,7 @@ import {
   BiSolidVideos,
 } from 'solid-icons/bi';
 import { Portal } from 'solid-js/web';
+import Tooltip from '~/components/Tooltip';
 
 interface Props {
   course?: Course;
@@ -70,20 +71,22 @@ const CoursePreview: Component<Props> = (props) => {
                   <Show when={props.course?.author} keyed>
                     <For each={props.course?.author}>
                       {(item) => (
-                        <div title={item.name}>
-                          <Switch>
-                            <Match when={item.avatar} keyed>
-                              <img
-                                style={{ width: '30px' }}
-                                class="rounded-full"
-                                src={item.avatar}
-                              ></img>
-                            </Match>
-                            <Match when={!item.avatar} keyed>
-                              <BiSolidUserCircle class="text-3xl" />
-                            </Match>
-                          </Switch>
-                        </div>
+                        <Tooltip content={item.name}>
+                          <div>
+                            <Switch>
+                              <Match when={item.avatar} keyed>
+                                <img
+                                  style={{ width: '30px' }}
+                                  class="rounded-full"
+                                  src={item.avatar}
+                                ></img>
+                              </Match>
+                              <Match when={!item.avatar} keyed>
+                                <BiSolidUserCircle class="text-3xl" />
+                              </Match>
+                            </Switch>
+                          </div>
+                        </Tooltip>
                       )}
                     </For>
                   </Show>

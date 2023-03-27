@@ -2235,6 +2235,20 @@
     "@zag-js/types" "0.3.4"
     "@zag-js/utils" "0.3.3"
 
+"@zag-js/tooltip@^0.2.13":
+  version "0.2.13"
+  resolved "https://registry.npmmirror.com/@zag-js/tooltip/-/tooltip-0.2.13.tgz#a646745b0b3061e9a1f89a4f419dfb8355e17388"
+  integrity sha512-S6TxqbWYiNeAbz8w5/Sv/iLZmtUt5hI2VFLE0bksAQH+zDnzuOd43UJmEleba2YPbgy3lM5TCbPVHSeBPzOMcw==
+  dependencies:
+    "@zag-js/anatomy" "0.1.4"
+    "@zag-js/core" "0.2.10"
+    "@zag-js/dom-event" "0.0.1"
+    "@zag-js/dom-query" "0.1.4"
+    "@zag-js/popper" "0.2.5"
+    "@zag-js/types" "0.3.4"
+    "@zag-js/utils" "0.3.3"
+    "@zag-js/visually-hidden" "0.0.1"
+
 "@zag-js/types@0.3.4":
   version "0.3.4"
   resolved "https://registry.npmmirror.com/@zag-js/types/-/types-0.3.4.tgz#9443590d80d4bad8861fcee1e0b1939611964c5c"
@@ -2246,6 +2260,11 @@
   version "0.3.3"
   resolved "https://registry.npmmirror.com/@zag-js/utils/-/utils-0.3.3.tgz#d7687494629f37fdede6d13e2f80bf8f5e546814"
   integrity sha512-INNuBcu1+Y5Nxo/PGW51qqkVwBzUCjzO0WjUJDBoqNo8hRs5KsWLcGKdrCayRPaDjNvQetXsUH54LGImUjUHTQ==
+
+"@zag-js/visually-hidden@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.npmmirror.com/@zag-js/visually-hidden/-/visually-hidden-0.0.1.tgz#7ac8c463ff16c7011e67036f2a007fd25d8024b8"
+  integrity sha512-wEhubtraCJOPFh3aPcidQWXF7a9O1TG1I48blpGt3XEI9brwpp7Gjjvus5uGkH00s+WziEudy1dv2B0HOTexNA==
 
 abbrev@^1.0.0:
   version "1.1.1"
