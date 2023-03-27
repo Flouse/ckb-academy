@@ -1,10 +1,19 @@
 .markdown {
-  @apply prose dark:prose-invert max-w-none;
+  @apply prose dark:prose-invert max-w-none text-light-secondary dark:text-dark-secondary;
   @apply prose-pre:bg-light-tertiary/10 prose-pre:dark:bg-black/50;
   @apply prose-pre:text-light-secondary prose-pre:dark:text-dark-secondary;
   @apply prose-code:before:content-none prose-code:after:content-none;
   @apply prose-blockquote:before:content-none;
-  @apply prose-h1:border-b prose-h1:border-light-border prose-h1:pb-4;
+  @apply prose-h1:border-b prose-h1:border-light-border dark:prose-h1:border-dark-border prose-h1:pb-4 prose-h1:text-3xl;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-light-headline dark:text-dark-headline;
+  }
 
   :where(code):not(:where([class~='not-prose'] *)) {
     @apply bg-light-tertiary/10 dark:bg-black/50 rounded px-1.5 py-0.5;
@@ -21,4 +30,9 @@
   :where(blockquote p:first-of-type):not(:where([class~='not-prose'] *))::after {
     content: '';
   }
+
+  :where(blockquote):not(:where([class~="not-prose"] *)){
+    @apply border-light-border dark:border-dark-border
+  }
+
 }
