@@ -11,12 +11,12 @@ module.exports = {
         window: "768px",
         container: "calc(100vh - 6rem)"
       },
-      minWidth:{
-        "10":"2.5rem",
-        "20":"5rem",
-        "24":"6rem",
-        "28":"7rem",
-        "96":"24rem",
+      minWidth: {
+        10: "2.5rem",
+        20: "5rem",
+        24: "6rem",
+        28: "7rem",
+        96: "24rem"
       },
       minHeight: {
         container: "calc(100vh - 6rem)"

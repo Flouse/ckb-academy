@@ -4,4 +4,8 @@
     @apply bg-light-tertiary/5 dark:bg-dark-tertiary/5 focus:bg-light-tertiary/10 focus:dark:bg-dark-tertiary/10;
     @apply placeholder:font-normal;
   }
+
+  .input-sm{
+    @apply px-2 py-1 text-xs rounded-md
+  }
 }

@@ -66,4 +66,8 @@
   .button-sm {
     @apply text-xs px-4 py-1.5;
   }
+
+  .button-xs {
+    @apply text-xs px-4 py-0.5;
+  }
 }
