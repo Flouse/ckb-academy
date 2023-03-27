@@ -79,7 +79,7 @@ const Index: Component = () => {
                         </i>
                       </Tooltip>
                     </div>
-                    <div class="h-full mx-10 flex-auto overflow-y-auto">
+                    <div class="h-full mx-10 mb-10 flex-auto overflow-y-auto">
                       <div
                         class="mx-auto"
                         classList={{
@@ -89,7 +89,7 @@ const Index: Component = () => {
                       >
                         <article class="markdown">{context.article?.()?.({})}</article>
                         <Show when={context.isUnderWayChapter()} keyed>
-                          <div class="py-8 mt-8 border-t border-light-border flex">
+                          <div class="pt-8 mt-8 border-t border-light-border dark:border-dark-border flex">
                             <button
                               disabled={!context.canNextChapter()}
                               onClick={context.nextChapter}
