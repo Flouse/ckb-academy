@@ -33,7 +33,7 @@ const Tooltip: ParentComponent<Props> = (props) => {
       <button {...api().triggerProps}>{props.children}</button>
       <Show when={api().isOpen}>
         <Portal>
-          <div {...api().positionerProps} class="tooltip">
+          <div {...api().positionerProps} class="tooltip z-10">
             <div {...api().arrowProps}>
               <div {...api().arrowTipProps} />
             </div>
