@@ -1,6 +1,10 @@
-import { Component, createSignal, Show, useContext } from 'solid-js';
-import { CourseContext, useCourseContext } from '~/components/CourseCore/CourseContext';
+import { Component, createSignal, Show } from 'solid-js';
+import { useCourseContext } from '~/components/CourseCore/CourseContext';
 import { BiRegularBug } from 'solid-icons/bi';
+import {
+  FaSolidDownLeftAndUpRightToCenter,
+  FaSolidUpRightAndDownLeftFromCenter,
+} from 'solid-icons/fa';
 import { useNavigate } from '@solidjs/router';
 import { Portal } from 'solid-js/web';
 import '~/assets/css/mrakdown.css';
@@ -13,6 +17,7 @@ const Index: Component = () => {
   const context = useCourseContext();
   const go = useNavigate();
   const [fullScreen, setFullScreen] = createSignal(false);
+  const [articleFullScreen, setArticleFullScreen] = createSignal(false);
   const [visible, setVisible] = createSignal(true);
 
   return (
@@ -52,30 +57,50 @@ const Index: Component = () => {
             chapters={context.chapters}
           />
           <Show when={context.article?.error === undefined} keyed fallback={<Error />}>
-            <div class="flex-auto h-full overflow-hidden flex flex-col">
-              <div class="flex flex-auto overflow-hidden relative">
-                <section class="m-10 flex-auto overflow-y-auto">
-                  <Show when={context.article?.loading === false} keyed>
-                    <article class="markdown overflow-y-scroll max-w-none mx-auto">
-                      {context.article?.()?.({})}
-                    </article>
-                    <Show when={context.isUnderWayChapter()} keyed>
-                      <div class="py-8 mt-8 border-t border-light-border flex">
-                        <button
-                          disabled={!context.canNextChapter()}
-                          onClick={context.nextChapter}
-                          class="button"
-                        >
-                          {context.isLastChapter() ? 'Complete course' : 'Next chapter'}
-                        </button>
-                      </div>
-                    </Show>
-                  </Show>
-                </section>
-                <section class=" flex-none w-72 overflow-y-auto border-l border-light-border dark:border-dark-border">
-                  <SideBar />
-                </section>
-              </div>
+            <div class="flex h-full flex-auto overflow-hidden">
+              <section class="flex flex-col flex-auto">
+                <Show when={context.article?.loading === false} keyed>
+                  <div class="flex items-center justify-end h-10 px-4 space-x-4 flex-none">
+                    <i
+                      class="link text-xs text-light-tertiary"
+                      onClick={() => setArticleFullScreen((val) => !val)}
+                    >
+                      <Show
+                        when={articleFullScreen()}
+                        keyed
+                        fallback={<FaSolidUpRightAndDownLeftFromCenter />}
+                      >
+                        <FaSolidDownLeftAndUpRightToCenter />
+                      </Show>
+                    </i>
+                  </div>
+                  <div class="h-full mx-10 flex-auto overflow-y-auto">
+                    <div
+                      class="mx-auto"
+                      classList={{
+                        'max-w-2xl': !articleFullScreen(),
+                        'max-w-none': articleFullScreen(),
+                      }}
+                    >
+                      <article class="markdown">{context.article?.()?.({})}</article>
+                      <Show when={context.isUnderWayChapter()} keyed>
+                        <div class="py-8 mt-8 border-t border-light-border flex">
+                          <button
+                            disabled={!context.canNextChapter()}
+                            onClick={context.nextChapter}
+                            class="button"
+                          >
+                            {context.isLastChapter() ? 'Complete course' : 'Next chapter'}
+                          </button>
+                        </div>
+                      </Show>
+                    </div>
+                  </div>
+                </Show>
+              </section>
+              <section class=" flex-none w-72 overflow-y-auto border-l border-light-border dark:border-dark-border">
+                <SideBar />
+              </section>
             </div>
           </Show>
         </div>
