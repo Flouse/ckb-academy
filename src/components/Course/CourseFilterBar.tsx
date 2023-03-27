@@ -1,6 +1,7 @@
 import { Component, For, JSX } from 'solid-js';
 import { CourseSource, CourseType } from '~/types/course';
 import { BiSolidCategory, BiSolidDetail, BiSolidJoystick, BiSolidVideos } from 'solid-icons/bi';
+import Tooltip from '~/components/Tooltip';
 
 interface Props {
   currentSource: CourseSource | undefined;
@@ -28,7 +29,7 @@ const CourseFilterBar: Component<Props> = (props) => {
   const type: { type: CourseType | undefined; title: string; icon?: JSX.Element }[] = [
     {
       type: undefined,
-      title: 'All',
+      title: 'All Type',
       icon: <BiSolidCategory />,
     },
     {
@@ -70,17 +71,19 @@ const CourseFilterBar: Component<Props> = (props) => {
       <div class="flex space-x-4">
         <For each={type}>
           {(item) => (
-            <div
-              onClick={() => props.onTypeChange(item.type)}
-              classList={{
-                'bg-light-headline dark:bg-white text-white dark:text-black':
-                  props.currentType == item.type,
-                'bg-white dark:bg-dark-background_dark': props.currentType !== item.type,
-              }}
-              class="link h-8 w-8 rounded-full shadow-xl shadow-light-shadow/10 flex justify-center items-center"
-            >
-              <i class="text-lg">{item.icon}</i>
-            </div>
+            <Tooltip content={item.title}>
+              <div
+                onClick={() => props.onTypeChange(item.type)}
+                classList={{
+                  'bg-light-headline dark:bg-white text-white dark:text-black':
+                    props.currentType == item.type,
+                  'bg-white dark:bg-dark-background_dark': props.currentType !== item.type,
+                }}
+                class="link h-8 w-8 rounded-full shadow-xl shadow-light-shadow/10 flex justify-center items-center"
+              >
+                <i class="text-lg">{item.icon}</i>
+              </div>
+            </Tooltip>
           )}
         </For>
       </div>
