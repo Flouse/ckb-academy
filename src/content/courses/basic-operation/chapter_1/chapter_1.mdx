@@ -6,7 +6,7 @@ import { WalletReady } from "~/content/components/WalletReady.tsx";
 
 # Connected wallet
 
-Throughout the practical operation course, we will use the testing chain of CKB for all on-chain operations. As a starting point, the first thing we need to do is to connect to the MetaMask wallet.
+Throughout the practical operation course, we will use [CKB testnet](https://pudge.explorer.nervos.org) for all on-chain operations. As a starting point, the first thing we need to do is to connect to the MetaMask wallet.
 
 > In order to ensure the smooth progress of the course, after successfully connecting to the wallet, we will assign 10 `Cells` with a `Capacity` of `100 CKB` to your account.
 
@@ -23,16 +23,16 @@ The live cells you currently own will be displayed below. If the data cannot be 
 </WalletReady>
 
 
-Click on any of the cells above and you will see detailed information in JSON format.
+Click on any of the cells above, and you will see detailed information in JSON format.
 
-When we say that a wallet has a certain amount of CKB (the native token), we are actually referring to the sum of the capacity of all the live cells that the wallet can unlock. This is also the total storage space that the wallet occupies on the chain.
+When we say that a wallet has a certain amount of CKB (the native token), we are actually referring to the sum of the capacity of all the live cells that the wallet can unlock. This is also the total storage space that the wallet can occupy on the chain.
 
 <br />
 <br />
 
 # Block
 
-Each block below represents a block, displaying the latest nine blocks on the test chain. The noteworthy information in each block is the transactions displayed in the lower half.
+Each square below represents a block, displaying the latest nine blocks on the CKB testnet. The noteworthy information in each block is the transactions displayed in the lower half.
 
 <WalletReady>
   <ShowBlocks />

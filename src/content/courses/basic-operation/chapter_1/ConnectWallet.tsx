@@ -1,4 +1,4 @@
-import { Component, Show } from 'solid-js';
+import { Component, createEffect, on, Show } from 'solid-js';
 import { useWalletContext } from '~/components/CKBCore/WalletContext';
 import { MetaMaskInstallError } from '~/components/CKBCore/WalletProvider';
 import { useToast } from '~/components/Toast/ToastContext';
@@ -11,26 +11,29 @@ export const ConnectWallet: Component = () => {
   const toast = useToast();
 
   const connectWallet = () => {
-    wallet
-      .connect()
-      .then(() => {
-        course.finishChapter();
-      })
-      .catch((err: Error) => {
-        if (err instanceof MetaMaskInstallError) {
-          toast.error({
-            title: 'Error',
-            description:
-              'Please make sure that the MetaMask browser extension is installed before attempting to reconnect.',
-          });
-        } else {
-          toast.error({
-            title: 'Error',
-            description: `${err.message}`,
-          });
-        }
-      });
+    wallet.connect().catch((err: Error) => {
+      if (err instanceof MetaMaskInstallError) {
+        toast.error({
+          title: 'Error',
+          description:
+            'Please make sure that the MetaMask browser extension is installed before attempting to reconnect.',
+        });
+      } else {
+        toast.error({
+          title: 'Error',
+          description: `${err.message}`,
+        });
+      }
+    });
   };
+
+  createEffect(
+    on(wallet.connected, (connected) => {
+      if (connected) {
+        course.finishChapter();
+      }
+    }),
+  );
 
   return (
     <div class="not-prose">
@@ -52,7 +55,6 @@ export const ConnectWallet: Component = () => {
           </span>
           <div class="text-xs flex flex-col pt-2">
             <span class="font-medium">CKB Address：</span>
-            <span class="break-all">{wallet.provider()?.ethAddress}</span>
             <span class="break-all">{wallet.provider()?.ckbAddress}</span>
           </div>
         </div>
