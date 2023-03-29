@@ -1,0 +1,43 @@
+import { ConnectWallet } from "~/content/courses/basic-operation/chapter_1/ConnectWallet.tsx";
+import { ShowCells } from "~/content/courses/basic-operation/chapter_1/ShowCells.tsx";
+import { ShowBlocks } from "~/content/courses/basic-operation/chapter_1/ShowBlocks.tsx";
+import { WalletReady } from "~/content/components/WalletReady.tsx";
+
+
+# Connected wallet
+
+Throughout the practical operation course, we will use the testing chain of CKB for all on-chain operations. As a starting point, the first thing we need to do is to connect to the MetaMask wallet.
+
+> In order to ensure the smooth progress of the course, after successfully connecting to the wallet, we will assign 10 `Cells` with a `Capacity` of `100 CKB` to your account.
+
+<ConnectWallet />
+<br />
+<br />
+
+# Live Cells
+The live cells you currently own will be displayed below. If the data cannot be displayed properly, please click 'Fetch Cells' to retrieve the live cell list again.
+> When you first connect your wallet, the 10 Live Cells assigned to you will have a 10-second delay. Please refresh the list using the method described above.
+
+<WalletReady>
+  <ShowCells />
+</WalletReady>
+
+
+Click on any of the cells above and you will see detailed information in JSON format.
+
+When we say that a wallet has a certain amount of CKB (the native token), we are actually referring to the sum of the capacity of all the live cells that the wallet can unlock. This is also the total storage space that the wallet occupies on the chain.
+
+<br />
+<br />
+
+# Block
+
+Each block below represents a block, displaying the latest nine blocks on the test chain. The noteworthy information in each block is the transactions displayed in the lower half.
+
+<WalletReady>
+  <ShowBlocks />
+</WalletReady>
+
+When you click on any of the transactions, you will see detailed information in JSON format. You may notice that a real transaction is slightly different from the structure we learned in the theory classes. To be precise, it has become more complex, but it's still graspable if you remember the structure:  `input => output`
+
+If you don't understand what's going on in all these fields for the moment, don't worry, we'll later break it down one by one.

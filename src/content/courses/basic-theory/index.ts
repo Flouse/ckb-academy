@@ -2,7 +2,8 @@ import { CourseSource, CourseType, Course } from '~/types/course';
 
 const basicTheory: Course = {
   id: 'basic-theory',
-  author: [ // see https://github.com/RetricSu/zero2ckb-web/graphs/contributors
+  author: [
+    // see https://github.com/RetricSu/zero2ckb-web/graphs/contributors
     { name: 'RetricSu', avatar: 'https://avatars.githubusercontent.com/u/23436060?v=4' },
     { name: 'Jason', avatar: 'https://avatars.githubusercontent.com/u/124339951?v=4' },
     { name: 'ssslllsss', avatar: 'https://avatars.githubusercontent.com/u/64396829?v=4' },
@@ -10,7 +11,7 @@ const basicTheory: Course = {
     { name: 'xying21', avatar: 'https://avatars.githubusercontent.com/u/77367387?v=4' },
   ],
   name: 'CKB basic theoretical knowledge',
-  coverPicture: '/images/lesson1.png',
+  coverPicture: '/images/course/lesson1.png',
   type: CourseType.Interactive,
   source: CourseSource.Local,
   updateTime: '2023/03/20',
