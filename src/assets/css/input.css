@@ -5,7 +5,7 @@
     @apply placeholder:font-normal;
   }
 
-  .input-sm{
-    @apply px-2 py-1 text-xs rounded-md
+  .input-sm {
+    @apply px-2 py-1 text-xs rounded-md;
   }
 }

@@ -1,18 +1,17 @@
-
 .tooltip {
-    [data-part="arrow"] {
-        --arrow-size: 6px;
-    }
+  [data-part='arrow'] {
+    --arrow-size: 6px;
+  }
 }
 
 .tooltip {
-    [data-part="arrow"] {
-        --arrow-background: theme("colors.black");
-    }
+  [data-part='arrow'] {
+    --arrow-background: theme('colors.black');
+  }
 }
 
 .dark .tooltip {
-    [data-part="arrow"] {
-        --arrow-background: theme("colors.white");
-    }
+  [data-part='arrow'] {
+    --arrow-background: theme('colors.white');
+  }
 }
