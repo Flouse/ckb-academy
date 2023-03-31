@@ -43,7 +43,7 @@ export const BlocksSection: Component = () => {
         </button>
       </div>
       <Dialog bodyClass="w-[800px]" footer={null} title={null} context={dialog}>
-        <HighlightCode code={JSON.stringify(transaction(), null, 2)} />
+        <HighlightCode code={JSON.stringify(transaction(), null, 2)} language="json" />
       </Dialog>
     </div>
   );

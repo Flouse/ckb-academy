@@ -22,7 +22,7 @@ export const CellsSection: Component = () => {
     setCells(_cells);
   };
 
-  const onWatchCell = () => {
+  const onWatchCell = (cell: Cell) => {
     setCell(cell);
     dialog().open();
   };
@@ -30,7 +30,9 @@ export const CellsSection: Component = () => {
   return (
     <div class="py-4 not-prose">
       <div class="grid grid-cols-5 gap-4">
-        <For each={cells()}>{(cell) => <CellItem onClick={onWatchCell} cell={cell} />}</For>
+        <For each={cells()}>
+          {(cell) => <CellItem onClick={() => onWatchCell(cell)} cell={cell} />}
+        </For>
       </div>
       <div class="flex justify-center mt-6">
         <button class="button button-sm" onClick={() => void getCells()}>
