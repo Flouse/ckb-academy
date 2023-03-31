@@ -218,7 +218,7 @@ const OutputSection: Component = () => {
           </div>
         </div>
 
-        <div class="flex mt-6 space-x-4">
+        <div class="flex my-6 space-x-4">
           <button class="button" onClick={generateTransaction}>
             Generate the Transaction
           </button>

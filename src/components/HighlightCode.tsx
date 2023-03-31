@@ -22,7 +22,7 @@ const HighlightCode: Component<Props> = (props) => {
   return (
     <pre
       classList={{ [props?.class || '']: props.class != undefined }}
-      class="bg-light-tertiary/10 dark:bg-black/50 rounded-lg p-4"
+      class="bg-light-tertiary/10 dark:bg-black/50 rounded-lg p-4 overflow-auto text-sm"
     >
       <code ref={codeRef} />
     </pre>

@@ -87,7 +87,7 @@ const InputSection: Component = () => {
     <div class="not-prose">
       <Switch>
         <Match when={cells().length > 0} keyed>
-          <div class="not-prose grid grid-cols-6 gap-4 place-items-center auto-rows-max">
+          <div class="not-prose grid grid-cols-6 gap-4 place-items-center auto-rows-max mb-6">
             <For each={cells()}>
               {(cell) => (
                 <CellItem
@@ -103,7 +103,7 @@ const InputSection: Component = () => {
           </div>
         </Match>
         <Match when={cells().length === 0 && input().inputs.length > 0} keyed>
-          <div class="bg-warning/10 text-warning rounded-lg h-12 flex items-center justify-center">
+          <div class="bg-warning/10 text-warning rounded-lg h-12 flex items-center justify-center mb-6">
             The current Cells have all been used up.
           </div>
         </Match>
@@ -115,7 +115,6 @@ const InputSection: Component = () => {
           </div>
         </Match>
       </Switch>
-
       <div
         onDrop={(event) => {
           event.preventDefault();
