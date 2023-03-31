@@ -39,9 +39,9 @@ const InputSection: Component = () => {
     setCells(_cells.slice(0, 6));
   };
 
-  const fillInput = (outputIndex: string) => {
+  const fillInput = (cellStr: string) => {
     const _cells = [...cells()];
-    const index = _cells.findIndex((cell) => cell.outPoint?.index === outputIndex);
+    const index = _cells.findIndex((cell) => JSON.stringify(cell.outPoint) === cellStr);
     if (index >= 0) {
       const _cell = _cells[index];
       let _input = { ...input() };
@@ -118,8 +118,8 @@ const InputSection: Component = () => {
       <div
         onDrop={(event) => {
           event.preventDefault();
-          const index = event.dataTransfer?.getData('CellIndex') ?? '';
-          fillInput(index);
+          const cellStr = event.dataTransfer?.getData('cell') ?? '';
+          fillInput(cellStr);
         }}
         onDragOver={(event) => {
           event.preventDefault();

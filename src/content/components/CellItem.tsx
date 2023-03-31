@@ -10,7 +10,7 @@ interface Props {
 
 const CellItem: Component<Props> = (props) => {
   const onDragStart = (event: DragEvent) => {
-    event.dataTransfer?.setData('CellIndex', props.cell.outPoint?.index ?? '');
+    event.dataTransfer?.setData('cell', JSON.stringify(props.cell.outPoint));
   };
 
   return (

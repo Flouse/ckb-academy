@@ -101,9 +101,10 @@ const OutputSection: Component = () => {
 
   const onDrop = (event: DragEvent) => {
     event.preventDefault();
-    const data = event.dataTransfer?.getData('CellIndex') ?? '';
-    const avaCell = _.find(avaCells(), (cell) => cell.outPoint?.index === data)!;
-    const used = _.find(inputCells(), (cell) => cell.outPoint?.index === avaCell.outPoint?.index);
+    const cellStr = event.dataTransfer?.getData('cell') ?? '';
+    const avaCell = _.find(avaCells(), (cell) => JSON.stringify(cell.outPoint) === cellStr);
+    if (avaCell == undefined) return;
+    const used = _.find(inputCells(), (cell) => JSON.stringify(cell.outPoint) === cellStr);
 
     if (used) {
       alert('Error: cell already exits!');
