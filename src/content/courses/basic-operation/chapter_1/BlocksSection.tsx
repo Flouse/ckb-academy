@@ -5,7 +5,7 @@ import { BI } from '@ckb-lumos/bi';
 import HighlightCode from '~/components/HighlightCode';
 import Dialog, { createDialog } from '~/components/Dialog';
 
-export const ShowBlocks: Component = () => {
+export const BlocksSection: Component = () => {
   const wallet = useWalletContext();
   const [blocks, setBlocks] = createSignal<Block[]>([]);
   const [transaction, setTransaction] = createSignal<Transaction>();
@@ -20,6 +20,11 @@ export const ShowBlocks: Component = () => {
     setBlocks(res);
   };
 
+  const onWatchTransaction = (transaction: Transaction) => {
+    setTransaction(transaction);
+    dialog().open();
+  };
+
   return (
     <div class="py-4">
       <div class="not-prose grid grid-cols-3 gap-4">
@@ -27,21 +32,13 @@ export const ShowBlocks: Component = () => {
           {(block) => (
             <BlockItem
               block={block}
-              onTransactionClick={() => {
-                setTransaction(block.transactions[0]);
-                dialog().open();
-              }}
+              onTransactionClick={() => onWatchTransaction(block.transactions[0])}
             />
           )}
         </For>
       </div>
       <div class="flex justify-center mt-6">
-        <button
-          class="button button-sm"
-          onClick={() => {
-            void getBlocks();
-          }}
-        >
+        <button class="button button-sm" onClick={() => void getBlocks()}>
           Fetch Blocks
         </button>
       </div>

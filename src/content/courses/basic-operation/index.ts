@@ -23,7 +23,7 @@ const basicOperation: Course = {
     {
       id: 'chapter_2',
       title: 'What is Transaction?',
-      article: () => import('./chapter_2.mdx'),
+      article: () => import('./chapter_2/chapter_2.mdx'),
     },
     {
       id: 'chapter_3',

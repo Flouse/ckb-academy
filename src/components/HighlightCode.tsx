@@ -1,20 +1,30 @@
-import { Component, onMount } from 'solid-js';
+import { Component, createEffect } from 'solid-js';
 import '~/assets/css/github-code.css';
 import { default as highlight } from 'highlight.js';
+import { innerHTML } from 'solid-js/web';
 
 interface Props {
   code: string;
+  class?: string;
+  language?: string;
 }
 
 const HighlightCode: Component<Props> = (props) => {
-  let codeRef: HTMLElement | ((el: HTMLElement) => void) | undefined;
+  let codeRef: HTMLElement | undefined;
 
-  onMount(() => {
-    highlight.highlightElement(codeRef as HTMLElement);
+  createEffect(() => {
+    if (codeRef) {
+      const langs = props.language ? [props.language] : undefined;
+      innerHTML(codeRef, highlight.highlightAuto(props.code, langs)._emitter.toHTML());
+    }
   });
+
   return (
-    <pre class="bg-light-tertiary/10 dark:bg-black/50 rounded-lg">
-      <code ref={codeRef}>{props.code}</code>
+    <pre
+      classList={{ [props?.class || '']: props.class != undefined }}
+      class="bg-light-tertiary/10 dark:bg-black/50 rounded-lg p-4"
+    >
+      <code ref={codeRef} />
     </pre>
   );
 };
