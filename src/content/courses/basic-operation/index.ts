@@ -16,7 +16,7 @@ const basicOperation: Course = {
   chapters: [
     {
       id: 'chapter_1',
-      title: 'Connected wallet',
+      title: 'Connecting Wallet',
       manualCompletion: true,
       article: () => import('./chapter_1/chapter_1.mdx'),
     },
