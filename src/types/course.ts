@@ -37,7 +37,7 @@ export interface Course {
 export interface CourseStore<S> {
   get state(): S;
 
-  setState: (state: S) => void;
+  updateState: (state: S) => void;
 }
 
 export interface CourseChapter {

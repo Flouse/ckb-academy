@@ -1,0 +1,6 @@
+.code-textarea {
+    @apply bg-light-tertiary/10 dark:bg-black/50 rounded-lg;
+    textarea{
+        @apply min-h-[400px];
+    }
+}

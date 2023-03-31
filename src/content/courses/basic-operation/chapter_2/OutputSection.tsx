@@ -130,7 +130,7 @@ const OutputSection: Component = () => {
 
   return (
     <>
-      <div class="pt-6">
+      <div class="pt-6 not-prose">
         <Switch>
           <Match when={avaCells().length > 0} keyed>
             <div class="not-prose grid grid-cols-6 place-items-center gap-4">
@@ -238,7 +238,7 @@ const OutputSection: Component = () => {
       </Dialog>
 
       <Dialog
-        bodyClass="min-w-[800px] h-[450px]"
+        bodyClass="min-w-[800px] !h-[450px]"
         closable={false}
         footer={null}
         title={null}

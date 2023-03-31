@@ -1817,6 +1817,11 @@
   resolved "https://registry.yarnpkg.com/@solidjs/router/-/router-0.7.0.tgz#5f8f1289caf4a1eb24e57cbe93e6dde639b04a6e"
   integrity sha512-8HI84twe5FjYRebSLMAhtkL9bRuTDIlxJK56kjfjU9WKGoUCTaWpCnkuj8Hqde1bWZ0X+GOZxKDfNkn1CjtjxA==
 
+"@srsholmes/solid-code-input@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.npmmirror.com/@srsholmes/solid-code-input/-/solid-code-input-0.0.18.tgz#edcd55dc5126f629cd21eda7d3e0a20d7f53cc83"
+  integrity sha512-9qmWg7gL8f+wfUJjzikoYNMbcqewxzau50jGaUdYbqNLcQrAmbQLbwxCtwybZi/qoIVUWcSAEalD21y0ye+KJw==
+
 "@tailwindcss/line-clamp@^0.4.2":
   version "0.4.2"
   resolved "https://registry.npmmirror.com/@tailwindcss/line-clamp/-/line-clamp-0.4.2.tgz#f353c5a8ab2c939c6267ac5b907f012e5ee130f9"

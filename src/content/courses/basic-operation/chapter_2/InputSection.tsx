@@ -84,7 +84,7 @@ const InputSection: Component = () => {
   };
 
   return (
-    <div>
+    <div class="not-prose">
       <Switch>
         <Match when={cells().length > 0} keyed>
           <div class="not-prose grid grid-cols-6 gap-4 place-items-center auto-rows-max">

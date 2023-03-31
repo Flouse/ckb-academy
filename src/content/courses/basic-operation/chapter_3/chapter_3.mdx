@@ -1,0 +1,90 @@
+import TransactionInput from "~/content/courses/basic-operation/chapter_3/TransactionInput.tsx";
+import GenerateTXHash from "~/content/courses/basic-operation/chapter_3/GenerateTXHash.tsx";
+import { WalletReady } from "~/content/components/WalletReady.tsx";
+
+
+
+# Send a Transaction
+现在，把下面白框中的空白交易填满，自己用手动的方式填写一笔转账交易。
+
+你可能需要用到查找钱包对应的 live Cell、查看链配置信息(用来填写 cell_deps)、16 进制与 10 进制互相转换这些功能，它们在右手边的工具箱中都可以找到。
+
+<WalletReady>
+  <TransactionInput />
+</WalletReady>
+
+
+填写完成后，点击保存按钮。
+
+好了，到这里你已经手动把交易全部填好了。
+
+这时我们已经可以为这笔交易生成一个独一无二的哈希了，也就是 tx_hash 已经可以提前确定出来。
+
+点击下面的按钮，试试生成生成交易的哈希
+
+
+<WalletReady>
+  <GenerateTXHash />
+</WalletReady>
+尽管这笔交易已经可以提前生成 tx_hash，但它现在仍然是一笔 raw_tx。raw_tx 跟 tx 最大的不同是， tx 会在 witnesses 字段中放入交易的签名。
+
+事实上，你可以在 witnesses 里放入任何你需要的参数或者证明。而且因为它是一个数组，还可以放入多个证明。 但因为现在我们在尝试的是系统内建的转账交易， 这种交易互相约定会在每一组 witnesses 的第一个位置，放入这样一个结构：
+
+``` json
+{
+  "lock": "证明",
+  "input_type": "证明",
+  "output_type": "证明"
+}
+```
+
+这一个结构被称为 WitnessArgs。不同的锁会从 WitnessArgs 不同的字段中读取自己需要的签名。 其中，lock 字段是 input 使用到的 lock 锁需要验证的签名。
+
+在我们现在要实验的普通转账交易中，就是 SECP256K1_BLAKE160 算法需要验证的签名。
+
+input_type 和 output_type 则是 input 和 output 中 type 锁需要验证的签名，暂时不必管它。
+
+> 签名是一个比较繁琐的过程。更详细的技术细节在这里：[How to sign transaction](https://github.com/nervosnetwork/ckb-system-scripts/wiki/How-to-sign-transaction)
+
+现在，为了完成签名，让我们首先为这笔交易生成一个待签名的 message。
+
+```
+生成 message
+```
+
+# 开始签名
+
+有了 message，以及钱包里的私钥，我们就可以计算出签名了。
+
+```
+签名区域
+```
+
+# 把签名放回到交易中
+把生成的签名填入下面的输入框中，点击按钮，以 witnessArgs 的形式做一遍序列化：
+```
+序列号区域
+```
+现在我们可以完善原本的交易了，把序列化好的签名放进 witnesses 字段里：
+
+
+# 最后一步，把交易发送到链上
+```
+发送交易
+```
+
+注意看下，交易成功上链后返回的 tx_hash，是不是和之前事先生成的那个 tx_hash 一模一样？
+
+CKB 的确定性诚不欺我。
+
+现在，你可以通过下面的按钮，看看刚才我们发送的交易是不是真的在链上了。如果提示 tx_status: pending , 则表明交易还在pending，稍后重试就可以了。
+
+```
+查看交易区块
+```
+最后恭喜你，成功完成了CKB第一节实操课程～
+
+
+
+
+

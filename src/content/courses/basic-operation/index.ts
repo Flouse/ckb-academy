@@ -1,4 +1,5 @@
 import { Course, CourseSource, CourseType } from '~/types/course';
+import { BasicOperationStore } from '~/content/courses/basic-operation/store';
 
 const basicOperation: Course = {
   id: 'basic-operation',
@@ -28,9 +29,12 @@ const basicOperation: Course = {
     {
       id: 'chapter_3',
       title: 'Send a Transaction',
-      article: () => import('./chapter_3.mdx'),
+      article: () => import('./chapter_3/chapter_3.mdx'),
     },
   ],
+  store: () => {
+    return new BasicOperationStore();
+  },
 };
 
 export default basicOperation;
