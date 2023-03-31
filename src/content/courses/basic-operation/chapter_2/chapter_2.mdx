@@ -13,8 +13,7 @@ As long as we draw up the content of the transaction in advance (i.e., which cel
 
 #### What does such a manual construction of a transaction mean?
 
-In the CKB system, we compose the layer 2 network.
-
+Here's an interesting story to help you understand.
 
 <Quote>
   Imagine you have a friend who lives in an Amazon jungle isolated from everything but an offline computer.
@@ -34,24 +33,20 @@ In the CKB system, we compose the layer 2 network.
   After the mainnet validated the attached signature, the transaction was complete and you now have 10,000 more CKBs in
   your account. The debt was settled.
 
-  Despite low throughput, only 1 transaction per month, you and your Amazon jungle buddy have created a layer2 network
-  containing 2 nodes.
+  Despite low throughput and long latency, only 1 transaction per month, you and your Amazon jungle buddy have 
+  accomplished a nice “off-chain computing, on-chain verifying” workflow.
 </Quote>
 
+CKB offers tools helping deploying contracts, building transactions, transferring, etc.
+Nevertheless, we will continue with the Amazon jungle friend's method to construct a regular transfer transaction.
 
-
-CKB offers tools for automatically building transactions, transferring contracts, etc. Nevertheless, we will continue with this old-school method to implement a regular transfer transaction.
-
-By using manually assembled transactions, you will gain a deeper understanding of how CKB cells work.
+By using hand-assembled transactions, you will gain a deeper understanding of how CKB cells work.
 
 We will use the JSON format to do this.
 
+## Transaction Input
 
-<br />
-
-# Transaction Input
-
-Here are 6 Live cell in your wallet. Simply drag the cell to the box below to see what the generated input looks like.
+Here are 6 Live cell in your wallet. Simply `drag the cell to the box below` to see what the generated input looks like.
 
 <WalletReady>
   <InputSection/>
@@ -61,18 +56,21 @@ The cell in inputs appears in previous_output which is imported as an outpoint c
 
 The since field in the inputs controls the time. Don't worry about it for now.
 
+Besides inputs, there is a field called cell_deps that indicates the dependency cells a transaction relies on. This field appears to be a out_point list.
 
-Besides inputs, there is a field called cell_deps that indicates the dependency cells a transaction needs to rely on. This field appears as an index result in out_point.
 
-#### What are dependency cells?
+{/* TODO: I think we will use omni_lock, not SECP256K1_BLAKE160.
+see: https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md
+
+#### What are dependency cells? （TODO）
 
 In a regular transfer transaction, the lock script requires a fixed encryption algorithm, SECP256K1_BLAKE160, a built-in smart contract. The encryption algorithm code is kept in a cell and must be referenced in cell_deps, so that CKB-VM knows where to import it for calculation.
 
 With the `testnet configuration` information from the previous chapter, it is easy to find the parameters that need to be passed in cell_deps.
+*/}
 
-<br/>
 
-# Transaction Output
+## Transaction Output
 
 The next step is to use another tool to see how the output is generated and how the entire transaction looks.
 
@@ -82,9 +80,9 @@ A new cell of an identical size will be automatically generated in `OUTPUT`.
 
 Click the `⚙` Setting button in `OUTPUT` to reassign the newly generated cells. This includes specifying how many cells to generate, the size and the unlock address of each cell, and so on.
 
-The output must have less capacity than the input, and the gap is the fee to reward miners.
+The outputs must have less capacity than the inputs, and the gap is the fee to reward miners.
 
-To view the transaction JSON, click Generate the Transaction once you've set it up.
+To view the transaction JSON, click `Generate the Transaction` once you've set it up.
 
 
 <WalletReady>
@@ -95,12 +93,10 @@ The outputs of the transaction have all the information about the newly generate
 
 Cells in the outputs do not specify data information; the data is located in the outputs_data field, which corresponds to the cells in the outputs accordingly. Again, this is designed for performance optimization.
 
-Complete transactions also contain fields such as version and header_deps. The version field indicates the version, which is currently set to 0x0, while the header_deps field is null.
+A full transaction also contains fields such as version and header_deps. The version field indicates the version, which is currently set to 0x0, while the header_deps field is null.
 
 
-<br/>
-
-# Sign a Transaction
+## Sign a Transaction
 
 Once a transaction has been assembled, it must be signed by the corresponding private key. The private key indicates that the cells belong to you and you can operate on them.
 
