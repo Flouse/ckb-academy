@@ -1,41 +1,54 @@
-# Constructing a transaction is to destroy some cells and create some more.
+# What is a transaction?
 
-The essence of a transaction in CKB, excluding the less important details, is as follows：
+## Constructing a transaction is to destroy some cells and create some more
 
-```
-tx: input -> output
-```
-
-Where the essence of input and output is still about some cells：
+The essence of a transaction in CKB, excluding the less important details, is as follows:
 
 ```ts
-input:
-                some cell...
-            ｜
-            ｜
-            ｜
-            \/
-            output:
-                some new cell...
+transaction: inputs -> outputs
 ```
 
-The cells in the input must all be live cells. The input cells will be spent and become dead cells after a transaction is committed. The newly created output cells will become new live cells.
-
-The most important rule you need to remember about CKB transactions is that all output cells, i.e. the newly created boxes, must take up less space than input cells.
+The essence of inputs and outputs are still some cells：
 
 ```ts
-capacity(input cell) > capacity(output cell)
+inputs:
+    some cells...
+｜
+｜
+｜
+\/
+outputs:
+    some new cells...
 ```
 
-It's because the extra space between input and output is the fee that the miner earns. Miners are motivated by transaction fees.
+The cells in the inputs must all be live cells. The input cells will be spent and become dead cells after a transaction is committed. The newly created output cells will become new live cells.
 
-In practice, we do not put the full cell in the input for storage optimization purposes; instead, we just put the cell's index and use the index to find the cell used as input.
+## Transaction Rules
 
-This index structure is called OutPoint, which allows you to find a particular cell.
+1. The capacity summary of all the output cells must be less than the capacity summary of all the input cells:
+
+```
+  sum(cell's capacity for each cell in inputs)
+> sum(cell's capacity for each cell in outputs)
+```
+which means that a transaction cannot mint capacities from the air.
+
+2. The difference in capacity between inputs and outputs, is the fee that the miner earns:
+
+```
+  sum(cell's capacity for each cell in inputs)
+- sum(cell's capacity for each cell in outputs)
+= fee
+```
+You know, miners won't work for nothing. So they collect the difference as a fee.
+
+**Note**:
+In practice, for storage optimization reasons, we do not put the complete cell in an input; instead, we just put the cell's index that leads us to the real input cell.
+This index structure is called `OutPoint`, which points to a particular cell.
 
 ```ts
 OutPoint: {
-  tx_hash: Hash value of the affiliated transaction(to which transaction it belongs)
-  index: Serial number of the affiliated transaction output(to which output it belongs)
+  tx_hash: The hash value of the transaction to which the target cell belongs
+  index: The cell position in the transaction to which the target cell belongs
 }
 ```
