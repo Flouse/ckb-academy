@@ -1,23 +1,20 @@
 # Summary 2
 
-Congratulations! Now you are prepared for the tutorial!
+Congratulations! Now you are prepared for the practical tutorial!
 
 Let's review all the concepts we have learned:
 
 - CKB is essentially a chain of cells which are being created and destroyed over and over again.
 - A cell is a box that can be used to store any type of data.
-- To own a cell, you need tokens. The amount of tokens equals the size of the cell. 1 CKB = 1 Byte.
-- The size of the entire cell cannot exceed the value of the capacity field.
-- To protect your cell, you must put a lock on the cell that only your key can unlock.
-- The lock is essentially a piece of runnable code and some arguments. Through entering args and some signatures or proofs provided by the user, the code runs to check if the lock can be opened.
+- To own a cell and store data on-chain, you need tokens: `1 CKB = 1 Byte`.
+- The byte size of the entire cell cannot exceed the value of the capacity field.
+- To protect your cell, you must put a lock on the cell so that only you or someone you authorize can open it.
+- A lock is essentially a piece of code that checks if the cell can be unlocked using arguments and user-provided signatures or proofs.
 - The return value of 0 means that the lock was unlocked successfully, while any other value means the unlock attempt failed.
-- Using the code_hash of the cell, the lock's code can be retrieved. This code is stored in the data field of a dep cell.
+- The lock's code_hash and hash_type fields are used to locate code, which is stored in the data field of a dep cell.
 - Each cell can carry two locks, one is called lock script (default) and the other, type script (optional).
-- In one transaction, the lock scripts of all inputs will be executed once.
-- In one transaction, the type scripts of both inputs and outputs will be executed once.
-- The differences in the execution mechanism result in different uses for the two locks.
-- Lock scripts are often used to protect the ownership of the box.
-- The size of the entire cell cannot exceed the value of the capacity field.
+- In one transaction, the lock scripts run for all inputs by group, while the type scripts run for all inputs and outputs by group.
+- The differences in the execution mechanism result in different uses for the two types of locks. Lock scripts are often used to protect the ownership of the cell. Type scripts often used to handle the cell transformation rules.
 - Constructing a transaction is fundamentally about destroying some cells and creating some new ones.
 
 That's right, with the above theoretical knowledge, you're ready to hit the road.
