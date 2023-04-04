@@ -56,26 +56,34 @@ const OutputSection: Component = () => {
     return shannonToCKB(count.toHexString());
   });
   const generateTransaction = () => {
+    const config = wallet.provider()!.config.LUMOS_CONFIG;
     const transaction: CKBComponents.RawTransaction = {
       version: '0x0',
       headerDeps: [],
       cellDeps: [
         {
-          depType: 'depGroup',
           outPoint: {
-            txHash: '0x4f1097802dc6fe19b942f1c2e8e52d564ee35899e4aef308101c86c49bc1f471',
-            index: '0x0',
+            txHash: config.SCRIPTS.OMNILOCK.TX_HASH,
+            index: config.SCRIPTS.OMNILOCK.INDEX,
           },
+          depType: config.SCRIPTS.OMNILOCK.DEP_TYPE,
+        },
+        {
+          outPoint: {
+            txHash: config.SCRIPTS.SECP256K1_BLAKE160.TX_HASH,
+            index: config.SCRIPTS.SECP256K1_BLAKE160.INDEX,
+          },
+          depType: config.SCRIPTS.SECP256K1_BLAKE160.DEP_TYPE,
         },
       ],
       inputs: inputCells().map(
         (cell) => ({ previousOutput: cell.outPoint, since: '0x0' } as Input),
       ),
       outputs: outputCells().map((cell) => cell.cellOutput as Output),
-      outputsData: ['0x0'],
-      witnesses: ['0x0'],
+      outputsData: ['0x'],
+      witnesses: ['0x'],
     };
-    setTransactionInfo(ParamsFormatter.toRawTransaction(transaction));
+    setTransactionInfo(transaction);
   };
 
   const clearOut = () => {

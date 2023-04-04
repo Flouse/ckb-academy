@@ -1,40 +1,35 @@
 import { Component, createEffect, createSignal } from 'solid-js';
 import { default as highlight } from 'highlight.js';
-import { CKBComponents } from '@ckb-lumos/rpc/lib/types/api';
 import CodeTextarea from '~/components/CodeInput/CodeTextarea';
 import { useCourseContext } from '~/components/CourseCore/CourseContext';
 import { BasicOperationStore } from '~/content/courses/basic-operation/store';
 import { useToast } from '~/components/Toast/ToastContext';
-import * as helpers from '@ckb-lumos/toolkit';
+import { Transaction } from '@ckb-lumos/base';
 
-const TransactionInput: Component = () => {
+const GenerateRawTransaction: Component = () => {
   const [code, setCode] = createSignal<string>('');
   const course = useCourseContext<BasicOperationStore>();
   const toast = useToast();
 
   createEffect(() => {
-    setCode(JSON.stringify(course.store.state.transactionInfo, null, 2));
+    setCode(JSON.stringify(course.store.state.transactionTemplate, null, 2));
   });
 
-  const check = (transaction: CKBComponents.RawTransaction) => {
-    helpers.validators.ValidateTransaction(transaction);
-  };
-
   const onSave = () => {
-    let info: CKBComponents.RawTransaction;
     try {
-      info = JSON.parse(code());
-      check(info);
-      course.store.updateState({ transactionInfo: info, transactionCheckPass: true });
-      toast.success({ title: 'Tips', description: `保存成功` });
-    } catch (e) {
-      if (e instanceof Error) {
-        toast.error({ title: '格式错误', description: `${e.message}` });
+      const rawTransaction = JSON.parse(code()) as Transaction;
+      course.store.generateRawTransaction(rawTransaction);
+      toast.success({ title: 'Success', description: `RawTransaction save successfully` });
+    } catch (err) {
+      if (err instanceof Error) {
+        toast.error({ title: 'Error', description: `${err.message}` });
       }
+      console.error(err);
     }
   };
+
   return (
-    <div class="not-prose">
+    <div class="not-prose py-4">
       <CodeTextarea
         autoHeight={false}
         resize="vertical"
@@ -46,11 +41,11 @@ const TransactionInput: Component = () => {
         value={code()}
         language={'json'}
       />
-      <button onClick={onSave} class="button button-sm mt-4">
+      <button onClick={() => void onSave()} class="button button-sm px-8 mt-6">
         Save
       </button>
     </div>
   );
 };
 
-export default TransactionInput;
+export default GenerateRawTransaction;

@@ -71,7 +71,9 @@ const Toast: Component<Props> = (props) => {
         >
           {api().title}
         </p>
-        <p {...api().descriptionProps}>{api().description}</p>
+        <p {...api().descriptionProps} class="break-all">
+          {api().description}
+        </p>
       </div>
       <button
         class="absolute  text-light-tertiary hover:opacity-50 top-4 right-4"

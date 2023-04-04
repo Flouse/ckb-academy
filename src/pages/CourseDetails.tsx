@@ -29,11 +29,11 @@ const CourseDetails: Component<ParentProps> = () => {
             </div>
           }
         >
-          <CourseProvider course={course!}>
-            <WalletProvider>
+          <WalletProvider>
+            <CourseProvider course={course!}>
               <Index />
-            </WalletProvider>
-          </CourseProvider>
+            </CourseProvider>
+          </WalletProvider>
         </Show>
       </Show>
     </>

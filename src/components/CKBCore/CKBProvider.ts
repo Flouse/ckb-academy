@@ -5,6 +5,7 @@ import { RPC } from '@ckb-lumos/rpc';
 import { ckbConfig, CKBConfig } from '~/components/CKBCore/CKBConfig';
 import { NervosFunctions } from '~/components/CKBCore/NervosFunctions';
 import { BI } from '@ckb-lumos/bi';
+import { BrowserProvider, ethers } from 'ethers';
 
 export class CKBProvider {
   readonly ethAddress: string;
@@ -16,6 +17,7 @@ export class CKBProvider {
   indexer: Indexer;
   ckbRpc: RPC;
   private readonly nervosClient: NervosFunctions;
+  ethProvider: BrowserProvider;
 
   constructor(ethAddress: string) {
     this.ethAddress = ethAddress;
@@ -24,6 +26,8 @@ export class CKBProvider {
     this.ckbRpc = new RPC(this.config.CKB_RPC_URL);
     this.ckbAddress = this.generateL1Address(this.ethAddress);
     this.nervosClient = new NervosFunctions(this.config.NERVOS_FUNCTIONS_URL);
+    const e: any = window.ethereum;
+    this.ethProvider = new ethers.BrowserProvider(e);
     void this.getTestToken();
   }
 

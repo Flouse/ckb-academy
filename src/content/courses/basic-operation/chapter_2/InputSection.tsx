@@ -6,16 +6,16 @@ import HighlightCode from '~/components/HighlightCode';
 import CellItem from '~/content/components/CellItem';
 
 interface InputInfo {
-  cell_deps: {
-    out_point: {
-      tx_hash: string;
+  cellDeps: {
+    outPoint: {
+      txHash: string;
       index: string;
     };
-    dep_type: string;
+    depType: string;
   }[];
   inputs: {
-    previous_output: {
-      tx_hash: string;
+    previousOutput: {
+      txHash: string;
       index: string;
     };
     since: string;
@@ -25,7 +25,7 @@ interface InputInfo {
 const InputSection: Component = () => {
   const [cells, setCells] = createSignal<Cell[]>([]);
   const [cell, setCell] = createSignal<Cell>();
-  const [input, setInput] = createSignal<InputInfo>({ cell_deps: [], inputs: [] });
+  const [input, setInput] = createSignal<InputInfo>({ cellDeps: [], inputs: [] });
   const dialog = createDialog();
   const wallet = useWalletContext();
   createEffect(() => {
@@ -40,21 +40,29 @@ const InputSection: Component = () => {
   };
 
   const fillInput = (cellStr: string) => {
+    const config = wallet.provider()!.config.LUMOS_CONFIG;
     const _cells = [...cells()];
     const index = _cells.findIndex((cell) => JSON.stringify(cell.outPoint) === cellStr);
     if (index >= 0) {
       const _cell = _cells[index];
       let _input = { ...input() };
-      if (_input.cell_deps.length == 0) {
+      if (_input.cellDeps.length == 0) {
         _input = {
           ..._input,
-          cell_deps: [
+          cellDeps: [
             {
-              out_point: {
-                tx_hash: '0x4f1097802dc6fe19b942f1c2e8e52d564ee35899e4aef308101c86c49bc1f471',
-                index: '0x0',
+              outPoint: {
+                txHash: config.SCRIPTS.OMNILOCK.TX_HASH,
+                index: config.SCRIPTS.OMNILOCK.INDEX,
               },
-              dep_type: 'dep_group',
+              depType: config.SCRIPTS.OMNILOCK.DEP_TYPE,
+            },
+            {
+              outPoint: {
+                txHash: config.SCRIPTS.SECP256K1_BLAKE160.TX_HASH,
+                index: config.SCRIPTS.SECP256K1_BLAKE160.INDEX,
+              },
+              depType: config.SCRIPTS.SECP256K1_BLAKE160.DEP_TYPE,
             },
           ],
         };
@@ -65,8 +73,8 @@ const InputSection: Component = () => {
           ..._input.inputs,
           ...[
             {
-              previous_output: {
-                tx_hash: _cell.outPoint?.txHash ?? '',
+              previousOutput: {
+                txHash: _cell.outPoint?.txHash ?? '',
                 index: _cell.outPoint?.index ?? '',
               },
               since: '0x0',

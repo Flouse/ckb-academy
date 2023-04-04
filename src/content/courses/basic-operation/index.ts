@@ -28,6 +28,7 @@ const basicOperation: Course = {
     },
     {
       id: 'chapter_3',
+      manualCompletion: true,
       title: 'Send a Transaction',
       article: () => import('./chapter_3/chapter_3.mdx'),
     },
