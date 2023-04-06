@@ -7,10 +7,10 @@ const HexToDecimal: Component = () => {
   const [inputData, setInputData] = createSignal<string>('');
 
   const title = createMemo(() =>
-    direction() == 0 ? 'Convert Hex to Decimal' : 'Convert Decimal to Hex',
+    direction() == 0 ? 'Convert Decimal to Hex' : 'Convert Hex to Decimal',
   );
   const placeholder = createMemo(() =>
-    direction() == 0 ? 'HEX Number, start with 0x' : 'Decimal Number',
+    direction() == 0 ? 'Decimal Number' : 'HEX Number, start with 0x',
   );
 
   const convert = () => {

@@ -1,4 +1,4 @@
-import { Component, createSignal, For, JSX, lazy, Match, Show, Switch } from 'solid-js';
+import { Component, createSignal, For, JSX, lazy, Match, Show, Suspense, Switch } from 'solid-js';
 import {
   BiRegularArrowToLeft,
   BiRegularCalculator,
@@ -8,6 +8,7 @@ import {
   BiSolidVirus,
 } from 'solid-icons/bi';
 import Dialog, { createDialog } from '~/components/Dialog';
+import Loading from '~/components/Loading';
 import { ConnectWallet } from '~/components/ConnectWallet';
 
 interface ToolItem {
@@ -94,14 +95,22 @@ const ToolBox: Component = () => {
       </div>
       <Show when={tool() && tool()?.isDialog === true} keyed>
         <Dialog context={dialog} footer={null} title={tool()?.name}>
-          <Switch>
-            <Match when={tool()?.useWallet === true} keyed>
-              <ConnectWallet class="py-8">{tool()?.component?.({}) ?? null}</ConnectWallet>
-            </Match>
-            <Match when={tool()?.useWallet !== true} keyed>
-              {tool()?.component?.({}) ?? null}
-            </Match>
-          </Switch>
+          <Suspense
+            fallback={
+              <div class="flex items-center justify-center px-56 py-20">
+                <Loading title="Loading..." />
+              </div>
+            }
+          >
+            <Switch>
+              <Match when={tool()?.useWallet === true} keyed>
+                <ConnectWallet class="py-8">{tool()?.component?.({}) ?? null}</ConnectWallet>
+              </Match>
+              <Match when={tool()?.useWallet !== true} keyed>
+                {tool()?.component?.({}) ?? null}
+              </Match>
+            </Switch>
+          </Suspense>
         </Dialog>
       </Show>
     </>

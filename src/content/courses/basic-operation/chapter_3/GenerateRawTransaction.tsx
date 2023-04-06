@@ -1,6 +1,5 @@
 import { Component, createEffect, createSignal } from 'solid-js';
-import { default as highlight } from 'highlight.js';
-import CodeTextarea from '~/components/CodeInput/CodeTextarea';
+import CodeEditor from '~/components/CodeEditor/CodeEditor';
 import { useCourseContext } from '~/components/CourseCore/CourseContext';
 import { BasicOperationStore } from '~/content/courses/basic-operation/store';
 import { useToast } from '~/components/Toast/ToastContext';
@@ -30,11 +29,8 @@ const GenerateRawTransaction: Component = () => {
 
   return (
     <div class="not-prose py-4">
-      <CodeTextarea
-        autoHeight={false}
-        resize="vertical"
-        highlightjs={highlight}
-        placeholder="Input your code here..."
+      <CodeEditor
+        class="h-[500px]"
         onChange={(value) => {
           setCode(value);
         }}

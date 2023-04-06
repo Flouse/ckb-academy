@@ -29,6 +29,7 @@
     "@zag-js/solid": "^0.2.10",
     "@zag-js/toast": "^0.2.14",
     "@zag-js/tooltip": "^0.2.13",
+    "monaco-editor": "0.33.0",
     "axios": "^1.3.4",
     "ethers": "^6.2.3",
     "highlight.js": "^11.7.0",

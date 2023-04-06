@@ -1,4 +1,4 @@
-import { Component, createEffect } from 'solid-js';
+import { Component } from 'solid-js';
 import { useCourseContext } from '~/components/CourseCore/CourseContext';
 import { BasicOperationStore } from '~/content/courses/basic-operation/store';
 import { useToast } from '~/components/Toast/ToastContext';
@@ -18,10 +18,6 @@ const GenerateRawTXHash: Component = () => {
       }
     }
   };
-
-  createEffect(() => {
-    console.log(course.store.state.rawTXHash);
-  });
 
   return (
     <div class="not-prose py-4">
