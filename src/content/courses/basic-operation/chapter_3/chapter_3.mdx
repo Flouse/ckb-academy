@@ -9,24 +9,33 @@ import CheckBlock from "~/content/courses/basic-operation/chapter_3/CheckBlock.t
 import { WalletReady } from "~/content/components/WalletReady.tsx";
 
 # Send a Transaction
-Now, complete the transaction template below and manually fill in a transfer transaction.
 
-You can use the toolbox on the right side to find the live cells associated with your wallet, to view chain configuration information (so you can fill in cell_deps) and to convert hex to decimal, etc.
+Now, complete the transaction template below and manually fill in a transfer transaction. This is an exercise to practice completing a transfer transaction on your own.
+
+You can use the `toolbox on the right side` to find the live cells associated with your wallet, to view chain configuration information and to convert between hex and decimal, etc.
+
+### Fill in the transaction information
+
+> **Tip**: Since your live cells are protected by [Omnilock Script](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md), the `cellDeps` field should be filled with 2 deps, SECP256K1_BLAKE160 and OMNILOCK. You can find them in the `Chain Info` tool.
+
 <WalletReady>
   <GenerateRawTransaction />
 </WalletReady>
 
 After filling it out, click the Save button.
 
-You have filled in all the transaction information manually.
+### Generate the Transaction Hash
 
-Consequently, we are now able to generate a unique hash for the transaction, i.e., we can generate the tx_hash beforehand.
+You have filled in all the transaction information manually. Consequently, we are now able to generate a unique hash for the transaction, i.e., we can generate the `tx_hash` beforehand.
 
 To generate the transaction hash, click the button below.
 
 <WalletReady>
   <GenerateRawTXHash />
 </WalletReady>
+
+### Sign the Transaction
+
 The transaction used to generate the tx_hash is still a raw transaction. The witnesses fileld needs to be filled in with the signature of the transaction for the raw transaction to become a complete transaction structure.
 
 You can put any arguments or proofs you need in the witnesses field. As an array, the witnesses field can include multiple proofs. Because we are now building a built-in transfer transaction, the following structure must be placed in the first position of each set of witnesses:
@@ -52,18 +61,14 @@ To sign the transaction, we must generate a message.
 <WalletReady>
   <GenerateMessage />
 </WalletReady>
-<br />
-
-# Sign the Transaction
 
 Use MetaMask to sign a Transaction.
 
 <WalletReady>
   <SignTransaction />
 </WalletReady>
-<br />
 
-# Put the Signature Back into the Transaction
+### Put the Signature Back into the Transaction
 
 Enter the generated signature in the following box and click on the button to serialize witnessArgs:
 
@@ -76,9 +81,9 @@ It is now time to finalize the raw transaction by adding the serialized signatur
 <WalletReady>
   <UpdateRawTransaction />
 </WalletReady>
-<br />
 
-# Send the transaction back on-chain
+### Send the transaction back on-chain
+
 <WalletReady>
   <SendTransaction />
 </WalletReady>
@@ -94,8 +99,3 @@ You can now check if the transaction we just sent is actually on-chain using the
 </WalletReady>
 
 Congratulations, you have successfully completed the CKB basic hands-on course~
-
-
-
-
-
