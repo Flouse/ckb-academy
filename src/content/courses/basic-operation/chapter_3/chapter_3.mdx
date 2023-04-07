@@ -1,0 +1,101 @@
+import GenerateRawTransaction from "~/content/courses/basic-operation/chapter_3/GenerateRawTransaction.tsx";
+import GenerateRawTXHash from "~/content/courses/basic-operation/chapter_3/GenerateRawTXHash.tsx";
+import GenerateMessage from "~/content/courses/basic-operation/chapter_3/GenerateMessage.tsx";
+import SignTransaction from "~/content/courses/basic-operation/chapter_3/SignTransaction.tsx";
+import SerializeWitnesses from "~/content/courses/basic-operation/chapter_3/SerializeWitnesses.tsx";
+import UpdateRawTransaction from "~/content/courses/basic-operation/chapter_3/UpdateRawTransaction.tsx";
+import SendTransaction from "~/content/courses/basic-operation/chapter_3/SendTransaction.tsx";
+import CheckBlock from "~/content/courses/basic-operation/chapter_3/CheckBlock.tsx";
+import { WalletReady } from "~/content/components/WalletReady.tsx";
+
+# Send a Transaction
+Now, complete the transaction template below and manually fill in a transfer transaction.
+
+You can use the toolbox on the right side to find the live cells associated with your wallet, to view chain configuration information (so you can fill in cell_deps) and to convert hex to decimal, etc.
+<WalletReady>
+  <GenerateRawTransaction />
+</WalletReady>
+
+After filling it out, click the Save button.
+
+You have filled in all the transaction information manually.
+
+Consequently, we are now able to generate a unique hash for the transaction, i.e., we can generate the tx_hash beforehand.
+
+To generate the transaction hash, click the button below.
+
+<WalletReady>
+  <GenerateRawTXHash />
+</WalletReady>
+The transaction used to generate the tx_hash is still a raw transaction. The witnesses fileld needs to be filled in with the signature of the transaction for the raw transaction to become a complete transaction structure.
+
+You can put any arguments or proofs you need in the witnesses field. As an array, the witnesses field can include multiple proofs. Because we are now building a built-in transfer transaction, the following structure must be placed in the first position of each set of witnesses:
+
+``` json
+{
+  "lock": "Proof",
+  "input_type": "Proof",
+  "output_type": "Proof"
+}
+```
+
+This structure is called WitnessArgs. Different locks retrieve the required signature from different fields within WitnessArgs. The lock field contains the signature to be verified by the locks of input cells.
+
+In our case, this is the signature required by the SECP256K1_BLAKE160 algorithm for verification.
+
+The input_type and output_type fields contain the signatures to be verified by the type locks in inputs and outputs. Feel free to ignore them for now.
+
+> The process of signing is tedious. Here is more information: [How to sign transaction](https://github.com/nervosnetwork/ckb-system-scripts/wiki/How-to-sign-transaction)
+
+To sign the transaction, we must generate a message.
+
+<WalletReady>
+  <GenerateMessage />
+</WalletReady>
+<br />
+
+# Sign the Transaction
+
+Use MetaMask to sign a Transaction.
+
+<WalletReady>
+  <SignTransaction />
+</WalletReady>
+<br />
+
+# Put the Signature Back into the Transaction
+
+Enter the generated signature in the following box and click on the button to serialize witnessArgs:
+
+<WalletReady>
+  <SerializeWitnesses />
+</WalletReady>
+
+It is now time to finalize the raw transaction by adding the serialized signature to the witnesses field.
+
+<WalletReady>
+  <UpdateRawTransaction />
+</WalletReady>
+<br />
+
+# Send the transaction back on-chain
+<WalletReady>
+  <SendTransaction />
+</WalletReady>
+
+Note that, after the transaction has been successfully sent on-chain, the tx_hash returned is the same as the one generated beforehand.
+
+This is the certainty of CKB.
+
+You can now check if the transaction we just sent is actually on-chain using the button below. If tx_status is pending, it indicates that the transaction is still under verification. Just retry later.
+
+<WalletReady>
+  <CheckBlock />
+</WalletReady>
+
+Congratulations, you have successfully completed the CKB basic hands-on course~
+
+
+
+
+

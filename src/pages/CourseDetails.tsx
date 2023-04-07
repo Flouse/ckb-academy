@@ -5,6 +5,7 @@ import Index from '~/components/CourseCore/CourseExplorer';
 import { CourseProvider } from '~/components/CourseCore/CourseContext';
 import Loading from '~/components/Loading';
 import DataEmpty from '~/components/DataEmpty';
+import { WalletProvider } from '~/components/CKBCore/WalletProvider';
 
 const CourseDetails: Component<ParentProps> = () => {
   const { course, loading } = useRouteData<CourseDetailsData>();
@@ -28,9 +29,11 @@ const CourseDetails: Component<ParentProps> = () => {
             </div>
           }
         >
-          <CourseProvider course={course!}>
-            <Index />
-          </CourseProvider>
+          <WalletProvider>
+            <CourseProvider course={course!}>
+              <Index />
+            </CourseProvider>
+          </WalletProvider>
         </Show>
       </Show>
     </>

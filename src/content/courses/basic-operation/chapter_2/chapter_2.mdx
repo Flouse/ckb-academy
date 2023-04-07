@@ -1,0 +1,105 @@
+import Quote from "~/content/components/Quote.tsx";
+import { WalletReady } from "~/content/components/WalletReady.tsx";
+import InputSection from "~/content/courses/basic-operation/chapter_2/InputSection.tsx";
+import OutputSection from "~/content/courses/basic-operation/chapter_2/OutputSection.tsx";
+
+# What is Transaction?
+
+> A CKB transaction is nothing more than spending some existing live cells and creating some new ones.
+
+Because CKB is designed as “off-chain computing, on-chain verifying”, we can complete a transfer operation by constructing transactions manually.
+
+As long as we draw up the content of the transaction in advance (i.e., which cells will be spent and which new cells will be created), then we sign the transaction with the corresponding private key. Once the transaction is submitted to the chain, as long as it passes the verification and is signed in a validated manner, this transaction is completed and will be packaged.
+
+#### What does such a manual construction of a transaction mean?
+
+Here's an interesting story to help you understand.
+
+<Quote>
+  Imagine you have a friend who lives in an Amazon jungle isolated from everything but an offline computer.
+
+  When he returned from hunting one afternoon, he remembered he owed you some money. So he turned on the computer and
+  attempted to transfer 10,000 CKBs to you to settle his debt.
+
+  Although he was unable to access the internet, he wrote down the transaction details on paper, entered his private key
+  into the computer, calculated the appropriate signature, and attached his signature.
+
+  When a courier visited half a month later, he asked to send the paper to China by mail. That letter finally reached
+  you half a month after it was sent.
+
+  The message on the mail did specify the transaction of 10,000 CKBs to you. Then you decided to submit the transaction
+  to the CKB mainnet.
+
+  After the mainnet validated the attached signature, the transaction was complete and you now have 10,000 more CKBs in
+  your account. The debt was settled.
+
+  Despite low throughput and long latency, only 1 transaction per month, you and your Amazon jungle buddy have 
+  accomplished a nice “off-chain computing, on-chain verifying” workflow.
+</Quote>
+
+CKB offers tools helping deploying contracts, building transactions, transferring, etc.
+Nevertheless, we will continue with the Amazon jungle friend's method to construct a regular transfer transaction.
+
+By using hand-assembled transactions, you will gain a deeper understanding of how CKB cells work.
+
+We will use the JSON format to do this.
+
+## Transaction Input
+
+Here are 6 Live cell in your wallet. Simply `drag the cell to the box below` to see what the generated input looks like.
+
+<WalletReady>
+  <InputSection/>
+</WalletReady>
+
+The cell in inputs appears in previous_output which is imported as an outpoint composed of tx_hash and index, akin to an index, or a pointer to the cell, by which we can locate the cell to be spent.
+
+The since field in the inputs controls the time. Don't worry about it for now.
+
+Besides inputs, there is a field called cell_deps that indicates the dependency cells a transaction relies on. This field appears to be a out_point list.
+
+
+{/* TODO: I think we will use omni_lock, not SECP256K1_BLAKE160.
+see: https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md
+
+#### What are dependency cells? （TODO）
+
+In a regular transfer transaction, the lock script requires a fixed encryption algorithm, SECP256K1_BLAKE160, a built-in smart contract. The encryption algorithm code is kept in a cell and must be referenced in cell_deps, so that CKB-VM knows where to import it for calculation.
+
+With the `testnet configuration` information from the previous chapter, it is easy to find the parameters that need to be passed in cell_deps.
+*/}
+
+
+## Transaction Output
+
+The next step is to use another tool to see how the output is generated and how the entire transaction looks.
+
+Again, drag the cell to `Input`.
+
+A new cell of an identical size will be automatically generated in `OUTPUT`.
+
+Click the `⚙` Setting button in `OUTPUT` to reassign the newly generated cells. This includes specifying how many cells to generate, the size and the unlock address of each cell, and so on.
+
+The outputs must have less capacity than the inputs, and the gap is the fee to reward miners.
+
+To view the transaction JSON, click `Generate the Transaction` once you've set it up.
+
+
+<WalletReady>
+  <OutputSection/>
+</WalletReady>
+
+The outputs of the transaction have all the information about the newly generated cell, including its capacity, lock script, etc.
+
+Cells in the outputs do not specify data information; the data is located in the outputs_data field, which corresponds to the cells in the outputs accordingly. This is designed for performance optimization.
+
+A full transaction also contains fields such as version and header_deps. The version field indicates the version, which is currently set to 0x0, while the header_deps field is null.
+
+
+## Sign a Transaction
+
+Once a transaction has been assembled, it must be signed by the corresponding private key. The private key indicates that the cells belong to you and you can operate on them.
+
+Afterward, the signature will be put into a new field called `witnesses`, which serves as proof of the transaction.
+
+It is now clear how a transaction works. Let's move on to constructing a transfer transaction manually.

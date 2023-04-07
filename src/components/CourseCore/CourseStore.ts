@@ -1,6 +1,6 @@
 import { CourseStore } from '~/types/course';
 import { createStore } from 'solid-js/store';
-import { SetStoreFunction, Store } from 'solid-js/store/types/store';
+import { SetStoreFunction, Store, StoreSetter } from 'solid-js/store/types/store';
 
 export abstract class CourseStoreBase<T extends object> implements CourseStore<T> {
   private readonly store: Store<T>;
@@ -18,8 +18,8 @@ export abstract class CourseStoreBase<T extends object> implements CourseStore<T
     return this.store;
   }
 
-  setState(state: T) {
-    this.setState(state);
+  updateState(setter: StoreSetter<T, []>) {
+    this.storeSet(setter);
   }
 }
 

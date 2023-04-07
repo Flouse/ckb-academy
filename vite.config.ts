@@ -14,4 +14,7 @@ export default defineConfig({
     }),
     solid({ ssr: false, extensions: ['.mdx', '.md'] }),
   ],
+  ssr: {
+    external: ['monaco-editor'],
+  },
 });

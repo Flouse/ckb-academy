@@ -31,8 +31,7 @@
     content: '';
   }
 
-  :where(blockquote):not(:where([class~="not-prose"] *)){
-    @apply border-light-border dark:border-dark-border
+  :where(blockquote):not(:where([class~='not-prose'] *)) {
+    @apply border-light-border dark:border-dark-border;
   }
-
 }

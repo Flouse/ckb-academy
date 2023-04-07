@@ -15,7 +15,6 @@ import '~/assets/css/root.css';
 import { routes } from '~/routes';
 import Header from '~/components/Header';
 import { AppContextProvider } from '~/AppContext';
-import { StudentProvider } from '~/components/Student/StudentContext';
 import ToastProvider from '~/components/Toast/ToastContext';
 
 export default function Root() {
@@ -23,25 +22,23 @@ export default function Root() {
   return (
     <ToastProvider>
       <AppContextProvider>
-        <StudentProvider>
-          <Html lang="en">
-            <Head>
-              <Link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" />
-              <Title>CKB Academy</Title>
-              <Meta charset="utf-8" />
-              <Meta name="viewport" content="width=device-width, initial-scale=1" />
-            </Head>
-            <Body>
-              <ErrorBoundary>
-                <Header />
-                <Suspense>
-                  <Routes />
-                </Suspense>
-              </ErrorBoundary>
-              <Scripts />
-            </Body>
-          </Html>
-        </StudentProvider>
+        <Html lang="en">
+          <Head>
+            <Link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" />
+            <Title>CKB Academy</Title>
+            <Meta charset="utf-8" />
+            <Meta name="viewport" content="width=device-width, initial-scale=1" />
+          </Head>
+          <Body>
+            <ErrorBoundary>
+              <Header />
+              <Suspense>
+                <Routes />
+              </Suspense>
+            </ErrorBoundary>
+            <Scripts />
+          </Body>
+        </Html>
       </AppContextProvider>
     </ToastProvider>
   );
