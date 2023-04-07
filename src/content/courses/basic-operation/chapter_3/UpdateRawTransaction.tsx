@@ -2,8 +2,8 @@ import { Component, createEffect, createSignal } from 'solid-js';
 import { useCourseContext } from '~/components/CourseCore/CourseContext';
 import { BasicOperationStore } from '~/content/courses/basic-operation/store';
 import { useToast } from '~/components/Toast/ToastContext';
-import CodeEditor from '~/components/CodeEditor/CodeEditor';
 import { Transaction } from '@ckb-lumos/lumos';
+import CodeEditor from '~/components/CodeEditor';
 
 const UpdateRawTransaction: Component = () => {
   const [code, setCode] = createSignal<string>('');

@@ -31,7 +31,7 @@ window.MonacoEnvironment = {
   },
 };
 
-type CodeEditorOption = {
+export type CodeEditorOption = {
   value: string;
   onChange: (value: string) => void;
   class?: string;
