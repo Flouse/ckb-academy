@@ -13,7 +13,7 @@ const basicOperation: Course = {
   source: CourseSource.Local,
   updateTime: '2023/03/28',
   description:
-    'Better understand the previous theory by getting some hands-on experience of CKB blockchain.',
+    'Get a better understanding of the previous theory by getting some hands-on experience with CKB blockchain. In this lesson, you will manually construct a transaction and send it to CKB testnet.',
   chapters: [
     {
       id: 'chapter_1',
