@@ -94,6 +94,11 @@ export const CodeEditor: Component<CodeEditorOption> = (props) => {
     });
   });
 
+  createEffect(() => {
+    editor()?.updateOptions(others);
+    editor()?.setValue(others.value);
+  });
+
   onCleanup(() => {
     editor()?.dispose();
   });
