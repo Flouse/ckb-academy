@@ -68,7 +68,7 @@ const Course: Component = () => {
             )}
           </For>
         </div>
-        <p class="text-sm text-light-tertiary dark:text-dark-tertiary mt-6 max-w-2xl">
+        <p class="text-xs text-light-tertiary dark:text-dark-tertiary mt-6 max-w-xl min-h-[40px]">
           {featureDescription()}
         </p>
         <a href="/courses" class="button-primary button-lg mt-10">
