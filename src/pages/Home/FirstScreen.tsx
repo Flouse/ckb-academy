@@ -2,14 +2,10 @@ import { Motion } from '@motionone/solid';
 import { spring } from 'motion';
 import { Component } from 'solid-js';
 import { useI18n } from '@solid-primitives/i18n';
+import { NavLink } from '@solidjs/router';
 
 const FirstScreen: Component = () => {
   const [tr] = useI18n();
-
-  const toAboutCourse = () => {
-    const anchor = document.getElementById('about-course');
-    anchor && anchor.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
-  };
 
   return (
     <section
@@ -29,12 +25,12 @@ const FirstScreen: Component = () => {
             <h4 class="text-7xl mb-12 font-bold">{tr('home.first_screen.heading')}</h4>
             <p class="text-3xl mb-2 font-medium">{tr('home.first_screen.sub_heading')}</p>
             <p class="text-3xl mb-10 font-medium">{tr('home.first_screen.sub_heading_modifier')}</p>
-            <span
-              onClick={toAboutCourse}
+            <NavLink
+              href="/courses"
               class="button-basic button-xl bg-gradient-primary hover:opacity-80 text-white font-bold"
             >
               {tr('home.first_screen.button_text')}
-            </span>
+            </NavLink>
           </Motion>
         </div>
       </div>

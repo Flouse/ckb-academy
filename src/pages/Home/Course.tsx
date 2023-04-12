@@ -1,10 +1,8 @@
 import { Component, createMemo, createSignal, For, JSX, useContext } from 'solid-js';
 import { BiSolidAward, BiSolidJoystick, BiSolidPointer } from 'solid-icons/bi';
-import { Motion } from '@motionone/solid';
-
-import { spring } from 'motion';
 import { useI18n } from '@solid-primitives/i18n';
 import { AppContext } from '~/AppContext';
+import { NavLink } from '@solidjs/router';
 
 interface Feature {
   title: string;
@@ -42,16 +40,8 @@ const Course: Component = () => {
   });
 
   return (
-    <section id="about-course" class="container flex flex-col mx-auto relative">
-      <Motion.div
-        animate={{ x: [-100, 0], opacity: [0, 1] }}
-        transition={{
-          delay: 0.5,
-          duration: 0.5,
-          easing: spring(),
-        }}
-        class="flex flex-col py-36 relative"
-      >
+    <section class="container flex items-center flex-col lg:flex-row mx-auto overflow-hidden">
+      <div class="flex flex-col items-center lg:items-start lg:text-start text-center  flex-none py-0 pb-20 lg:py-20 order-last lg:order-first">
         <p class="text-7xl mb-6 font-bold text-light-headline dark:text-dark-headline">
           {tr('home.course.heading')}
         </p>
@@ -76,26 +66,16 @@ const Course: Component = () => {
             )}
           </For>
         </div>
-
-        <p class="text-sm text-light-tertiary dark:text-dark-tertiary mt-6 max-w-2xl">
+        <p class="text-base text-light-tertiary dark:text-dark-tertiary mt-6 max-w-xl min-h-[80px]">
           {featureDescription()}
         </p>
-        <a href="/courses" class="button-primary button-lg mt-10">
+        <NavLink href="/courses" class="button-primary button-lg mt-10">
           {tr('home.course.button_start')}
-        </a>
-
-        <Motion.img
-          alt=""
-          src={`/images/worktable${context.isDark ? '-dark' : ''}.png`}
-          class="absolute lg:w-[1000px] -top-20 lg:-right-40 -z-10"
-          animate={{ y: [100, 0], opacity: [0, 1] }}
-          transition={{
-            delay: 0.8,
-            duration: 1,
-            easing: spring(),
-          }}
-        />
-      </Motion.div>
+        </NavLink>
+      </div>
+      <div class="flex-auto">
+        <img src={`/images/worktable${context.isDark ? '-dark' : ''}.png`} />
+      </div>
     </section>
   );
 };
