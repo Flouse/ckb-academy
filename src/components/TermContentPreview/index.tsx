@@ -22,7 +22,7 @@ const TermContentPreview: ParentComponent<Props> = (props) => {
           const content = await term.content();
           return { content: content.default, to: term.to };
         } catch (e) {
-          throw Error('Glossary error');
+          throw Error('Fetch data error');
         }
       }
     },
@@ -51,7 +51,7 @@ const TermContentPreview: ParentComponent<Props> = (props) => {
             <BiRegularBookmarks class="mr-1" />
             {props.children}
           </div>
-          <div class="mx-6">
+          <div class="mx-6 my-4">
             <Suspense fallback="Loading...">
               <Show when={res.error === undefined} keyed fallback="Unable to display content">
                 <article class="term-content">{res()?.content}</article>
