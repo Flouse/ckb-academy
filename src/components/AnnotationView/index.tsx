@@ -3,12 +3,13 @@ import HoverCard from '~/components/HoverCard';
 import './index.css';
 import { BiRegularBookmarks } from 'solid-icons/bi';
 import { useNavigate } from '@solidjs/router';
+import { keywordAnnotationList } from '~/content/keyword-annotation';
 
 interface Props {
   id: string;
 }
 
-const TermContentPreview: ParentComponent<Props> = (props) => {
+const AnnotationView: ParentComponent<Props> = (props) => {
   const [open, setOpen] = createSignal(false);
   const go = useNavigate();
   const [res] = createResource(
@@ -16,11 +17,11 @@ const TermContentPreview: ParentComponent<Props> = (props) => {
     async (open) => {
       if (open) {
         try {
-          const { terms } = await import('~/content/terms');
+          const { keywordAnnotationList } = await import('~/content/keyword-annotation');
           const key = (props.id ?? props.children).toLowerCase();
-          const term = terms[key];
-          const content = await term.content();
-          return { content: content.default, to: term.to };
+          const annotation = keywordAnnotationList[key];
+          const content = await annotation.content();
+          return { content: content.default, url: annotation.url };
         } catch (e) {
           throw Error('Fetch data error');
         }
@@ -29,7 +30,7 @@ const TermContentPreview: ParentComponent<Props> = (props) => {
   );
 
   const jumpUrl = () => {
-    const url = res()?.to;
+    const url = res()?.url;
     if (url === undefined) return;
     if (url.startsWith('http')) {
       window.open(url);
@@ -42,7 +43,7 @@ const TermContentPreview: ParentComponent<Props> = (props) => {
     <HoverCard
       arrowSize={12}
       positioning={{ gutter: 2 }}
-      class="term-content-preview"
+      class="annotation-view"
       onOpenChange={(open) => setOpen(open)}
       arrow={true}
       content={
@@ -54,7 +55,7 @@ const TermContentPreview: ParentComponent<Props> = (props) => {
           <div class="mx-6 my-4">
             <Suspense fallback="Loading...">
               <Show when={res.error === undefined} keyed fallback="Unable to display content">
-                <article class="term-content">{res()?.content}</article>
+                <article class="annotation-content">{res()?.content}</article>
               </Show>
             </Suspense>
           </div>
@@ -71,4 +72,4 @@ const TermContentPreview: ParentComponent<Props> = (props) => {
   );
 };
 
-export default TermContentPreview;
+export default AnnotationView;

@@ -1,4 +1,4 @@
-import { Component } from 'solid-js';
+import { Component, JSX } from 'solid-js';
 import { MDXComponent } from 'solid-mdx/client';
 import { TranslateResource } from '~/types';
 
@@ -48,4 +48,12 @@ export interface CourseChapter {
   article: () => Promise<{ default: MDXComponent }>;
   titleTranslate?: TranslateResource<string>;
   articleTranslate?: TranslateResource<Component>;
+}
+
+export type AnnotationContent = () => Promise<{ default: JSX.Element }>;
+
+export interface Annotation {
+  url?: string;
+  content: AnnotationContent;
+  contentTranslate?: TranslateResource<AnnotationContent>;
 }

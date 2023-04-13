@@ -13,7 +13,7 @@ import Catalogue from '~/components/CourseCore/CourseExplorer/Catalogue';
 import ToolBox from '~/components/CourseCore/CourseExplorer/ToolBox';
 import Header from '~/components/CourseCore/CourseExplorer/Header';
 import Tooltip from '~/components/Tooltip';
-import TermContentPreview from '~/components/TermContentPreview';
+import AnnotationView from '~/components/AnnotationView';
 
 const Index: Component = () => {
   const context = useCourseContext();
@@ -93,7 +93,7 @@ const Index: Component = () => {
                             components: {
                               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                               // @ts-ignore
-                              term: (props) => <TermContentPreview {...props} />,
+                              term: (props) => <AnnotationView {...props} />,
                             },
                           })}
                         </article>

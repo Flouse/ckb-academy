@@ -1,6 +1,6 @@
 @import url(../../assets/css/markdown.css);
 
-.term-content-preview {
+.annotation-view {
     @apply rounded-xl border-light-border dark:border-dark-border border p-0;
 
     .hover-card-arrow {
@@ -10,7 +10,7 @@
 }
 
 
-.term-content {
+.annotation-content {
     @apply markdown;
     @apply text-sm prose-p:my-4 !important;
 
