@@ -2,6 +2,7 @@ import { createMemo, createUniqueId, JSX, ParentComponent, Show } from 'solid-js
 import { Portal } from 'solid-js/web';
 import * as hoverCard from '@zag-js/hover-card';
 import { normalizeProps, useMachine } from '@zag-js/solid';
+import { PositioningOptions } from '@zag-js/popper';
 
 interface HoverCardProps {
   content: JSX.Element | ((close?: () => void) => JSX.Element);
@@ -12,11 +13,13 @@ interface HoverCardProps {
   closeDelay?: number;
   defaultOpen?: boolean;
   onOpenChange?: (changed: boolean) => void;
+  positioning?: PositioningOptions;
 }
 
 const HoverCard: ParentComponent<HoverCardProps> = (props) => {
   const [state, send] = useMachine(
     hoverCard.machine({
+      positioning: props.positioning,
       id: createUniqueId(),
       openDelay: props.openDelay ?? 100,
       defaultOpen: props.defaultOpen,
@@ -32,7 +35,9 @@ const HoverCard: ParentComponent<HoverCardProps> = (props) => {
   });
   return (
     <>
-      <div {...api().triggerProps}>{props.children}</div>
+      <div class="inline-block" {...api().triggerProps}>
+        {props.children}
+      </div>
       <Show when={api().isOpen}>
         <Portal>
           <div
@@ -46,7 +51,7 @@ const HoverCard: ParentComponent<HoverCardProps> = (props) => {
                   <div
                     {...api().arrowTipProps}
                     data-part="arrow"
-                    class="data-[part=arrow]:!bg-light-background data-[part=arrow]:dark:!bg-dark-background"
+                    class="hover-card-arrow data-[part=arrow]:!bg-light-background data-[part=arrow]:dark:!bg-dark-background"
                   />
                 </div>
               </Show>

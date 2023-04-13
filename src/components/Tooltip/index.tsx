@@ -29,7 +29,7 @@ const Tooltip: ParentComponent<Props> = (props) => {
 
   const api = createMemo(() => tooltip.connect(state, send, normalizeProps));
   return (
-    <div>
+    <>
       <button {...api().triggerProps}>{props.children}</button>
       <Show when={api().isOpen}>
         <Portal>
@@ -46,7 +46,7 @@ const Tooltip: ParentComponent<Props> = (props) => {
           </div>
         </Portal>
       </Show>
-    </div>
+    </>
   );
 };
 

@@ -7,12 +7,13 @@ import {
 } from 'solid-icons/fa';
 import { useNavigate } from '@solidjs/router';
 import { Portal } from 'solid-js/web';
-import '~/assets/css/mrakdown.css';
+import '~/assets/css/markdown.css';
 import '~/assets/css/github-code.css';
 import Catalogue from '~/components/CourseCore/CourseExplorer/Catalogue';
 import ToolBox from '~/components/CourseCore/CourseExplorer/ToolBox';
 import Header from '~/components/CourseCore/CourseExplorer/Header';
 import Tooltip from '~/components/Tooltip';
+import TermContentPreview from '~/components/TermContentPreview';
 
 const Index: Component = () => {
   const context = useCourseContext();
@@ -87,7 +88,15 @@ const Index: Component = () => {
                           'max-w-none': articleLooseLayout(),
                         }}
                       >
-                        <article class="markdown">{context.article?.()?.({})}</article>
+                        <article class="markdown">
+                          {context.article?.()?.({
+                            components: {
+                              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                              // @ts-ignore
+                              term: (props) => <TermContentPreview {...props} />,
+                            },
+                          })}
+                        </article>
                         <Show when={context.isUnderWayChapter()} keyed>
                           <div class="pt-8 mt-8 border-t border-light-border dark:border-dark-border flex">
                             <button
