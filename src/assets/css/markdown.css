@@ -2,7 +2,7 @@
   @apply prose dark:prose-invert max-w-none text-light-secondary dark:text-dark-secondary;
   @apply prose-pre:bg-light-tertiary/10 prose-pre:dark:bg-black/50;
   @apply prose-pre:text-light-secondary prose-pre:dark:text-dark-secondary;
-  @apply prose-code:before:content-none prose-code:after:content-none;
+  @apply prose-code:before:content-none prose-code:after:content-none prose-code:text-light-secondary prose-code:dark:text-dark-secondary;
   @apply prose-blockquote:before:content-none;
   @apply prose-h1:border-b prose-h1:border-light-border dark:prose-h1:border-dark-border prose-h1:pb-4 prose-h1:text-3xl;
 
@@ -12,7 +12,7 @@
   h4,
   h5,
   h6 {
-    @apply text-light-headline dark:text-dark-headline;
+    @apply text-light-secondary dark:text-dark-secondary;
   }
 
   :where(code):not(:where([class~='not-prose'] *)) {
