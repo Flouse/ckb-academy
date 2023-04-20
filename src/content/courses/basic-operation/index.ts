@@ -1,12 +1,10 @@
 import { Course, CourseSource, CourseType } from '~/types/course';
 import { BasicOperationStore } from '~/content/courses/basic-operation/store';
+import { contributorsData } from '~/data/contributors.data';
 
 const basicOperation: Course = {
   id: 'basic-operation',
-  author: [
-    { name: 'RetricSu', avatar: 'https://avatars.githubusercontent.com/u/23436060?v=4' },
-    { name: 'Jason', avatar: 'https://avatars.githubusercontent.com/u/124339951?v=4' },
-  ],
+  author: [contributorsData.RetricSu, contributorsData.Jason],
   name: 'CKB basic practical operation',
   coverPicture: '/images/course/lesson2.png',
   type: CourseType.Interactive,

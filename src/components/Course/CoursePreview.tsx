@@ -56,9 +56,14 @@ const CoursePreview: Component<Props> = (props) => {
               />
 
               <div class="px-8 py-6">
-                <h6 class="text-2xl font-bold text-light-headline dark:text-dark-headline">
+                <h1 class="text-2xl font-bold text-light-headline dark:text-dark-headline">
                   {props.course?.name}
-                </h6>
+                </h1>
+                <Show when={props.course?.subtitle} keyed>
+                  <h2 class="text-lg font-bold text-light-headline dark:text-dark-headline">
+                    {props.course?.subtitle}
+                  </h2>
+                </Show>
                 <div class="flex font-medium items-center space-x-6 mt-2">
                   <div>Source: {source[props.course!.source]}</div>
                   <div class="flex items-center">
@@ -66,7 +71,9 @@ const CoursePreview: Component<Props> = (props) => {
                     {props.course?.updateTime}
                   </div>
                 </div>
-                <p class="mt-2">{props.course?.description}</p>
+                <div class="mt-2 space-y-2 text-light-tertiary dark:text-dark-tertiary">
+                  {props.course?.description}
+                </div>
                 <div class="flex-auto flex items-center  mt-6 font-medium space-x-1.5">
                   <Show when={props.course?.author} keyed>
                     <For each={props.course?.author}>
