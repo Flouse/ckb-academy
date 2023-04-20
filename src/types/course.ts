@@ -1,11 +1,6 @@
 import { Component, JSX } from 'solid-js';
 import { MDXComponent } from 'solid-mdx/client';
-import { TranslateResource } from '~/types';
-
-export interface CourseAuthor {
-  name: string;
-  avatar?: string;
-}
+import { Contributor, TranslateResource } from '~/types';
 
 export enum CourseType {
   Interactive,
@@ -21,8 +16,9 @@ export enum CourseSource {
 export interface Course {
   id: string;
   name: string;
-  description: string;
-  author: CourseAuthor[];
+  subtitle?: string;
+  description: (() => JSX.Element) | string;
+  author: Contributor[];
   type: CourseType;
   source: CourseSource;
   updateTime: string;

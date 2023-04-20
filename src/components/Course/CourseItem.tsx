@@ -1,4 +1,4 @@
-import { Component, JSX } from 'solid-js';
+import { Component, JSX, Show } from 'solid-js';
 import { Course, CourseType } from '~/types/course';
 import { BiSolidDetail, BiSolidJoystick, BiSolidVideos } from 'solid-icons/bi';
 
@@ -36,10 +36,17 @@ const CourseItem: Component<Props> = (props) => {
         style={{ 'background-image': `url(${props.course.coverPicture || ''})` }}
       />
       <div class="px-8 py-6 flex-auto">
-        <h1 class="text-lg font-bold text-light-headline dark:text-dark-headline mb-2">
+        <h1 class="text-lg font-bold text-light-headline dark:text-dark-headline">
           {props.course.name}
         </h1>
-        <p class="line-clamp-2 text-sm">{props.course.description}</p>
+        <Show when={props.course.subtitle} keyed>
+          <h1 class="font-bold text-light-headline dark:text-dark-headline">
+            {props.course.subtitle}
+          </h1>
+        </Show>
+        <div class="line-clamp-2 text-sm mt-2 text-light-tertiary dark:text-dark-tertiary">
+          {props.course.description}
+        </div>
       </div>
     </div>
   );

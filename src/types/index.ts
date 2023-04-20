@@ -1,5 +1,9 @@
 import { LangsEnum } from '~/common/constants/site-basic';
 
+export interface Contributor {
+  name: string;
+  avatar?: string;
+}
 export interface BaseLink {
   title: string;
   to: string;
