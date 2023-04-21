@@ -77,7 +77,7 @@ export const archives: Array<Archive> = [
     id: '93c11336ddd42c23',
     title: 'ZKPodcast: Testing PoW Consensus Algorithm Security with Ren Zhang from Nervos',
     description:
-      'A podcast session hosted by ZKPoscast where Dr. Zhang Ren chats about an earlier work he did on evaluating PoW consensus protocol security and explore his more recent work on NC-Max.',
+      'A podcast session hosted by ZKPoscast where Dr. Ren Zhang talked about his earlier work on evaluating the security of PoW consensus protocols and NC-Max.',
     category: ArchiveCategory.Video,
     cover: '/images/archive-covers/consensus.png',
     author: [contributorsData.NervosNetwork],
