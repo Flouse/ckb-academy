@@ -3,6 +3,7 @@ import { lazy } from 'solid-js';
 import { HomeData } from '~/pages/Home/Home.data';
 import { CourseData } from '~/pages/Course.data';
 import { CourseDetailsData } from '~/pages/CourseDetails.data';
+import { LibraryData } from '~/pages/Library.data';
 
 export const routes: RouteDefinition[] = [
   {
@@ -21,15 +22,12 @@ export const routes: RouteDefinition[] = [
     data: CourseDetailsData,
   },
   {
-    path: '/library/*',
+    path: '/library',
     component: lazy(() => import('./pages/Library')),
+    data: LibraryData,
   },
   {
     path: '/playground',
     component: lazy(() => import('./pages/Playground')),
-  },
-  {
-    path: '/archive',
-    component: lazy(() => import('./pages/Archive')),
   },
 ];

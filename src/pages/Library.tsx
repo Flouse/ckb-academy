@@ -1,65 +1,56 @@
-import { Component, For, ParentProps } from 'solid-js';
-import { A } from 'solid-start';
-import { Motion } from '@motionone/solid';
-import { useI18n } from '@solid-primitives/i18n';
-import { BaseLink } from '~/types/index';
+import { Component, For, ParentProps, Show } from 'solid-js';
+import { useRouteData } from '@solidjs/router';
+import { LibraryData } from '~/pages/Library.data';
+import Loading from '~/components/Loading';
+import DataEmpty from '~/components/DataEmpty';
+import ArchiveFiltersBar from '~/components/Library/ArchiveFiltersBar';
+import ArchiveCard from '~/components/Library/ArchiveCard';
 
 const Library: Component<ParentProps> = () => {
-  const [tr] = useI18n();
-  const docLinks: BaseLink[] = [
-    {
-      title: 'Nervos CKB Offical Docs',
-      to: 'https://docs.nervos.org/',
-    },
-    {
-      title: 'Nervos Network RFCs',
-      to: 'https://github.com/nervosnetwork/rfcs',
-    },
-    // {
-    //   title: 'The first intimate contact with CKB',
-    //   to: 'https://zero2ckb.ckbapp.dev/learn',
-    // },
-  ];
+  const data = useRouteData<LibraryData>();
 
   return (
-    <div
-      class="bg-auto bg-bottom"
-      style={{ 'background-image': 'url(/images/bg-library-page.jpg)' }}
-    >
-      <div class="backdrop-blur-sm backdrop-brightness-50 min-h-container  w-full-z-10">
-        <Motion.div
-          animate={{ x: [-100, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.5, easing: 'ease-in-out' }}
-          class=" container mx-auto pt-36 flex flex-col justify-center text-white/90"
-        >
-          <h1 class="text-8xl font-bold">{tr('library.notice')}</h1>
-          <h4 class="text-4xl mt-6">{tr('library.notice-description')}</h4>
-          <p class="text-2xl mt-12">{tr('library.doc-guide')}</p>
-          <nav class="flex space-y-8 lg:space-y-0 lg:space-x-8 mt-6 flex-col lg:flex-row">
-            <For each={docLinks}>
-              {(item) => (
-                <A
-                  href={item.to}
-                  target="_blank"
-                  class="button-white-hover-solid button-lg hover:text-light-headline w-auto lg:w-max"
-                >
-                  {item.title}
-                </A>
-              )}
-            </For>
-          </nav>
-          <div class="font-normal mt-20">
-            <p class="mb-1">{tr('library.help-us')}</p>
-            <A
-              href="https://github.com/Flouse/ckb-school-site"
-              class="underline text-white decoration-wavy underline-offset-4"
+    <>
+      <div
+        class="min-h-container bg-[_1300px] bg-fixed bg-repeat-x bg-[center_22rem]"
+        style={{ 'background-image': 'url(/images/logo-big.png)' }}
+      >
+        <ArchiveFiltersBar
+          filters={data.archiveFilters}
+          onFilterResult={(result) => (data.archiveFilters = result)}
+        />
+
+        <div class="container mx-auto">
+          <Show
+            when={!data.archives.loading}
+            keyed
+            fallback={
+              <div class="pt-36">
+                <Loading />
+              </div>
+            }
+          >
+            <Show
+              when={(data.archives() ?? []).length > 0}
+              keyed
+              fallback={
+                <div class="pt-36">
+                  <DataEmpty />
+                </div>
+              }
             >
-              {tr('library.to-github')}
-            </A>
-          </div>
-        </Motion.div>
+              <div class="flex flex-wrap gap-x-20 gap-y-10 pb-24">
+                <For each={data.archives()}>
+                  {(archive) => (
+                    <ArchiveCard archive={archive} onSelect={(item) => window.open(item.url)} />
+                  )}
+                </For>
+              </div>
+            </Show>
+          </Show>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Library;

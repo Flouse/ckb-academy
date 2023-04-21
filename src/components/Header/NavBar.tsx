@@ -30,8 +30,8 @@ const NavBar: Component<Props> = (props) => {
       to: '/playground',
     },
     // {
-    //   title: tr('global.nav.archive', {}, 'Archive'),
-    //   to: '/archive',
+    //   title: tr('global.nav.archive-covers', {}, 'Archive'),
+    //   to: '/archive-covers',
     // },
     {
       title: 'Github',
