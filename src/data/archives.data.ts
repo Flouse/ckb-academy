@@ -15,7 +15,7 @@ export const archives: Array<Archive> = [
   {
     id: '8435be4e3354b78e',
     title: 'Nervos Network RFCs',
-    description: 'This is proposals, standards, and documentation related to the Nervos Network.',
+    description: 'This is a set of proposals, standards, and documentation related to Nervos Network.',
     recommended: true,
     cover: '/images/archive-covers/ckb-rfcs.png',
     category: ArchiveCategory.Article,
