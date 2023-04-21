@@ -45,7 +45,7 @@ export const archives: Array<Archive> = [
 
   {
     id: '01ad7c82aef1f0b9',
-    title: 'Breaking the Security-Performance Tradeoff in Nakamoto Consensu',
+    title: 'Breaking the Security-Performance Tradeoff in Nakamoto Consensus',
     description:
       'An extended presentation by Dr. Ren Zhang elaborates on the innovative features of NC-Max',
     category: ArchiveCategory.Video,
