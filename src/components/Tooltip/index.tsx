@@ -1,4 +1,4 @@
-import { createMemo, createUniqueId, ParentComponent, Show } from 'solid-js';
+import { createMemo, createUniqueId, JSX, ParentComponent, Show } from 'solid-js';
 import * as tooltip from '@zag-js/tooltip';
 import { normalizeProps, useMachine } from '@zag-js/solid';
 import './index.css';
@@ -6,7 +6,8 @@ import { Placement } from '@zag-js/toast/dist/toast.types';
 import { Portal } from 'solid-js/web';
 
 interface Props {
-  content: string;
+  content: JSX.Element;
+  class?: string;
   openDelay?: number;
   closeDelay?: number;
   placement?: Placement;
@@ -40,6 +41,9 @@ const Tooltip: ParentComponent<Props> = (props) => {
             <div
               {...api().contentProps}
               class="bg-black dark:bg-white text-xs text-white dark:text-black rounded-md px-2 py-1"
+              classList={{
+                [`${props.class ?? ''}`]: props.class != undefined,
+              }}
             >
               {props.content}
             </div>
