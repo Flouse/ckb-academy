@@ -41,7 +41,7 @@ The transaction used to generate the tx_hash is still a raw transaction. The `wi
 You can put any arguments or proofs you need in the witnesses field. The transaction witness data is used to provide additional arguments or data, such as signatures.
 As an array, the witnesses field can include multiple proofs, each one following the structure as:
 
-```js
+``` js
 table WitnessArgs {
   lock:          BytesOpt, // Lock Script args, which holds the lock-script-related arguments or data
   input_type:    BytesOpt, // Type Script args for input (optional)
@@ -82,10 +82,9 @@ Third, put the signature back into the transaction. Enter the generated signatur
 
 Now it is time to finalize the raw transaction by adding the serialized signature to the witnesses field.
 
-{/_
+{/*
 TODO: Is it possible to copy UpdateRawTransaction.transactionInfo from GenerateRawTransaction
-_/}
-
+*/}
 <WalletReady>
   <UpdateRawTransaction />
 </WalletReady>

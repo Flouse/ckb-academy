@@ -1,8 +1,9 @@
-import { ConnectWallet } from '~/content/courses/basic-operation/chapter_1/ConnectWallet.tsx';
-import { CellsSection } from '~/content/courses/basic-operation/chapter_1/CellsSection.tsx';
-import { BlocksSection } from '~/content/courses/basic-operation/chapter_1/BlocksSection.tsx';
-import { TestnetConfigSection } from '~/content/courses/basic-operation/chapter_1/TestnetConfigSection.tsx';
-import { WalletReady } from '~/content/components/WalletReady.tsx';
+import { ConnectWallet } from "~/content/courses/basic-operation/chapter_1/ConnectWallet.tsx";
+import { CellsSection } from "~/content/courses/basic-operation/chapter_1/CellsSection.tsx";
+import { BlocksSection } from "~/content/courses/basic-operation/chapter_1/BlocksSection.tsx";
+import { TestnetConfigSection } from "~/content/courses/basic-operation/chapter_1/TestnetConfigSection.tsx";
+import { WalletReady } from "~/content/components/WalletReady.tsx";
+
 
 # Connect wallet
 
@@ -15,14 +16,13 @@ Throughout the practical operation course, we will use [CKB testnet](https://pud
 <br />
 
 # Live Cells
-
 The live cells you currently own will be displayed below. If the data cannot be displayed properly, please click 'Fetch Cells' to retrieve the live cell list again.
-
 > When you first connect your wallet, the 10 Live Cells assigned to you will have a 10-second delay. Please click the `Fetch Cells` button to refresh your cell list.
 
 <WalletReady>
   <CellsSection />
 </WalletReady>
+
 
 Click on any of the cells above, and you will see detailed information in JSON format.
 
@@ -39,11 +39,13 @@ Each square below represents a block, displaying the latest nine blocks on the C
   <BlocksSection />
 </WalletReady>
 
-When you click on any of the transactions, you will see detailed information in JSON format. You may notice that a real transaction is slightly different from the structure we learned in the theory classes. To be precise, it has become more complex, but it's still graspable if you remember the structure: `input => output`
+When you click on any of the transactions, you will see detailed information in JSON format. You may notice that a real transaction is slightly different from the structure we learned in the theory classes. To be precise, it has become more complex, but it's still graspable if you remember the structure:  `input => output`
 
 If you don't understand what's going on in all these fields for the moment, don't worry, we'll later break it down one by one.
 
-<br /># Testnet Chain It is also important to know the configuration information of this test chain.
+<br />
+# Testnet Chain
+It is also important to know the configuration information of this test chain.
 
 <WalletReady>
   <TestnetConfigSection />
@@ -60,6 +62,5 @@ Several built-in smart contracts was pre-deployed in CKB testnet's genesis block
 - DAO: NervosDAO contract. Feel free to ignore it if you don't understand.
 
 ---
-
 Well, that's all the information we need to know now.
 In the next section, we will begin to understand the most important components of a transaction.

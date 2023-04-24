@@ -1,7 +1,7 @@
-import Quote from '~/content/components/Quote.tsx';
-import { WalletReady } from '~/content/components/WalletReady.tsx';
-import InputSection from '~/content/courses/basic-operation/chapter_2/InputSection.tsx';
-import OutputSection from '~/content/courses/basic-operation/chapter_2/OutputSection.tsx';
+import Quote from "~/content/components/Quote.tsx";
+import { WalletReady } from "~/content/components/WalletReady.tsx";
+import InputSection from "~/content/courses/basic-operation/chapter_2/InputSection.tsx";
+import OutputSection from "~/content/courses/basic-operation/chapter_2/OutputSection.tsx";
 
 # What is Transaction?
 
@@ -18,24 +18,23 @@ Here's an interesting story to help you understand.
 <Quote>
   Imagine you have a friend who lives in an Amazon jungle isolated from everything but an offline computer.
 
-When he returned from hunting one afternoon, he remembered he owed you some money. So he turned on the computer and
-attempted to transfer 10,000 CKBs to you to settle his debt.
+  When he returned from hunting one afternoon, he remembered he owed you some money. So he turned on the computer and
+  attempted to transfer 10,000 CKBs to you to settle his debt.
 
-Although he was unable to access the internet, he wrote down the transaction details on paper, entered his private key
-into the computer, calculated the appropriate signature, and attached his signature.
+  Although he was unable to access the internet, he wrote down the transaction details on paper, entered his private key
+  into the computer, calculated the appropriate signature, and attached his signature.
 
-When a courier visited half a month later, he asked to send the paper to China by mail. That letter finally reached
-you half a month after it was sent.
+  When a courier visited half a month later, he asked to send the paper to China by mail. That letter finally reached
+  you half a month after it was sent.
 
-The message on the mail did specify the transaction of 10,000 CKBs to you. Then you decided to submit the transaction
-to the CKB mainnet.
+  The message on the mail did specify the transaction of 10,000 CKBs to you. Then you decided to submit the transaction
+  to the CKB mainnet.
 
-After the mainnet validated the attached signature, the transaction was complete and you now have 10,000 more CKBs in
-your account. The debt was settled.
+  After the mainnet validated the attached signature, the transaction was complete and you now have 10,000 more CKBs in
+  your account. The debt was settled.
 
-Despite low throughput and long latency, only 1 transaction per month, you and your Amazon jungle buddy have
-accomplished a nice “off-chain computing, on-chain verifying” workflow.
-
+  Despite low throughput and long latency, only 1 transaction per month, you and your Amazon jungle buddy have 
+  accomplished a nice “off-chain computing, on-chain verifying” workflow.
 </Quote>
 
 CKB offers tools helping deploying contracts, building transactions, transferring, etc.
@@ -50,7 +49,7 @@ We will use the JSON format to do this.
 Here are 6 Live cell in your wallet. Simply `drag the cell to the box below` to see what the generated input looks like.
 
 <WalletReady>
-  <InputSection />
+  <InputSection/>
 </WalletReady>
 
 The cell in inputs appears in previous_output which is imported as an outpoint composed of tx_hash and index, akin to an index, or a pointer to the cell, by which we can locate the cell to be spent.
@@ -59,7 +58,8 @@ The since field in the inputs controls the time. Don't worry about it for now.
 
 Besides inputs, there is a field called cell_deps that indicates the dependency cells a transaction relies on. This field appears to be a out_point list.
 
-{/\* TODO: I think we will use omni_lock, not SECP256K1_BLAKE160.
+
+{/* TODO: I think we will use omni_lock, not SECP256K1_BLAKE160.
 see: https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md
 
 #### What are dependency cells? （TODO）
@@ -67,7 +67,8 @@ see: https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-o
 In a regular transfer transaction, the lock script requires a fixed encryption algorithm, SECP256K1_BLAKE160, a built-in smart contract. The encryption algorithm code is kept in a cell and must be referenced in cell_deps, so that CKB-VM knows where to import it for calculation.
 
 With the `testnet configuration` information from the previous chapter, it is easy to find the parameters that need to be passed in cell_deps.
-\*/}
+*/}
+
 
 ## Transaction Output
 
@@ -83,8 +84,9 @@ The outputs must have less capacity than the inputs, and the gap is the fee to r
 
 To view the transaction JSON, click `Generate the Transaction` once you've set it up.
 
+
 <WalletReady>
-  <OutputSection />
+  <OutputSection/>
 </WalletReady>
 
 The outputs of the transaction have all the information about the newly generated cell, including its capacity, lock script, etc.
@@ -92,6 +94,7 @@ The outputs of the transaction have all the information about the newly generate
 Cells in the outputs do not specify data information; the data is located in the outputs_data field, which corresponds to the cells in the outputs accordingly. This is designed for performance optimization.
 
 A full transaction also contains fields such as version and header_deps. The version field indicates the version, which is currently set to 0x0, while the header_deps field is null.
+
 
 ## Sign a Transaction
 

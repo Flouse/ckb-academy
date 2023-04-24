@@ -9,7 +9,7 @@
     "build": "turbo run build",
     "dev:site": "turbo run dev --filter site",
     "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
+    "format": "prettier --write --ignore-path .gitignore '{packages,site}/**/*.{js,jsx,ts,tsx}'",
     "prepare": "husky install"
   },
   "lint-staged": {
