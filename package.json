@@ -35,7 +35,7 @@
     "prettier": "^2.8.4",
     "turbo": "latest"
   },
-  "packageManager": "yarn@3.5.0",
+  "packageManager": "yarn@1.22.19",
   "dependencies": {
     "husky": "^8.0.3"
   }
