@@ -4,8 +4,6 @@ import Markdown from 'vite-plugin-solid-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkDirective from 'remark-directive';
 import remarkDirectiveRehype from 'remark-directive-rehype';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import rehypeHighlight from 'rehype-highlight';
 
 export default defineConfig({

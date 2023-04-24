@@ -1,12 +1,12 @@
-import GenerateRawTransaction from "~/content/courses/basic-operation/chapter_3/GenerateRawTransaction.tsx";
-import GenerateRawTXHash from "~/content/courses/basic-operation/chapter_3/GenerateRawTXHash.tsx";
-import GenerateMessage from "~/content/courses/basic-operation/chapter_3/GenerateMessage.tsx";
-import SignTransaction from "~/content/courses/basic-operation/chapter_3/SignTransaction.tsx";
-import SerializeWitnesses from "~/content/courses/basic-operation/chapter_3/SerializeWitnesses.tsx";
-import UpdateRawTransaction from "~/content/courses/basic-operation/chapter_3/UpdateRawTransaction.tsx";
-import SendTransaction from "~/content/courses/basic-operation/chapter_3/SendTransaction.tsx";
-import CheckBlock from "~/content/courses/basic-operation/chapter_3/CheckBlock.tsx";
-import { WalletReady } from "~/content/components/WalletReady.tsx";
+import GenerateRawTransaction from '~/content/courses/basic-operation/chapter_3/GenerateRawTransaction.tsx';
+import GenerateRawTXHash from '~/content/courses/basic-operation/chapter_3/GenerateRawTXHash.tsx';
+import GenerateMessage from '~/content/courses/basic-operation/chapter_3/GenerateMessage.tsx';
+import SignTransaction from '~/content/courses/basic-operation/chapter_3/SignTransaction.tsx';
+import SerializeWitnesses from '~/content/courses/basic-operation/chapter_3/SerializeWitnesses.tsx';
+import UpdateRawTransaction from '~/content/courses/basic-operation/chapter_3/UpdateRawTransaction.tsx';
+import SendTransaction from '~/content/courses/basic-operation/chapter_3/SendTransaction.tsx';
+import CheckBlock from '~/content/courses/basic-operation/chapter_3/CheckBlock.tsx';
+import { WalletReady } from '~/content/components/WalletReady.tsx';
 
 # Send a Transaction
 
@@ -51,7 +51,7 @@ table WitnessArgs {
 
 This structure is called [WitnessArgs](https://github.com/nervosnetwork/ckb/blob/5a7efe7a0b720de79ff3761dc6e8424b8d5b22ea/util/types/schemas/blockchain.mol#L114-L118), which represents the arguments provided for a transaction witness.
 
-Different locks retrieve the required signature from different fields within WitnessArgs. 
+Different locks retrieve the required signature from different fields within WitnessArgs.
 
 The lock field contains the signature to be verified by the locks of the input cells. In our case, this is [OmniLockWitnessLock](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md#omnilock-witness) required by the [Omnilock Script](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md) algorithm for verification.
 
@@ -82,7 +82,7 @@ Third, put the signature back into the transaction. Enter the generated signatur
 
 Now it is time to finalize the raw transaction by adding the serialized signature to the witnesses field.
 
-{/* 
+{/*
 TODO: Is it possible to copy UpdateRawTransaction.transactionInfo from GenerateRawTransaction
 */}
 <WalletReady>
