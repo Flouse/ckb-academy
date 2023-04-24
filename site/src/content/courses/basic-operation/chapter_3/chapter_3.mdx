@@ -1,0 +1,109 @@
+import GenerateRawTransaction from '~/content/courses/basic-operation/chapter_3/GenerateRawTransaction.tsx';
+import GenerateRawTXHash from '~/content/courses/basic-operation/chapter_3/GenerateRawTXHash.tsx';
+import GenerateMessage from '~/content/courses/basic-operation/chapter_3/GenerateMessage.tsx';
+import SignTransaction from '~/content/courses/basic-operation/chapter_3/SignTransaction.tsx';
+import SerializeWitnesses from '~/content/courses/basic-operation/chapter_3/SerializeWitnesses.tsx';
+import UpdateRawTransaction from '~/content/courses/basic-operation/chapter_3/UpdateRawTransaction.tsx';
+import SendTransaction from '~/content/courses/basic-operation/chapter_3/SendTransaction.tsx';
+import CheckBlock from '~/content/courses/basic-operation/chapter_3/CheckBlock.tsx';
+import { WalletReady } from '~/content/components/WalletReady.tsx';
+
+# Send a Transaction
+
+Now, complete the transaction template below and manually fill in a transfer transaction. This is an exercise to practice completing a transfer transaction on your own.
+
+You can use the `toolbox on the right side` to find the live cells associated with your wallet, to view chain configuration information and to convert between hex and decimal, etc.
+
+### Fill in the transaction information
+
+> **Tip**: Since your live cells are protected by [Omnilock Script](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md), the `cellDeps` field should be filled with 2 deps, SECP256K1_BLAKE160 and OMNILOCK. You can find them in the `Chain Info` tool.
+
+<WalletReady>
+  <GenerateRawTransaction />
+</WalletReady>
+
+After filling it out, click the `Save` button.
+
+### Generate the Transaction Hash
+
+You have filled in all the transaction information manually. Consequently, we are now able to generate a unique hash for the transaction, i.e., we can generate the `tx_hash` beforehand.
+
+To generate the transaction hash, click the button below.
+
+<WalletReady>
+  <GenerateRawTXHash />
+</WalletReady>
+
+### Sign the Transaction
+
+The transaction used to generate the tx_hash is still a raw transaction. The `witnesses` fileld needs to be filled in with the signature of the transaction for the raw transaction to become a complete transaction structure.
+
+You can put any arguments or proofs you need in the witnesses field. The transaction witness data is used to provide additional arguments or data, such as signatures.
+As an array, the witnesses field can include multiple proofs, each one following the structure as:
+
+```js
+table WitnessArgs {
+  lock:          BytesOpt, // Lock Script args, which holds the lock-script-related arguments or data
+  input_type:    BytesOpt, // Type Script args for input (optional)
+  output_type:   BytesOpt, // Type Script args for output (optional)
+}
+```
+
+This structure is called [WitnessArgs](https://github.com/nervosnetwork/ckb/blob/5a7efe7a0b720de79ff3761dc6e8424b8d5b22ea/util/types/schemas/blockchain.mol#L114-L118), which represents the arguments provided for a transaction witness.
+
+Different locks retrieve the required signature from different fields within WitnessArgs.
+
+The lock field contains the signature to be verified by the locks of the input cells. In our case, this is [OmniLockWitnessLock](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md#omnilock-witness) required by the [Omnilock Script](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md) algorithm for verification.
+
+The input_type and output_type fields contain the signatures to be verified by the Type Script in inputs and outputs. Feel free to ignore them for now.
+
+> The signing process is tedious. Here is more information: [How to sign transaction](https://github.com/nervosnetwork/ckb-system-scripts/wiki/How-to-sign-transaction)
+
+It's a bit complicated, isn't it?
+Don't worry, a one-button operation experience is provided for you to sign the transaction.
+
+First, we need to generate a message.
+
+<WalletReady>
+  <GenerateMessage />
+</WalletReady>
+
+Second, use your connected wallet to sign a transaction.
+
+<WalletReady>
+  <SignTransaction />
+</WalletReady>
+
+Third, put the signature back into the transaction. Enter the generated signature in the following input box and click on the button to serialize witnessArgs:
+
+<WalletReady>
+  <SerializeWitnesses />
+</WalletReady>
+
+Now it is time to finalize the raw transaction by adding the serialized signature to the witnesses field.
+
+{/_
+TODO: Is it possible to copy UpdateRawTransaction.transactionInfo from GenerateRawTransaction
+_/}
+
+<WalletReady>
+  <UpdateRawTransaction />
+</WalletReady>
+
+### Send the transaction to CKB testnet
+
+<WalletReady>
+  <SendTransaction />
+</WalletReady>
+
+Note that, after the transaction has been successfully sent on-chain, the tx_hash returned is the same as the one generated beforehand.
+
+This is the certainty of CKB.
+
+You can now check if the transaction we just sent is actually on-chain using the button below. If tx_status is pending, it indicates that the transaction is still under verification. Just retry later.
+
+<WalletReady>
+  <CheckBlock />
+</WalletReady>
+
+Congratulations, you have successfully completed the CKB Basic Practice Course~.

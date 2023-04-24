@@ -1,0 +1,25 @@
+# What if the lock code is lost?
+
+So, we know that a lock's code is usually kept in another cell.
+What happens if someone destroys that cell? If that cell is spent, the dep cell of a transaction becomes dead, and the lock's code will be gone.
+Does this mean that the cell using that lock can no longer be unlocked?
+
+Theoretically, this is true.
+Technically, the cell that contains the code of a lock should last as long as the chain, and no one can access this cell.
+
+For [CKB's built-in scripts](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0024-ckb-genesis-script-list/0024-ckb-genesis-script-list.md), things are simple. Because the cells containing the code of all CKB's built-in lock scripts are inherently inaccessible by anyone.
+
+The lock field of each built-in script code cell is
+
+```ts
+Never unlockable lock: {
+  code_hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+  hash_type: data
+  args: 0x
+}
+```
+
+which means that no one will ever be able to unlock it, and the code will always be there.
+
+For other scripts, we can still unlock our own cell if the dep cell was destroyed,
+because actually we can just redeploy the same lock code to a new cell and then reference the new cell as a dep cell so that you can retrieve the lock code.

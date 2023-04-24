@@ -1,0 +1,31 @@
+# Difference between lock and type script
+
+Every cell has a lock script. The lock script must run when the cell is used as an input in a transaction.
+In addition to the lock script, a cell can also have an optional lock, type script.
+
+These two locks are fundamentally the same, but they are given different names because of their different uses.
+
+**The lock script is usually used to protect the ownership of the box, indicating who can unlock the box,
+while the type script is used to ensure that the cell follows certain application logic.**
+
+As cells are transformed from inputs to outputs in a transaction, certain user-defined rules can guide the transformation process.
+
+For example, I want a cell to produce only one new cell at a time in a transaction, I can program such a rule into a type lock of the box.
+
+Another example, I would like a cell to never show the word "carrot" in its data field during a transaction, I could also create a type lock with such a rule.
+
+This is the distinction between the type script and the lock script.
+The former protects the ownership of the box and the latter secures the cell transformation rules.
+
+**The lock script is the gatekeeper, while the type script is the guardian.**
+
+This variance in use comes down to the difference in the design of the two locks in terms of their execution mechanism:
+
+- `Lock script`: In a transaction, the lock scripts run for all inputs by group.
+- `Type script`: In a transaction, the type scripts run for all inputs and outputs by group.
+
+**Note**: CKB does not run the script one by one. It first groups the inputs or outputs by script and runs the same script only once.
+
+Due to the variations in execution mechanisms, different suitable uses are derived.
+Essentially these are just the recommended official usages.
+Of course, you are perfectly free to have your own ideas.

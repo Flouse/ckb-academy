@@ -1,0 +1,24 @@
+@import url(../../assets/css/markdown.css);
+
+.annotation-view {
+  @apply rounded-xl border-light-border dark:border-dark-border border p-0;
+
+  .hover-card-arrow {
+    @apply border-light-border dark:border-dark-border border relative rounded-sm;
+    clip-path: polygon(0 0, 0 12px, 12px 0);
+  }
+}
+
+.annotation-content {
+  @apply markdown;
+  @apply text-sm prose-p:my-4 !important;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mt-0;
+  }
+}

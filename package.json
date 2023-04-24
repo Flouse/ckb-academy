@@ -1,68 +1,42 @@
 {
-  "name": "ckb-academy-site",
-  "version": "0.0.2",
-  "license": "MIT",
+  "name": "ckb-academy",
+  "private": true,
+  "workspaces": [
+    "site",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "solid-start dev",
-    "build": "solid-start build",
-    "start": "solid-start start",
-    "format": "prettier -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"*.{js,ts,mjs}\""
+    "build": "turbo run build",
+    "dev:site": "turbo run dev --filter site",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
+    "prepare": "husky install"
   },
-  "type": "module",
-  "dependencies": {
-    "@ckb-lumos/lumos": "^0.20.0-alpha.1",
-    "@metamask/detect-provider": "^1.2.0",
-    "@metamask/providers": "^8.1.1",
-    "@motionone/solid": "^10.15.5",
-    "@solid-primitives/i18n": "^1.2.1",
-    "@solid-primitives/media": "^2.1.3",
-    "@solid-primitives/scheduled": "^1.3.1",
-    "@solid-primitives/scroll": "^2.0.11",
-    "@solid-primitives/storage": "^1.3.7",
-    "@solidjs/meta": "^0.28.2",
-    "@solidjs/router": "^0.7.0",
-    "@srsholmes/solid-code-input": "^0.0.18",
-    "@tailwindcss/line-clamp": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.9",
-    "@zag-js/dialog": "^0.2.13",
-    "@zag-js/hover-card": "^0.2.6",
-    "@zag-js/solid": "^0.2.10",
-    "@zag-js/toast": "^0.2.14",
-    "@zag-js/tooltip": "^0.2.13",
-    "axios": "^1.3.4",
-    "classnames": "^2.3.2",
-    "ethers": "^6.2.3",
-    "highlight.js": "^11.7.0",
-    "install": "^0.13.0",
-    "lodash": "^4.17.21",
-    "monaco-editor": "0.33.0",
-    "motion": "^10.15.5",
-    "npm": "^9.6.1",
-    "postcss-import": "^15.1.0",
-    "rehype-highlight": "^6.0.0",
-    "remark-directive": "^2.0.1",
-    "remark-directive-rehype": "^0.4.2",
-    "remark-gfm": "^3.0.1",
-    "solid-icons": "^1.0.4",
-    "solid-js": "^1.6.11",
-    "solid-start": "^0.2.22",
-    "undici": "^5.15.1",
-    "vite-plugin-solid-markdown": "^0.0.6"
+  "lint-staged": {
+    "*.{md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint",
+      "prettier --write"
+    ],
+    "package.json": "npx sort-package-json"
   },
   "devDependencies": {
-    "@mdx-js/rollup": "^2.2.1",
-    "@typescript-eslint/eslint-plugin": "^5.35.1",
-    "@typescript-eslint/parser": "^5.35.1",
-    "autoprefixer": "^10.4.13",
-    "eslint": "^8.36.0",
-    "postcss": "^8.4.21",
+    "@typescript-eslint/eslint-plugin": "5.57.0",
+    "@typescript-eslint/parser": "5.57.0",
+    "eslint": "8.37.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-import-resolver-typescript": "2.7.1",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "eslint-plugin-solid": "0.12.1",
     "prettier": "^2.8.4",
-    "solid-start-node": "^0.2.19",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.4",
-    "vite": "^4.1.4"
+    "turbo": "latest"
   },
-  "engines": {
-    "node": ">=16"
+  "packageManager": "yarn@3.5.0",
+  "dependencies": {
+    "husky": "^8.0.3"
   }
 }

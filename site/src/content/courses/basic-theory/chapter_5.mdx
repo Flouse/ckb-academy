@@ -1,0 +1,65 @@
+# Where is the code actually located?
+
+We have learned that the lock and type fields of the cell are used to lock the box and to guarantee its ownership and control.
+
+A script‘s structure looks like this:
+
+```ts
+Script: {
+  code_hash: HexString
+  args: HexString
+  hash_type: Uint8, there are three allowed values: {0: "data", 1: "type", 2: "data1"}
+}
+```
+
+You may notice that the `code_hash` is not the actual code, but some kind of index of the code. This index allows us to retrieve the code. So, where is the code anyway?
+
+The answer is simple: the code is stored in another cell!
+
+We know that the data field of a cell can contain arbitrary data, so we can put the real code in the data field of another cell and implement this cell as a dependency to a transaction. This dependency cell is called `CellDep` (dep cell).
+
+Depending on the value of `hash_type`, `code_hash` has different interpretations:
+
+- If hash_type is "data" or "data1", code_hash should match [blake2b_ckbhash](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0022-transaction-structure/0022-transaction-structure.md#appendix-a-compute-various-hash)(data) of a dep cell;
+- If hash_type is "type", code_hash should instead match [blake2b_ckbhash](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0022-transaction-structure/0022-transaction-structure.md#appendix-a-compute-various-hash)(type script) of a dep cell.
+
+## The code locating workflow
+
+Please keep in mind that the `code_hash` and `hash_type` fields are used to locate the code. When unlocking a cell, a transaction simply imports the dep cell, and CKB will follow the rules above to find and execute the corresponding code.
+
+#### When hash_type is "data" or "data1"
+
+![code-locating-via-data-hash](https://raw.githubusercontent.com/nervosnetwork/rfcs/master/rfcs/0022-transaction-structure/code-locating.png)
+
+#### When hash_type is "type"
+
+![code-locating-via-type-hash](https://raw.githubusercontent.com/nervosnetwork/rfcs/master/rfcs/0022-transaction-structure/code-locating-via-type.png)
+
+So why not just put in the real code, but use this indexing approach?
+
+One of the major advantages of this design is that if everyone needs the same type of lock, the lock code will be identical, and so will the code_hash value. Then it is just a matter of introducing the same dep cell rather than deploying the same code all over again for each case.
+
+## Here's a real example
+
+[Simple User Defined Token (Simple UDT or SUDT)](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0025-simple-udt/0025-simple-udt.md) provides a way for dapp developers to issue custom tokens on Nervos CKB. It's a widely used type script.
+
+Let's try to find the real code of SUDT type script on CKB testnet:
+
+| parameter | value                                                                                                                                                                                  |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| code_hash | `0xc5e5dcf215925f7ef4dfaf5f4b4f105bc321c02776d6e7d52a1db3fcd9d011a4`                                                                                                                   |
+| hash_type | `type`                                                                                                                                                                                 |
+| tx_hash   | [0xe12877ebd2c3c364dc46c5c992bcfaf4fee33fa13eebdf82c591fc9825aab769](https://pudge.explorer.nervos.org/transaction/0xe12877ebd2c3c364dc46c5c992bcfaf4fee33fa13eebdf82c591fc9825aab769) |
+| index     | `0x0`                                                                                                                                                                                  |
+| dep_type  | `code`                                                                                                                                                                                 |
+
+1. Click the [link](https://pudge.explorer.nervos.org/transaction/0xe12877ebd2c3c364dc46c5c992bcfaf4fee33fa13eebdf82c591fc9825aab769) of tx_hash and jump to the transaction view of CKB testnet explorer;
+2. Click the `Cell Info` button of `#0 Output`.
+
+![the real code of SUDT type script](https://user-images.githubusercontent.com/1297478/228566683-18de0113-3bcd-4ab6-8000-0ab385e7a8e6.png)
+
+> Look! You found it!
+
+That is to say, if a cell's type script code_hash is set to `0xc5e5dcf215925f7ef4dfaf5f4b4f105bc321c02776d6e7d52a1db3fcd9d011a4`, then that cell will follow the logic of the above code bytes compiled from [simple_udt.c](https://github.com/nervosnetwork/ckb-production-scripts/blob/e570c11aff3eca12a47237c21598429088c610d5/c/simple_udt.c).
+
+But at this point, another question may come to your mind.

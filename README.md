@@ -9,6 +9,7 @@ We look forward to having you join us as part of our growing community.
 This project is going to build a comprehensive set of guides, tutorials, labs, and sandbox environments to help developers learn and test their knowledge of Nervos CKB, allowing developers to learn at their own pace.
 
 ## TODO list
+
 - [ ] Gather and organize more available study materials, transform them into interactive learning courses
   - [ ] [Refactor zero2ckb training course](https://github.com/Flouse/ckb-academy/issues/3) | send a pkp2h transaction
   - [ ] [Nervos Developer Training Course](https://nervos.gitbook.io/developer-training-course/)
@@ -27,7 +28,6 @@ This project is going to build a comprehensive set of guides, tutorials, labs, a
 - [ ] Provide examples of successful projects and applications built on the CKB, such as the layer-2 sulutions ([Godwoken](https://github.com/godwokenrises/godwoken) and [Axon](https://github.com/axonweb3/axon)), [.bit](https://www.dotbit.org/)
 - [ ] [SEO-friendly Design](https://github.com/Flouse/ckb-academy/issues/6)
 
-
 ## Developing
 
 The front-end of this project is powered by [SolidStart](https://start.solidjs.com).
@@ -40,7 +40,6 @@ yarn
 yarn dev
 ```
 
-
 ## Building
 
 `solid-start` build bundles your server and client using [Vite](https://vitejs.dev/).
@@ -51,12 +50,13 @@ yarn build
 ```
 
 solid-start start starts the production build with a local version of adapter.
+
 ```bash
 # https://start.solidjs.com/api/start
 yarn start
 ```
 
-## Contributing 
+## Contributing
 
 If you find a bug or you want to contribute to the project, please submit an issue or a pull request.
 

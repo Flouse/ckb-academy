@@ -1,0 +1,10 @@
+{
+  "title": "Hello HOME",
+  "nav": {
+    "courses": "Courses",
+    "library": "Library",
+    "playground": "Playground",
+    "community": "Community",
+    "archive": "Archive"
+  }
+}

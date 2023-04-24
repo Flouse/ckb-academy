@@ -1,3 +1,4 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 dist
 .solid
@@ -7,7 +8,32 @@ dist
 netlify
 
 # dependencies
-/node_modules
+node_modules
+.pnp
+.pnp.js
+
+# misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# turbo
+.turbo
+
+#yarn
+.yarn
 
 # IDEs and editors
 /.idea
@@ -18,7 +44,3 @@ netlify
 
 # Temp
 gitignore
-
-# System Files
-.DS_Store
-Thumbs.db

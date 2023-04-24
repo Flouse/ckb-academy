@@ -8,10 +8,8 @@
     "jsxImportSource": "solid-js",
     "jsx": "preserve",
     "strict": true,
-    "types": ["solid-start/env","solid-repl/types/types"],
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowJs": true
   }
 }
