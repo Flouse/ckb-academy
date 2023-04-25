@@ -28,6 +28,10 @@ This project is going to build a comprehensive set of guides, tutorials, labs, a
 - [ ] Provide examples of successful projects and applications built on the CKB, such as the layer-2 sulutions ([Godwoken](https://github.com/godwokenrises/godwoken) and [Axon](https://github.com/axonweb3/axon)), [.bit](https://www.dotbit.org/)
 - [ ] [SEO-friendly Design](https://github.com/Flouse/ckb-academy/issues/6)
 
+## Monorepo
+Translation: This project uses [Turborepo](https://turbo.build/repo/docs) as the Monorepo solution, with the `site` directory serving as the primary workspace of the entire project and the `packages` directory serving as the storage location for all internal packages included in the project.
+
+
 ## Developing
 
 The front-end of this project is powered by [SolidStart](https://start.solidjs.com).
@@ -36,8 +40,13 @@ The front-end of this project is powered by [SolidStart](https://start.solidjs.c
 # install dependencies
 yarn
 
+# Install Git hook to achieve code formatting during code submission.
+yarn run prepare
+
 # start a development server: https://start.solidjs.com/api/dev
 yarn dev
+#or
+turbo run dev
 ```
 
 ## Building
@@ -47,6 +56,8 @@ yarn dev
 ```bash
 # https://start.solidjs.com/api/build
 yarn build
+# or
+turbo run build
 ```
 
 solid-start start starts the production build with a local version of adapter.
