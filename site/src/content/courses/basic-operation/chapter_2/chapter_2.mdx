@@ -59,17 +59,6 @@ The since field in the inputs controls the time. Don't worry about it for now.
 Besides inputs, there is a field called cell_deps that indicates the dependency cells a transaction relies on. This field appears to be a out_point list.
 
 
-{/* TODO: I think we will use omni_lock, not SECP256K1_BLAKE160.
-see: https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0042-omnilock/0042-omnilock.md
-
-#### What are dependency cells? （TODO）
-
-In a regular transfer transaction, the lock script requires a fixed encryption algorithm, SECP256K1_BLAKE160, a built-in smart contract. The encryption algorithm code is kept in a cell and must be referenced in cell_deps, so that CKB-VM knows where to import it for calculation.
-
-With the `testnet configuration` information from the previous chapter, it is easy to find the parameters that need to be passed in cell_deps.
-*/}
-
-
 ## Transaction Output
 
 The next step is to use another tool to see how the output is generated and how the entire transaction looks.
