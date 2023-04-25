@@ -45,7 +45,7 @@ yarn run prepare
 
 # start a development server: https://start.solidjs.com/api/dev
 yarn dev
-#or
+# or
 turbo run dev
 ```
 
