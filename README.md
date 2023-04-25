@@ -29,7 +29,7 @@ This project is going to build a comprehensive set of guides, tutorials, labs, a
 - [ ] [SEO-friendly Design](https://github.com/Flouse/ckb-academy/issues/6)
 
 ## Monorepo
-Translation: This project uses [Turborepo](https://turbo.build/repo/docs) as the Monorepo solution, with the `site` directory serving as the primary workspace of the entire project and the `packages` directory serving as the storage location for all internal packages included in the project.
+This project uses [Turborepo](https://turbo.build/repo/docs) as the `Monorepo` solution, with the [site](./site) directory serving as the primary workspace of the entire project and the [packages](./packages) directory serving as the storage location for all internal packages included in this project.
 
 
 ## Developing
