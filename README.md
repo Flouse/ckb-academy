@@ -60,7 +60,7 @@ yarn build
 turbo run build
 ```
 
-solid-start start starts the production build with a local version of adapter.
+The `output` directory will appear in `site/dist/public`.
 
 ```bash
 # https://start.solidjs.com/api/start
