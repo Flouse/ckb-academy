@@ -11,8 +11,8 @@ This project is going to build a comprehensive set of guides, tutorials, labs, a
 ## TODO list
 
 - [ ] Gather and organize more available study materials, transform them into interactive learning courses
-  - [ ] [Refactor zero2ckb training course](https://github.com/Flouse/ckb-academy/issues/3) | send a pkp2h transaction
-  - [ ] [Nervos Developer Training Course](https://nervos.gitbook.io/developer-training-course/)
+  - [x] [Refactor zero2ckb training course](https://github.com/Flouse/ckb-academy/issues/3) | send a pkp2h transaction
+  - [x] [Nervos Developer Training Course](https://nervos.gitbook.io/developer-training-course/)
   - [ ] Send a multisig transaction
   - [ ] Deploy a simple contract
   - [ ] Deploy a upgradable contract
