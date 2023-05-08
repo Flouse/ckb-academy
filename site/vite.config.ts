@@ -17,4 +17,7 @@ export default defineConfig({
   ssr: {
     external: ['monaco-editor'],
   },
+  server: {
+    open: true,
+  },
 });
