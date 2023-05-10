@@ -1,15 +1,19 @@
 import { Component, createSignal } from 'solid-js';
 import { BI } from '@ckb-lumos/bi';
 
-const Example: Component = () => {
+const Guild: Component = () => {
   const [inputValue, setInputValue] = createSignal<string>('');
   const [isValid, setIsValid] = createSignal<boolean>(false);
 
   const handleInputChange = (e: Event) => {
     const newValue = (e.target as HTMLInputElement).value.trim();
     setInputValue(newValue);
-    const num = BI.from(newValue);
-    setIsValid(num.eq(BI.from('5000000000')));
+    if (/^\d+$/.test(newValue)) {
+      const num = BI.from(newValue);
+      setIsValid(num.eq(BI.from('5000000000')));
+    } else {
+      setIsValid(false);
+    }
   };
 
   const getValidityMessage = (): string => {
@@ -49,4 +53,4 @@ const Example: Component = () => {
   );
 };
 
-export default Example;
+export default Guild;
