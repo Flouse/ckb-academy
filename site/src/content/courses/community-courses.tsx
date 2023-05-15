@@ -64,4 +64,16 @@ export const communityCourses: Course[] = [
     updateTime: '2023/4/20',
     url: 'https://xuejie.space/',
   },
+  {
+    id: 'c4b34eaf6f6a5ca1',
+    name: 'Start Your CKB Development Journey',
+    coverPicture: '/images/course/cryptape.png',
+    description:
+      "In the past month, Cryptape and MIT Bitcoin Expo both hosted CKB hackathons that provided developers with an opportunity to explore the CKB blockchain platform. Attendees were able to learn about CKB's unique Cell Model and its capabilities for creating complex smart contracts. ",
+    author: [contributorsData.Cryptape],
+    type: CourseType.Article,
+    source: CourseSource.Community,
+    updateTime: '2023/5/15',
+    url: 'https://blog.cryptape.com/start-your-ckb-development-journey',
+  },
 ];
