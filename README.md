@@ -24,6 +24,8 @@ In the future, we hope CKB Academy will become a comprehensive [Documentation Sy
   
 - Interactive learning courses
   - [x] [Refactor zero2ckb training course](https://github.com/Flouse/ckb-academy/issues/3) | send a pkp2h transaction
+     - https://academy.ckb.dev/courses/basic-theory
+     - https://academy.ckb.dev/courses/basic-operation
   - [ ] [Write an SUDT Script by Capsule](https://docs.nervos.org/docs/labs/sudtbycapsule/)
   - [ ] Send a multisig transaction
   - [ ] Deploy a simple contract
