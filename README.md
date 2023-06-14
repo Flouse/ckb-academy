@@ -6,27 +6,40 @@ CKB Academy is committed to ensuring that new CKB developers have an easy learni
 Our mission is to foster a robust ecosystem around Nervos Network by providing developers with all the tools and resources they need to create innovative applications and solutions.
 We look forward to having you join us as part of our growing community.
 
-This project is going to build a comprehensive set of guides, tutorials, labs, and sandbox environments to help developers learn and test their knowledge of Nervos CKB, allowing developers to learn at their own pace.
+At the current stage, CKB Academy is dedicated to solving the problem of "scattered" or "fragmented" information, becoming a landing page for Nervos development resources, collecting and organizing various tutorials, how-to guides, references, explanations and other educational content worth highlighting.
+
+In the future, we hope CKB Academy will become a comprehensive [Documentation System][1] / Library / Playground etc.
+
+## Sitemap
+- Courses: a list of interactive courses covering various topics related to Nervos development
+- Library: a collection of how-to articles, references, explanations and other documentation resources
+- Playground (Labs): a set of sandbox environments where developers can experiment with Nervos development and test their code
+
 
 ## TODO list
 
-- [ ] Gather and organize more available study materials, transform them into interactive learning courses
-  - [x] [Refactor zero2ckb training course](https://github.com/Flouse/ckb-academy/issues/3) | send a pkp2h transaction
+- Gather and organize available study materials worth highlighting
   - [x] [Nervos Developer Training Course](https://nervos.gitbook.io/developer-training-course/)
+  - [ ] [Nervos Network Developers Resources Hub](https://talk.nervos.org/t/nervos-network-developers-resources-hub/7261)
+  
+- Interactive learning courses
+  - [x] [Refactor zero2ckb training course](https://github.com/Flouse/ckb-academy/issues/3) | send a pkp2h transaction
+  - [ ] [Write an SUDT Script by Capsule](https://docs.nervos.org/docs/labs/sudtbycapsule/)
   - [ ] Send a multisig transaction
   - [ ] Deploy a simple contract
   - [ ] Deploy a upgradable contract
   - [ ] etc.
+
+- Playground (Labs)
+  - [ ] [Time to Hello World on CKB](https://github.com/Flouse/ckb-tthw/tree/main/js)
+    -> demo: https://ckb-tthw.vercel.app
+
 - [ ] Provide clear guidance on how to contribute to the project and get involved in the CKB community
   - [ ] Add a guild about how to build a new interactive course using the template designed in this project
-- [ ] [Message Board](https://github.com/Flouse/ckb-academy/issues/5)
-- [ ] Include a frequently asked questions (FAQ) section to address common questions or issues
-  - [ ] Give an overview of Nervos CKB
-  - [ ] Explain the benefits of learning about CKB and how it can be applied in various use cases
-  - [ ] List out any prerequisites or recommended knowledge that learners should have before diving into the courses
 - [ ] [Learn CKB and Earn NFTs with Game Experience](https://github.com/Flouse/ckb-academy/issues/4)
-- [ ] Provide examples of successful projects and applications built on the CKB, such as the layer-2 sulutions ([Godwoken](https://github.com/godwokenrises/godwoken) and [Axon](https://github.com/axonweb3/axon)), [.bit](https://www.dotbit.org/)
 - [ ] [SEO-friendly Design](https://github.com/Flouse/ckb-academy/issues/6)
+- [ ] Provide examples of successful projects and applications built on the CKB, such as the layer-2 sulutions ([Godwoken](https://github.com/godwokenrises/godwoken) and [Axon](https://github.com/axonweb3/axon)), [.bit](https://www.dotbit.org/)
+
 
 ## Monorepo
 This project uses [Turborepo](https://turbo.build/repo/docs) as the `Monorepo` solution, with the [site](./site) directory serving as the primary workspace of the entire project and the [packages](./packages) directory serving as the storage location for all internal packages included in this project.
@@ -81,3 +94,6 @@ If you find a bug or you want to contribute to the project, please submit an iss
 ## License
 
 The code in this repository is released under the MIT License.
+
+
+[1]: https://documentation.divio.com/
