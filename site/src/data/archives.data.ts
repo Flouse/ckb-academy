@@ -4,7 +4,7 @@ import { contributorsData } from '~/data/contributors.data';
 export const archives: Array<Archive> = [
   {
     id: '74a6440375df7b5c',
-    title: 'Nervos Network Developers Resources Hub',
+    title: 'Nervos Network Developer Resources Hub',
     description: 'The most authoritative official guide',
     category: ArchiveCategory.Article,
     cover: '/images/archive-covers/resources-hub.png',
