@@ -5,7 +5,7 @@ export const archives: Array<Archive> = [
   {
     id: '74a6440375df7b5c',
     title: 'Nervos Network Developer Resources Hub',
-    description: 'The most authoritative official guide',
+    description: 'A collection of developer resources from Nervos Network community',
     category: ArchiveCategory.Article,
     cover: '/images/archive-covers/resources-hub.png',
     recommended: true,
