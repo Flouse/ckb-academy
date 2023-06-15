@@ -3,6 +3,16 @@ import { contributorsData } from '~/data/contributors.data';
 
 export const archives: Array<Archive> = [
   {
+    id: '74a6440375df7b5c',
+    title: 'Nervos Network Developer Resources Hub',
+    description: 'A collection of developer resources from Nervos Network community',
+    category: ArchiveCategory.Article,
+    cover: '/images/archive-covers/resources-hub.png',
+    recommended: true,
+    author: [contributorsData.NervosNetwork],
+    url: 'https://talk.nervos.org/t/nervos-network-developers-resources-hub/7261',
+  },
+  {
     id: '6f5f82fcd2417b92',
     title: 'Nervos CKB Official Docs',
     description: 'The most authoritative official guide',
