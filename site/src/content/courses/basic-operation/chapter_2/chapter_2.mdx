@@ -63,16 +63,13 @@ Besides inputs, there is a field called cell_deps that indicates the dependency 
 
 The next step is to use another tool to see how the output is generated and how the entire transaction looks.
 
-Again, drag the cell to `Input`.
+Again, drag the cell to `Input`. A new cell of an identical size will be automatically generated in `OUTPUT`.
 
-A new cell of an identical size will be automatically generated in `OUTPUT`.
-
-Click the `⚙` Setting button in `OUTPUT` to reassign the newly generated cells. This includes specifying how many cells to generate, the size and the unlock address of each cell, and so on.
-
-The outputs must have less capacity than the inputs, and the gap is the fee to reward miners.
+Click the `⚙` Setting button in `OUTPUT` to reassign the newly generated cells. This includes specifying how many cells to generate, the `capacity` and the `lock.args` of each cell, and so on.
 
 To view the transaction JSON, click `Generate the Transaction` once you've set it up.
 
+> **Note**: The sum of the capacity of the outputs must be less than the sum of the capacity of the inputs, and the CKB gap is the `fee` that rewards miners.
 
 <WalletReady>
   <OutputSection/>
