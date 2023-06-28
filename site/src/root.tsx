@@ -24,10 +24,13 @@ export default function Root() {
       <AppContextProvider>
         <Html lang="en">
           <Head>
-            <Link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" />
-            <Title>CKB Academy</Title>
+            <Title>CKB Academy - Learn, Build, and Play with Nervos CKB</Title>
             <Meta charset="utf-8" />
             <Meta name="viewport" content="width=device-width, initial-scale=1" />
+            <Meta
+              name="description"
+              content="CKB Academy provides interactive courses, tutorials, guides, and sandbox environments for Nervos developers. Learn, build, and play with Nervos CKB today!"
+            />
           </Head>
           <Body>
             <ErrorBoundary>
