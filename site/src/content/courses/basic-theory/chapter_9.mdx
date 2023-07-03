@@ -12,7 +12,7 @@ Let's review all the concepts we have learned:
 - A lock is essentially a piece of code that checks if the cell can be unlocked using arguments and user-provided signatures or proofs.
 - The return value of 0 means that the lock was unlocked successfully, while any other value means the unlock attempt failed.
 - The lock's code_hash and hash_type fields are used to locate code, which is stored in the data field of a dep cell.
-- Each cell can carry two locks, one is called lock script (default) and the other, type script (optional).
+- Each cell can carry two scripts, one is called lock script (default) and the other, type script (optional).
 - In one transaction, the lock scripts run for all inputs by group, while the type scripts run for all inputs and outputs by group.
 - The differences in the execution mechanism result in different uses for the two types of locks. Lock scripts are often used to protect the ownership of the cell. Type scripts often used to handle the cell transformation rules.
 - Constructing a transaction is fundamentally about destroying some cells and creating some new ones.
