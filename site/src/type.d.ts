@@ -1,8 +1,13 @@
+import { WebContainer } from '@webcontainer/api';
+
 declare module '*.mdx';
 declare module '*.json';
 
-interface Window {
-  MonacoEnvironment: {
-    getWorker: (_moduleId: unknown, label: string) => Worker;
-  };
+declare global {
+  interface Window {
+    webContainer?: WebContainer;
+    MonacoEnvironment: {
+      getWorker: (_moduleId: unknown, label: string) => Worker;
+    };
+  }
 }

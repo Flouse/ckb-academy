@@ -4,6 +4,7 @@ import { HomeData } from '~/pages/Home/Home.data';
 import { CourseData } from '~/pages/Course.data';
 import { CourseDetailsData } from '~/pages/CourseDetails.data';
 import { LibraryData } from '~/pages/Library.data';
+import { LoadProjectEditorData } from '~/components/Playground/ProjectEditor.data';
 
 export const routes: RouteDefinition[] = [
   {
@@ -29,5 +30,10 @@ export const routes: RouteDefinition[] = [
   {
     path: '/playground',
     component: lazy(() => import('./pages/Playground')),
+  },
+  {
+    path: '/playground/:id',
+    component: lazy(() => import('./components/Playground/ProjectEditor')),
+    data: LoadProjectEditorData,
   },
 ];
