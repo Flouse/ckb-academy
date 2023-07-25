@@ -13,6 +13,16 @@ export default defineConfig({
       rehypePlugins: [rehypeHighlight],
     }),
     solid({ ssr: false, extensions: ['.mdx', '.md'] }),
+    {
+      name: 'add-cors',
+      configureServer(server) {
+        server.middlewares.use((_req, res, next) => {
+          res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+          res.setHeader('Cross-Origin-Embedder-Policy', 'credentialless');
+          next();
+        });
+      },
+    },
   ],
   ssr: {
     external: ['monaco-editor'],
