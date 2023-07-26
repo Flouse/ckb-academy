@@ -44,7 +44,7 @@ export default function ProjectEditor() {
                 minSize={600}
               >
                 <div class="flex flex-col">
-                  <div class="bg-light-border/40 px-8 py-4">
+                  <div class="bg-light-border/40 dark:bg-dark-border px-8 py-4">
                     <b>Project:</b> {projectState.project?.title}
                   </div>
                   <div class="px-20 overflow-auto markdown">
