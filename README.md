@@ -20,7 +20,7 @@ In the future, we hope CKB Academy will become a comprehensive [Documentation Sy
 
 - Gather and organize available study materials worth highlighting
   - [x] [Nervos Developer Training Course](https://nervos.gitbook.io/developer-training-course/)
-  - [ ] [Nervos Network Developers Resources Hub](https://talk.nervos.org/t/nervos-network-developers-resources-hub/7261)
+  - [x] [Nervos Network Developers Resources Hub](https://talk.nervos.org/t/nervos-network-developers-resources-hub/7261)
   
 - Interactive learning courses
   - [x] [Refactor zero2ckb training course](https://github.com/Flouse/ckb-academy/issues/3) | send a pkp2h transaction
@@ -33,9 +33,9 @@ In the future, we hope CKB Academy will become a comprehensive [Documentation Sy
   - [ ] etc.
 
 - Playground (Labs)
-  - [ ] [Time to Hello World on CKB](https://github.com/Flouse/ckb-tthw/tree/main/js)
-    -> demo: https://ckb-tthw.vercel.app
+  - [x] [Time to Hello World on CKB](https://academy.ckb.dev/playground/a7722eb3873234e8)
 
+- [ ] [Search Feature](https://github.com/Flouse/ckb-academy/issues/59)
 - [ ] Provide clear guidance on how to contribute to the project and get involved in the CKB community
   - [ ] Add a guild about how to build a new interactive course using the template designed in this project
 - [ ] [Learn CKB and Earn NFTs with Game Experience](https://github.com/Flouse/ckb-academy/issues/4)
