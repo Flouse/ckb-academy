@@ -1,0 +1,28 @@
+# Spore Strengths and Use Cases
+
+## About Spore
+
+Spore is a protocol standard for NFTs with fully on-chain content. Data of any type, such as artwork or music, can be stored completely on-chain without the need for an external hosting provider. 
+
+Unlike the CoTA standard that uses a single cell, each Spore NFT has a separate cell which contains all data for the NFT and its contents. Since the contents of the NFT are fully on-chain, it means that this data is replicated to every full node on the network. The data becomes tamper-proof, immutable, and permanent, and holds all the decentralization guarantees of the [Nervos CKB](https://docs.nervos.org/docs/basics/concepts/nervos-blockchain) blockchain.
+
+<div style="text-align: center">
+  <img src="/images/course/nft-getting-started/spore-diagram.png" alt="Spore Diagram" style="width:100%; max-width: 350px; display: inline-block" />
+</div>
+
+The user experience of a Spore NFT is similar to any other NFT standard, except that the NFTs gain much stronger guarantees of permanence. Most other NFT standards must rely on external hosting for the content that the NFT represents, such as the image data. This data is hosted using traditional centralized methods, which means that it could incur downtime or data loss over time. Being completely on-chain means that the contents of Spore NFTs are never unavailable. They are permanent on the blockchain for as long as a user desires, and always online.
+
+Every Spore NFT requires its own cell, and a deposit of $CKB varies on the amount of NFT data contained. To pay state rent, 1 CKB is equal to 1 byte of data storage. This $CKB deposit is refundable to the user if they decide they no longer want their NFT and decide to burn the Spore cell.
+
+## Spore Use Cases
+
+Spore NFTs have exceptionally strong permanence guarantees for the NFT and all data associated with it. Spore NFTs inherit strong security, decentralization, and sustainability of the [Nervos CKB](https://docs.nervos.org/docs/basics/concepts/nervos-blockchain) platform that it relies on. However, the costs associated with truly decentralized data storage can be expensive for large amounts of data. Spore NFTs are best suited for NFTs with high value or low data usage.
+
+Spore is an excellent choice for any NFT use case that benefits from strong permanence, such as:
+- High-value artwork, music, and collectibles.
+- Low data artwork such as pixel art.
+- Tokenized real estate.
+- Tokenized stocks.
+- Tokenized loans.
+
+In the next chapter, we will compare the CoTA and Spore standards directly to help determine which is better for your use case.

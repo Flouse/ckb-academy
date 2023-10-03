@@ -1,0 +1,33 @@
+# Standards Introduction
+
+## The History of NFT Standards 
+
+The first early versions of NFTs were first introduced in 2014, but it took several years more for NFT popularity to take off. The first wildly successful NFT dapp was CryptoKitties, which launched in late 2017. This NFT game was so popular that it heavily congested the Ethereum network, causing it to reach an all-time high in the number of transactions and slowed down the network to a point where it temporarily became unusable unless you paid a high transaction fee.
+
+The first official NFT standard to be finalized was ERC721 in early 2018, which was based on what was used for CryptoKitties a few months prior. A few months after that, ERC1155 would be released, which added the ability to create multiple NFT token types in a single contract which streamlined the process for developers of creating multiple NFTs. Led by the success of CryptoKitties, ERC721 and ERC1155 paved the way for future developers to innovate using NFTs without having to "reinvent the wheel".
+
+The success of CryptoKitties and the growing acceptance of ERC721 and ERC1155 inspired hundreds of new NFT dapps to be created. This momentum would carry through until art-based NFTs became the next big craze in 2021, which finally pushed NFT awareness into the mainstream.
+
+## The Need for New Standards
+
+These early standards have benefitted the industry immensely, but they are not without certain shortcomings. In the years that followed after their creation, a frenzy of new users would rush into the space because of the hype around NFTs. This activity would expose many of the drawbacks in the current standards, which directly affect the usability of the products being built and the long-term sustainability of the ecosystems that rely on them.
+
+The two areas that most hinder the user experience are:
+- The cost of NFTs to be created and transferred.
+- The permanence of the NFT content, such as image or music data.
+
+## NFT Costs
+
+During the peak traffic periods, using NFTs on Ethereum can easily cost hundreds of dollars for a single action. To make things worse, even if you pay these outrageous fees, your transaction is not guaranteed to go through. Many users spent hundreds of dollars in transaction fees only to have their transaction fail, receiving nothing in return.
+
+The pairing of high cost and unreliability are devastating. Many projects which initially built on Ethereum were forced to migrate to other chains. These problems are unworkable for most NFT projects and completely prohibit any possibility of mass adoption.
+
+The factors that contribute to the high costs are a combination of the standard itself, and the design of the underlying platform. When an NFT is created it occupies some state space on the blockchain. Storing data on decentralized blockchains is inherently expensive because it requires replication of that data to every full node in the network. Blockchains that do not enforce state rent or use incentives to reduce state space usage compound this problem over time because they are forced to charge all storage fees upfront in a way that is both expensive and doesn't make sense for long-term persistence.
+
+## NFT Permanence
+
+Most NFTs contain a reference to the content they represent but do not contain the data itself on-chain. This is especially true of many of the NFTs that represent images or music. The on-chain component represents proof of ownership, but only a URL to the data is contained on-chain. The data itself is often contained on a centralized hosting service such as Amazon S3 or a semi-decentralized protocol like IPFS. This creates a scenario where the NFT may outlive the content that the NFT represents if for some reason the data on the centralized hosting service becomes unavailable.
+
+In some cases it is desirable to have the data hosted elsewhere since state space is inherently very expensive on decentralized blockchains and costs are always an important factor to consider. However, some other use cases may justify the higher costs, and benefit from having all the data directly on-chain when there can be much higher availability guarantees.
+
+In the next chapters, we will introduce the CoTA and Spore standards. Powered by CKB, these standards provide strong solutions to the problems of costs and permanence.
