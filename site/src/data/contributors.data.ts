@@ -9,6 +9,7 @@ enum Contributors {
   Xying21,
   Cryptape,
   Xxuejie,
+  JordanMack,
 }
 
 export const contributorsData: Record<keyof typeof Contributors, Contributor> = {
@@ -44,5 +45,9 @@ export const contributorsData: Record<keyof typeof Contributors, Contributor> = 
   Xxuejie: {
     name: 'Xuejie Xiao',
     avatar: 'https://avatars.githubusercontent.com/u/340446?v=4',
+  },
+  JordanMack: {
+    name: 'Jordan Mack',
+    avatar: 'https://avatars.githubusercontent.com/u/37931?v=4',
   },
 };

@@ -1,0 +1,29 @@
+# CoTA Strengths and Use Cases
+
+## About CoTA
+
+The name CoTA stands for "Compact Token Aggregator". It is a protocol standard used to verify structured off-chain data using on-chain sparse Merkle tree (SMT) proofs. This can dramatically reduce the amount of on-chain state space usage, and in turn, dramatically reduce the costs associated with NFTs.
+
+Most NFT standards do not use SMTs and require additional on-chain data for every NFT that is held by a user. This is kind of like a traditional database, where each NFT is another row in the table. This becomes prohibitive for many use cases because state space is limited and expensive in any blockchain with true decentralization.
+
+An SMT structure organizes and hashes the NFT data into a single 32-byte root hash that is stored on-chain by a user in their CoTA cell. This 32-byte proof is all that is needed to hold the proof data for an unlimited amount of NFTs. A complete record ownership data still exists, but it is stored outside of the blockchain state and is managed by the CoTA framework. Whenever a transfer occurs, the CoTA framework will create a transaction that includes the relevant pieces of off-chain data needed to prove ownership using the 32-byte proof.
+
+<div style="text-align: center">
+  <img src="/images/course/nft-getting-started/cota-diagram.png" alt="CoTA Diagram" style="width:100%; max-width: 600px; display: inline-block" />
+</div>
+
+The experience of a CoTA NFT is functionally identical to that of an ERC721 or ERC1155 NFT. To an end user, a CoTA NFT is no different than any other NFT created with a different standard. The developer experience is also similar since all of the complexity of SMT data management is abstracted away through the CoTA SDK. Any content that the NFT represents, such as image or video data, must still be hosted externally just as it would with ERC721 or ERC1155.
+
+One difference in the user flow is that a CoTA cell must first be created before a user can receive a CoTA NFT. A CoTA cell is used to hold the 32-byte proof data, and it requires a deposit of $CKB at the time of creation to pay the future state rent fees. The cost of the one-time deposit is currently less than $0.50 USD. This process only needs to be completed a single time for any user, and the $CKB is refundable to the user if they decide they no longer want their NFTs and decide to burn the CoTA cell.
+
+## CoTA Use Cases
+
+CoTA excels at providing exceptionally low fees for the creation and transfer of an NFT. The fees are typically less than a penny ($0.01 USD), but even with these low costs there is no reduction to the security, decentralization, and sustainability of the platform because it relies on [Nervos CKB](https://docs.nervos.org/docs/basics/concepts/nervos-blockchain). 
+
+CoTA is an excellent choice for any NFT use case that benefits from low fees, such as:
+- Art, music, and collectibles.
+- Video games with in-game items.
+- Event ticketing and POAPs.
+- Tokenization of real-world assets.
+
+In the next chapter, we will introduce the Spore standard.

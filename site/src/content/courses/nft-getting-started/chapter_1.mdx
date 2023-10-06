@@ -1,0 +1,17 @@
+# Introduction
+
+This guide is intended to help developers get started with NFTs on :term[CKB]. If you want to create and sell NFTs but you are not a developer, then we recommend you visit [NFT Nation](https://nft-nation.live/). This NFT Marketplace will allow you to create and sell NFTs without having to be a developer.
+
+Nervos is a multi-layer ecosystem that currently has two layers. L1 is named CKB, and L2 is named Godwoken. L1 uses the :term[Cell Model] with :term[CKB-VM] while L2 uses :term[EVM]. Because of the differences in their programming models, the NFT standards they use are also very different from each other. The table below lists a few benefits of each for NFT developers.
+
+|CKB L1 Benefits|Godwoken L2 Benefits|
+|---|---|
+|<ul><li>Cell Model-based NFT standards offer many technical advancements over the older EVM-based NFT standards.</li><li>The CoTA NFT standard has the lowest fees compared to any other decentralized L1 blockchain.</li><li>The Spore NFT standard supports on-chain storage of all data, including image content.</li></ul>|<ul><li>Full compatibility with widely used EVM-based NFT standards like ERC721 and ERC1155.</li><li>More mature documentation, tools, and example code.</li><li>Compatibility with existing NFT bridges and EVM dapps.</li></ul>|
+
+If you want to build on L2 using EVM, please visit the [Get Started with Godwoken](https://docs.godwoken.io/) page. There you will find all the materials and resources needed to build if you are a developer who is already familiar with EVM.
+
+CKB L1 uses template-based smart contracts, meaning a developer can create a new NFT that they control using an existing smart contract instead of having to deploy a new one that does the exact same thing. Using an existing smart contract deployment is recommended whenever possible.
+
+If the existing standards do not suit your needs and you still need to create a new NFT standard, then we recommend completing the courses on [basic theory](/courses/basic-theory) and [practical operation](/courses/basic-operation), followed by the [L1 Developer Training Course](https://nervos.gitbook.io/developer-training-course/). This will help train you on creating smart contracts with the Cell Model, which is a prerequisite to creating a new NFT standard.
+
+For developers who are ready to get started with NFTs on CKB L1, continue to the next chapter where we will learn more about NFT standards.

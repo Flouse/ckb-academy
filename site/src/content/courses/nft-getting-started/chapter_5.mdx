@@ -1,0 +1,27 @@
+# Comparing Standards
+
+In the table below, we compare some of the differences between the CoTA and Spore standards. 
+
+|Attribute|CoTA NFT Standard|Spore NFT Standard|
+|---|---|---|
+|One-Time Setup Cost|Less than $0.50 USD.|N/A<sup>1</sup>|
+|Minting Cost|Less than $0.01 USD.|Depends on content.<sup>2</sup>|
+|Transfer Cost|Less than $0.01 USD.|Less than $0.01 USD.|
+|Smart Contract Deploy Cost|N/A<sup>3</sup>|N/A<sup>3</sup>|
+|Account/UTXO Model|Account Model|Cell Model (UTXO)|
+|Refundable State Rent Deposit|✅ Yes|✅ Yes|
+|First-Class Assets|✅ Yes|✅ Yes|
+|SMT-Based|✅ Yes|⛔ No|
+|Full On-Chain Content|⛔ No|✅ Yes|
+|SDK Available|✅ Yes|✅ Yes|
+|Primary Benefit|Low Cost|Strong Permanence|
+
+<p style="font-size: 0.8rem">
+  <sup>1</sup> Spore creates a new cell for each NFT and does not reuse a single cell like CoTA.<br />
+  <sup>2</sup> Spore stores all content on chain. One $CKB token is required to be locked for every one byte of data stored within the NFT cell. This deposit is used for state rent and is refundable if the NFT is burned in the future.<br />
+  <sup>3</sup> Smart contracts on Nervos CKB are template-based. Developers can use an existing contract deployment rather than deploying the same contract for a basic NFT. This saves money for the developer and keeps the blockchain sustainable.<br />
+</p>
+
+Both the CoTA and Spore standards overlap in some ways, but they ultimately cover different use cases. Consider CoTA for use cases that benefit from extremely low-cost NFTs. Consider Spore if you need NFTs with the strongest possible availability guarantees.
+
+In the next chapter, we will tell you how to get started with CoTA and Spore, and where to get help if you need it.
