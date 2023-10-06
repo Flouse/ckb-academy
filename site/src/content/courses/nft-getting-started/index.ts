@@ -4,7 +4,6 @@ import { contributorsData } from '~/data/contributors.data';
 const nftQuickStart: Course = {
   id: 'nft-getting-started',
   author: [
-    // see https://github.com/RetricSu/zero2ckb-web/graphs/contributors
     contributorsData.JordanMack,
   ],
   name: 'Getting Started With NFTs',
