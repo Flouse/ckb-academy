@@ -47,7 +47,7 @@
     "solid-icons": "^1.0.4",
     "solid-js": "^1.7.2",
     "solid-start": "^0.2.26",
-    "undici": "^5.15.1",
+    "undici": "^5.26.2",
     "vite-plugin-solid-markdown": "^0.0.6",
     "@webcontainer/api": "1.0.0-alpha.1",
     "xterm": "^5.2.0",
