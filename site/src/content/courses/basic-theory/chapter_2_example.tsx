@@ -65,15 +65,10 @@ const Example: Component = () => {
     };
   });
 
-  const shannon2CKB = (num: number | string | undefined) => {
-    return BI.from(num).div(BI.from(100000000)).toHexString();
-  };
-
   const isCapacityEnough = createMemo(() => {
-    return (
-      shannon2CKB(BI.from(cell().cellOutput.capacity).toString(10)) >=
-      BI.from(dataTotalLength()).toHexString()
-    );
+    const cellCapacity = BI.from(cell().cellOutput.capacity).div(100000000);
+    const occupiedCapacity = BI.from(dataTotalLength());
+    return cellCapacity.gte(occupiedCapacity);
   });
 
   return (
