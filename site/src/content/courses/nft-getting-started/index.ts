@@ -3,9 +3,7 @@ import { contributorsData } from '~/data/contributors.data';
 
 const nftQuickStart: Course = {
   id: 'nft-getting-started',
-  author: [
-    contributorsData.JordanMack,
-  ],
+  author: [contributorsData.JordanMack],
   name: 'Getting Started With NFTs',
   coverPicture: '/images/course/lesson3.png',
   type: CourseType.Article,
