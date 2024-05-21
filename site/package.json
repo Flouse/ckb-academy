@@ -11,7 +11,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@ckb-lumos/lumos": "^0.20.0-alpha.1",
+    "@ckb-lumos/lumos": "^0.22.2",
     "@metamask/detect-provider": "^1.2.0",
     "@metamask/providers": "^8.1.1",
     "@motionone/solid": "^10.15.5",

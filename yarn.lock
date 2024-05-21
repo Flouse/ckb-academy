@@ -1049,126 +1049,158 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@ckb-lumos/base@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/base/-/base-0.20.0-alpha.2.tgz#3ef6235a7898a8904ea60d4d4f232635c9d73179"
-  integrity sha512-1J4icB0soMMjYrJ++nL2aZ4tQFhpKdTBbBe0DhfSpFv6rAeMNGKG/sc6RO/2fr8e5TUygK23oirzwGcqlZ9Oag==
+"@ckb-lumos/base@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/base/-/base-0.22.2.tgz#337dac666bf3b20eb78b3545fbeb3249292e7bf7"
+  integrity sha512-nosUCSa5rTV2IzxbEpqzrvUeQNXB66mgA0h40+QEdnE/gV/s4ke83AScrTAxWkErJy1G/sToIHCc2kWwO95DfQ==
   dependencies:
-    "@ckb-lumos/bi" "0.20.0-alpha.2"
-    "@ckb-lumos/codec" "0.20.0-alpha.2"
-    "@ckb-lumos/toolkit" "0.20.0-alpha.2"
+    "@ckb-lumos/bi" "0.22.2"
+    "@ckb-lumos/codec" "0.22.2"
+    "@ckb-lumos/toolkit" "0.22.2"
     "@types/blake2b" "^2.1.0"
     "@types/lodash.isequal" "^4.5.5"
     blake2b "^2.1.3"
     js-xxhash "^1.0.4"
     lodash.isequal "^4.5.0"
 
-"@ckb-lumos/bi@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/bi/-/bi-0.20.0-alpha.2.tgz#1294afab20e1e5fa379a2bfede4af5c4ecd56bfe"
-  integrity sha512-LqB0qlHIU0Q7ccBac/O5opW9/kfd4pak0MTyO5YhS5qKFAJ7Qq0eTPLXwMvhI+h4pVIc4SnoxXjP0x+9ciMTBQ==
+"@ckb-lumos/bi@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/bi/-/bi-0.22.2.tgz#af3f3b9afdaf363bc33a168ec4fefc5579029093"
+  integrity sha512-F+dLC/tE+xdtNuGgJxlDqbgX/f8azg1tvIFTR5mu7Vhz08nkFgnA+Z+yC0t/I3fDwwH4p/SlGP/yducrsfVTqw==
   dependencies:
     jsbi "^4.1.0"
 
-"@ckb-lumos/ckb-indexer@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/ckb-indexer/-/ckb-indexer-0.20.0-alpha.2.tgz#cb3e685b38b06019c034878eadeb7347358d54e8"
-  integrity sha512-XJS3IbQmGaXTtZ/+rTWPxkP7+rfcHoaOiKozJwy7cfmB+HeLE4G7gLElwDYTeh8Q8fG/RNOMi6U8wZSa5abRpQ==
+"@ckb-lumos/ckb-indexer@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/ckb-indexer/-/ckb-indexer-0.22.2.tgz#80517b24a3fb68d205a481dd364cc8997c55c156"
+  integrity sha512-y4v2yNa3IYURcUc+lkFs/4/nV4W0QQeCORtv1IlkgbES0718XB4IMGWvQtSGKAC94A9B4kSHREcyn0d+9lMzew==
   dependencies:
-    "@ckb-lumos/base" "0.20.0-alpha.2"
-    "@ckb-lumos/bi" "0.20.0-alpha.2"
-    "@ckb-lumos/rpc" "0.20.0-alpha.2"
-    "@ckb-lumos/toolkit" "0.20.0-alpha.2"
+    "@ckb-lumos/base" "0.22.2"
+    "@ckb-lumos/bi" "0.22.2"
+    "@ckb-lumos/codec" "0.22.2"
+    "@ckb-lumos/rpc" "0.22.2"
+    "@ckb-lumos/toolkit" "0.22.2"
     cross-fetch "^3.1.5"
     events "^3.3.0"
 
-"@ckb-lumos/codec@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/codec/-/codec-0.20.0-alpha.2.tgz#373eb9c060c24c991eb446891f26809b41251bf1"
-  integrity sha512-1wUV3SAy3d1z5E4IZWMxb8YmL7eCRvD9PbzQ54eFnFiqYR2U3GUeoDes3YE+uLiIkLd9gGl3h2659E5Djk28JA==
+"@ckb-lumos/codec@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/codec/-/codec-0.22.2.tgz#038afd6e7b5dcb072b19973ce4d64a110b66dfa3"
+  integrity sha512-P5SyhT2qkJwCwcHF3yMLInE0z3wWHDkqJNbSM2Q9oyu0+9kjMQfexNia3T+atBl2M7ELFzN5WvttojYr6DrCwQ==
   dependencies:
-    "@ckb-lumos/bi" "0.20.0-alpha.2"
+    "@ckb-lumos/bi" "0.22.2"
 
-"@ckb-lumos/common-scripts@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/common-scripts/-/common-scripts-0.20.0-alpha.2.tgz#e479ce2c311308b914b7bce4e30e1222e3eae7e6"
-  integrity sha512-+0tU/1lC7ln7PiX3RPIdsDcocX4QXG2r3iGcneeBOroKsRn8uwxnqKGAG27BfCYkiTzwho7vXfhlieR3wnhPEQ==
+"@ckb-lumos/common-scripts@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/common-scripts/-/common-scripts-0.22.2.tgz#c7994ff6e32982a46a0bfa68383c7bad6d72ca1b"
+  integrity sha512-eSXutpQXqAVh0MorCG8bg+xcMqxhpiJCXgdgfpQAA0q6BkdSGmu4Zn3InFRdeHZam8ap02dadVK7ZOi4ZaUKCg==
   dependencies:
-    "@ckb-lumos/base" "0.20.0-alpha.2"
-    "@ckb-lumos/bi" "0.20.0-alpha.2"
-    "@ckb-lumos/codec" "0.20.0-alpha.2"
-    "@ckb-lumos/config-manager" "0.20.0-alpha.2"
-    "@ckb-lumos/helpers" "0.20.0-alpha.2"
-    "@ckb-lumos/rpc" "0.20.0-alpha.2"
-    "@ckb-lumos/toolkit" "0.20.0-alpha.2"
-    immutable "^4.0.0-rc.12"
+    "@ckb-lumos/base" "0.22.2"
+    "@ckb-lumos/bi" "0.22.2"
+    "@ckb-lumos/codec" "0.22.2"
+    "@ckb-lumos/config-manager" "0.22.2"
+    "@ckb-lumos/helpers" "0.22.2"
+    "@ckb-lumos/rpc" "0.22.2"
+    "@ckb-lumos/toolkit" "0.22.2"
+    bech32 "^2.0.0"
+    bs58 "^5.0.0"
+    immutable "^4.3.0"
 
-"@ckb-lumos/config-manager@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/config-manager/-/config-manager-0.20.0-alpha.2.tgz#8e509f804d8e6eddef4d0ce039d502903625cc51"
-  integrity sha512-MCwHa0JsJyV9l+IMQ3kro0RWReZTttSmUARo0lY6UPWZkcNxdMHvI3RKoO1nZtxMRkZ0tmV+C3O0Fv3J/3kpsg==
+"@ckb-lumos/config-manager@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/config-manager/-/config-manager-0.22.2.tgz#03f04dedf413a5bcfefa98e71f11dd4da7779fba"
+  integrity sha512-LJ4p80VrCHh178Ks4wW1rEyHC/JWtZxrFiwHinA9aG6aOm2Z9hbZO0/ZKoS5pLfW0gxP2+ZHA3oMVt0UJhlTKA==
   dependencies:
-    "@ckb-lumos/base" "0.20.0-alpha.2"
-    "@ckb-lumos/bi" "0.20.0-alpha.2"
-    "@ckb-lumos/codec" "0.20.0-alpha.2"
+    "@ckb-lumos/base" "0.22.2"
+    "@ckb-lumos/bi" "0.22.2"
+    "@ckb-lumos/codec" "0.22.2"
+    "@ckb-lumos/rpc" "0.22.2"
     "@types/deep-freeze-strict" "^1.1.0"
     deep-freeze-strict "^1.1.1"
 
-"@ckb-lumos/hd@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/hd/-/hd-0.20.0-alpha.2.tgz#539b673fcce00ea2017210048204d955de41bf51"
-  integrity sha512-jUfYT+/cYeGSiTu3ghu1+J5hVbM4qHkjwAJCwj3pnSOmu+ngHkUfesZfDLfmhE/YHeUBfAQHgT/iXryHihsX7A==
+"@ckb-lumos/hd@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/hd/-/hd-0.22.2.tgz#dbadc0091304f1c51479fcaee80afea312c532d0"
+  integrity sha512-bCcW+yoeBNniKijEIjZZZC2/a9ZEhvVco4L+aOHqwRon3jgXLN6izvzBgzm/m9hWUx47PpzPXjq3fRIn+kONxg==
   dependencies:
-    "@ckb-lumos/base" "0.20.0-alpha.2"
-    "@ckb-lumos/bi" "0.20.0-alpha.2"
+    "@ckb-lumos/base" "0.22.2"
+    "@ckb-lumos/bi" "0.22.2"
     bn.js "^5.1.3"
     elliptic "^6.5.4"
     scrypt-js "^3.0.1"
     sha3 "^2.1.3"
     uuid "^8.3.0"
 
-"@ckb-lumos/helpers@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/helpers/-/helpers-0.20.0-alpha.2.tgz#7d3cb06276e97e78ecb94594f17794f1e68b2dbf"
-  integrity sha512-8v5xYxh8PKbDqO0B/wvbv62oZSUZjTuCOHsTCy9AsGFjP7vW8UCg7S7RHJg9b0nc2a77nl8WLLtzzym/YvFIGA==
+"@ckb-lumos/helpers@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/helpers/-/helpers-0.22.2.tgz#4f7365b8196cac4a690fae754dfa81f52503925b"
+  integrity sha512-6ztXwxsaCuoHjkbclAnfAv9BYl02t+/XxNtl3Et4Sl09xIp9HJ9/vyJouC9JjdQdnfkv1zVGN9tLiKwc6QudaQ==
   dependencies:
-    "@ckb-lumos/base" "0.20.0-alpha.2"
-    "@ckb-lumos/bi" "0.20.0-alpha.2"
-    "@ckb-lumos/config-manager" "0.20.0-alpha.2"
-    "@ckb-lumos/toolkit" "0.20.0-alpha.2"
+    "@ckb-lumos/base" "0.22.2"
+    "@ckb-lumos/bi" "0.22.2"
+    "@ckb-lumos/codec" "0.22.2"
+    "@ckb-lumos/config-manager" "0.22.2"
+    "@ckb-lumos/toolkit" "0.22.2"
     bech32 "^2.0.0"
-    immutable "^4.0.0-rc.12"
+    immutable "^4.3.0"
 
-"@ckb-lumos/lumos@^0.20.0-alpha.1":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/lumos/-/lumos-0.20.0-alpha.2.tgz#e979b5b879a7f8a392157e535ce726cc12641637"
-  integrity sha512-uYyNVTuF2lKLkxpAajWi9WbsntHB6t9xmpemcO/WyCDYr04vQs6j6ze5zr++dhJ1ERiXdRSImDo1wV6Vq/eCDw==
+"@ckb-lumos/light-client@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/light-client/-/light-client-0.22.2.tgz#0a292afc381f4ed6cde1c02d818473a68556b489"
+  integrity sha512-G9cDOeTC81+cVdGnVOEJ767jPDFV+ao/hsc8ANNVCxsWTlj1EQvEzxGB3vi3S9Jh0lri3t3XxRQia8No5HJ4EQ==
   dependencies:
-    "@ckb-lumos/base" "0.20.0-alpha.2"
-    "@ckb-lumos/bi" "0.20.0-alpha.2"
-    "@ckb-lumos/ckb-indexer" "0.20.0-alpha.2"
-    "@ckb-lumos/common-scripts" "0.20.0-alpha.2"
-    "@ckb-lumos/config-manager" "0.20.0-alpha.2"
-    "@ckb-lumos/hd" "0.20.0-alpha.2"
-    "@ckb-lumos/helpers" "0.20.0-alpha.2"
-    "@ckb-lumos/rpc" "0.20.0-alpha.2"
-    "@ckb-lumos/toolkit" "0.20.0-alpha.2"
+    "@ckb-lumos/base" "0.22.2"
+    "@ckb-lumos/ckb-indexer" "0.22.2"
+    "@ckb-lumos/rpc" "0.22.2"
+    cross-fetch "^3.1.5"
+    events "^3.3.0"
 
-"@ckb-lumos/rpc@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/rpc/-/rpc-0.20.0-alpha.2.tgz#f553d7467fe81cfa5d548c8699580550c2aa3047"
-  integrity sha512-H2Ks6oTPWtGV4u8TG7THqp1+Z9cBg/epdON8bTCo2bsB2AtgVCwEEmFXVcvj68vfTqApFOLFj8QqpxEZC5gCEQ==
+"@ckb-lumos/lumos@^0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/lumos/-/lumos-0.22.2.tgz#f6babead9a1a7c669830411afe60666c9fc913af"
+  integrity sha512-oobNnRx2m2crr6rgz4Mz066ggRLiAgZPwcZJCxiQLxIR3e9ik9f37hxJOEhZ/1kZmNMxZIKectVckaMn8MHROg==
   dependencies:
-    "@ckb-lumos/base" "0.20.0-alpha.2"
-    "@ckb-lumos/bi" "0.20.0-alpha.2"
-    "@vespaiach/axios-fetch-adapter" "^0.3.1"
-    axios "0.27.2"
-    tslib "2.3.1"
+    "@ckb-lumos/base" "0.22.2"
+    "@ckb-lumos/bi" "0.22.2"
+    "@ckb-lumos/ckb-indexer" "0.22.2"
+    "@ckb-lumos/codec" "0.22.2"
+    "@ckb-lumos/common-scripts" "0.22.2"
+    "@ckb-lumos/config-manager" "0.22.2"
+    "@ckb-lumos/hd" "0.22.2"
+    "@ckb-lumos/helpers" "0.22.2"
+    "@ckb-lumos/light-client" "0.22.2"
+    "@ckb-lumos/rpc" "0.22.2"
+    "@ckb-lumos/toolkit" "0.22.2"
+    "@ckb-lumos/transaction-manager" "0.22.2"
 
-"@ckb-lumos/toolkit@0.20.0-alpha.2":
-  version "0.20.0-alpha.2"
-  resolved "https://registry.npmmirror.com/@ckb-lumos/toolkit/-/toolkit-0.20.0-alpha.2.tgz#23a0c65c6dba2ad8847ce7afe7078e0042ac7b5e"
-  integrity sha512-nhiA81/51D3qO3vZieKs9vRJ643hnm67PImkTTeHXNxj95CgIyoxQH+E2yKUKt3Htew8IXOlbNUpJ/QsahPiqg==
+"@ckb-lumos/rpc@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/rpc/-/rpc-0.22.2.tgz#5c8030ae2d5bf1fa4b7e118216a74ec7129e09ef"
+  integrity sha512-c2SX0ooDJO3dV2JOTTQtKZs0k+dHst+NHfbYJ6mYWApcZWx2nG4bQR3CQFMIKnd5CKYP/r2JuaonDkcRH9vmzw==
+  dependencies:
+    "@ckb-lumos/base" "0.22.2"
+    "@ckb-lumos/bi" "0.22.2"
+    abort-controller "^3.0.0"
+    cross-fetch "^3.1.5"
+
+"@ckb-lumos/toolkit@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/toolkit/-/toolkit-0.22.2.tgz#54087a8947ae4de7cd0e91d955f273accca37d30"
+  integrity sha512-HmKz2dGQeaW2XDqkvjJfLv50VQWGKbthg2RDfIxGsZyjveluRROTyuHP1akypy4pqF8TApGLsXci2MaHCRau+w==
+  dependencies:
+    "@ckb-lumos/bi" "0.22.2"
+
+"@ckb-lumos/transaction-manager@0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/transaction-manager/-/transaction-manager-0.22.2.tgz#63c1e61fbb2c5123eecf704583506b2eb0c4b714"
+  integrity sha512-RV/nLGAi5to6ROHh58uwiQB9wJBFmABlmU3GvUf2Baz0SIlniBx0EBtS3SzyD95w4zot1Fc8sVwLN8wCvt8ADA==
+  dependencies:
+    "@ckb-lumos/base" "0.22.2"
+    "@ckb-lumos/ckb-indexer" "0.22.2"
+    "@ckb-lumos/codec" "0.22.2"
+    "@ckb-lumos/rpc" "0.22.2"
+    "@ckb-lumos/toolkit" "0.22.2"
+    immutable "^4.3.0"
 
 "@codemirror/autocomplete@^6.0.0", "@codemirror/autocomplete@^6.0.4", "@codemirror/autocomplete@^6.3.2", "@codemirror/autocomplete@^6.7.1":
   version "6.9.0"
@@ -2791,11 +2823,6 @@
     "@typescript-eslint/types" "5.59.0"
     eslint-visitor-keys "^3.3.0"
 
-"@vespaiach/axios-fetch-adapter@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.npmmirror.com/@vespaiach/axios-fetch-adapter/-/axios-fetch-adapter-0.3.1.tgz#b0c08167bec9cc558f578a1b9ccff52ead1cf1cb"
-  integrity sha512-+1F52VWXmQHSRFSv4/H0wtnxfvjRMPK5531e880MIjypPdUSX6QZuoDgEVeCE1vjhzDdxCVX7rOqkub7StEUwQ==
-
 "@webcontainer/api@1.0.0-alpha.1":
   version "1.0.0-alpha.1"
   resolved "https://registry.npmmirror.com/@webcontainer/api/-/api-1.0.0-alpha.1.tgz#9c2a1f3ae107261a1f27f60e6857d59da5b8f05b"
@@ -3223,14 +3250,6 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.npmmirror.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-axios@0.27.2:
-  version "0.27.2"
-  resolved "https://registry.npmmirror.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
-  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
-  dependencies:
-    follow-redirects "^1.14.9"
-    form-data "^4.0.0"
-
 axios@^0.25.0:
   version "0.25.0"
   resolved "https://registry.npmmirror.com/axios/-/axios-0.25.0.tgz#349cfbb31331a9b4453190791760a8d35b093e0a"
@@ -3303,6 +3322,11 @@ balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npmmirror.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
+
+base-x@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/base-x/-/base-x-4.0.0.tgz#d0e3b7753450c73f8ad2389b5c018a4af7b2224a"
+  integrity sha512-FuwxlW4H5kh37X/oW59pwTzzTKRzfrrQwhmyspRM7swOEZcHtDZSCt45U6oKgtuFE+WYPblePMVIPR4RZrh/hw==
 
 base64-js@^1.3.1:
   version "1.5.1"
@@ -3391,6 +3415,13 @@ browserslist@^4.21.3, browserslist@^4.21.5:
     electron-to-chromium "^1.4.284"
     node-releases "^2.0.8"
     update-browserslist-db "^1.0.10"
+
+bs58@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/bs58/-/bs58-5.0.0.tgz#865575b4d13c09ea2a84622df6c8cbeb54ffc279"
+  integrity sha512-r+ihvQJvahgYT50JD05dyJNKlmmSlMoOGwn1lCcEzanPglg7TxYjioQUYehQ9mAR/+hOSd2jRc/Z2y5UxBymvQ==
+  dependencies:
+    base-x "^4.0.0"
 
 buffer-from@^1.0.0:
   version "1.1.2"
@@ -4517,7 +4548,7 @@ focus-trap@7.4.0:
   dependencies:
     tabbable "^6.1.1"
 
-follow-redirects@^1.14.7, follow-redirects@^1.14.9, follow-redirects@^1.15.0:
+follow-redirects@^1.14.7, follow-redirects@^1.15.0:
   version "1.15.6"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
@@ -4988,10 +5019,10 @@ ignore@^5.2.0:
   resolved "https://registry.npmmirror.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
   integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
 
-immutable@^4.0.0-rc.12:
-  version "4.3.0"
-  resolved "https://registry.npmmirror.com/immutable/-/immutable-4.3.0.tgz#eb1738f14ffb39fd068b1dbe1296117484dd34be"
-  integrity sha512-0AOCmOip+xgJwEVTQj1EfiDDOkPmuyllDuTuEX+DDXUgapLAsBIfkg3sxCYyCEA8mQqZrrxPUGjcOQ2JS3WLkg==
+immutable@^4.3.0:
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.3.6.tgz#6a05f7858213238e587fb83586ffa3b4b27f0447"
+  integrity sha512-Ju0+lEMyzMVZarkTn/gqRpdqd5dOPaz1mCZ0SH3JV6iFw81PldE/PEB1hWVEA288HPt4WXW8O7AWxB10M+03QQ==
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"
@@ -8114,11 +8145,6 @@ tsconfig-paths@^3.14.1:
     json5 "^1.0.2"
     minimist "^1.2.6"
     strip-bom "^3.0.0"
-
-tslib@2.3.1:
-  version "2.3.1"
-  resolved "https://registry.npmmirror.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
-  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
 tslib@2.4.0:
   version "2.4.0"
