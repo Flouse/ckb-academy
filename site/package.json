@@ -35,7 +35,7 @@
     "ethers": "^6.2.3",
     "highlight.js": "^11.7.0",
     "install": "^0.13.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "monaco-editor": "0.33.0",
     "motion": "^10.15.5",
     "npm": "^9.6.1",
