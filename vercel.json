@@ -1,4 +1,7 @@
 {
+  "framework": null,
+  "buildCommand": "yarn build",
+  "outputDirectory": "site/dist/public",
   "rewrites": [
     {
       "source": "/(.*)",
